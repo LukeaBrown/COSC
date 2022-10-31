@@ -33,4 +33,12 @@ list(s)
 ['H', 'e', 'l', 'l', 'o']
 
 
+>>> num = input('What is your favorite number? ')
+What is your favorite number? 3
+>>> type(num)
+<class 'str'>
+>>> num = int(input('What is your favorite number? '))
+What is your favorite number? 4
+>>> type(num)
+<class 'int'>
 
