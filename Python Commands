@@ -13,3 +13,10 @@ TUPLE >> (Var) = (Tuple Data)
   
 APPEND >> a.append()
 
+SPLIT
+
+'hello world' .split()
+['hello', 'world']
+
+'hello:world' .split(':')
+['hello', 'world']
