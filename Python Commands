@@ -11,12 +11,26 @@ TUPLE >> (Var) = (Tuple Data)
   a = (1, 3, 5, 7, 11)
   Holds strings
   
+
 APPEND >> a.append()
 
-SPLIT
+SPLIT and JOIN
 
 'hello world' .split()
 ['hello', 'world']
 
 'hello:world' .split(':')
 ['hello', 'world']
+
+>>> '::' .join(s)
+'H::e::l::l::o'
+
+
+STRING to LIST
+
+s = 'Hello'
+list(s)
+['H', 'e', 'l', 'l', 'o']
+
+
+
