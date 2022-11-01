@@ -10,7 +10,7 @@ String Manipulation:
   'Hello {}. How are you {}?'.format(a,b)
   'Hello Albert. How are you today?'
 
-While Loops:
+While Loops______While Loops______While Loops______While Loops______While Loops______While Loops
 
 (True and False) <----- Must be capitalized like this.
   
@@ -36,5 +36,16 @@ while i < 6:
   if i == 3:
     continue
   i += 1
-  
-  
+
+Functions______Functions______Functions______Functions______Functions
+
+
+
+
+
+
+
+
+
+
+
