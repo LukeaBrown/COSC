@@ -39,7 +39,10 @@ while i < 6:
 
 Functions______Functions______Functions______Functions______Functions
 
-
+def guess_number(n):    <------- Writes the function
+  pass
+  
+guess_number(23)        <-------Runs the function
 
 
 
