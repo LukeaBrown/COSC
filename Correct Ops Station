@@ -1,0 +1,5 @@
+sudo apt update
+sudo apt upgrade
+sudo dpkg-reconfigure ca-certificates
+sudo update-ca-certificates
+git clone https://git.cybbh.space/programming/python/public.git
