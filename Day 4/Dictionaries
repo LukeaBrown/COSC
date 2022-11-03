@@ -1,0 +1,55 @@
+romanNumerals = {'I':1, 'V':5, 'X':10, 'L':50}
+romanNumerals
+{'I': 1, 'V': 5, 'X': 10, 'L': 50}
+
+______________________________Add To Dictionary______________________________
+
+romanNumerals['C'] = 100
+romanNumerals['D'] = 500
+romanNumerals['M'] = 1000
+romanNumerals
+{'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+
+______________________________See item______________________________
+
+romanNumerals['C']
+100
+
+______________________________Addition______________________________
+
+romanNumerals['C'] + romanNumerals['D']
+600
+
+______________________________Check for Item______________________________
+
+'C' in romanNumerals
+True
+'Z' in romanNumerals
+False
+
+______________________________Delete from Dictionary______________________________
+
+del romanNumerals['C']
+{'I': 1, 'V': 5, 'X': 10, 'L': 50, 'D': 500, 'M': 1000}
+
+______________________________Iterate Over Dictionary______________________________
+
+for key in romanNumerals:
+  print('{} = {}'.format(key, romanNumerals[key]))
+
+I = 1
+V = 5
+X = 10
+L = 50
+D = 500
+M = 1000
+
+        I = 1
+        V = 5
+        X = 10
+        L = 50
+        D = 500
+        M = 1000
+        ^
+        |
+       key
