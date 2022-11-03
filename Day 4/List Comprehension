@@ -1,0 +1,11 @@
+result = [valueExpression for controlVariable in iterator whereClause]
+
+______________________________Examples______________________________
+
+result = [x for x in range(0,100,5) if x % 2 ==1]
+result
+[5, 15, 25, 35, 45, 55, 65, 75, 85, 95]
+
+result = sumn([x for x in range(2,1001,2)])
+result
+250500
