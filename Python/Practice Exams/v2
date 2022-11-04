@@ -1,12 +1,11 @@
 ______________________________Q1______________________________
 ============================================================
-  '''
-  Given a string of multiple words separated by single spaces,
-  return a new string with the sentence reversed. The words
-  themselves should remain as they are. For example, given
-  'it is accepted as a masterpiece on strategy', the returned
-  string should be 'strategy on masterpiece a as accepted is it'.
-  '''
+
+Given a string of multiple words separated by single spaces,
+return a new string with the sentence reversed. The words
+themselves should remain as they are. For example, given 
+it is accepted as a masterpiece on strategy', the returned
+string should be 'strategy on masterpiece a as accepted is it'.
 
 def q1(sentence):
   s = sentence.split()[::-1]
@@ -15,39 +14,44 @@ def q1(sentence):
     l.append(i)
   return (' '.join(l))
   pass
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+s = sentence.split()
+s = reversed(x)
+s = ' '.join(s)
+return x
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+return ' '.join(reversed(sentence.split()))
 ============================================================
 ______________________________Q2______________________________
 ============================================================
-  '''
-  Given a positive integer, return its string representation with
-  commas seperating groups of 3 digits. For example, given 65535
-  the returned string should be '65,535'.
-  '''
+Given a positive integer, return its string representation with
+commas seperating groups of 3 digits. For example, given 65535
+the returned string should be '65,535'.
 
 def q2(n):
   return (f"{n:,}")
   pass
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+return '{:n}'.format(n)
 ============================================================
 ______________________________Q3______________________________
 ============================================================
-  '''
-  Given two lists of integers, return a sorted list that contains
-  all integers from both lists in descending order. For example,
-  given [3,4,9] and [8,1,5] the returned list should be [9,8,5,4,3,1].
-  The returned list may contain duplicates.
-  '''
+Given two lists of integers, return a sorted list that contains
+all integers from both lists in descending order. For example,
+given [3,4,9] and [8,1,5] the returned list should be [9,8,5,4,3,1].
+The returned list may contain duplicates.
   
 def q3(lst0, lst1):
   srtlst = lst0 + lst1
   return sorted(srtlst, reverse=True)
   pass
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+return list(reversed(sorted(lst0+lst1)))
 ============================================================
 ______________________________Q4______________________________
 ============================================================
-  '''
-  Given 3 scores in the range [0-100] inclusive, return 'GO' if
-  the average score is greater than 50. Otherwise return 'NOGO'.
-  '''
+Given 3 scores in the range [0-100] inclusive, return 'GO' if
+the average score is greater than 50. Otherwise return 'NOGO'.
 
 def q4(s1,s2,s3):
   scores = [s1,s2,s3]
@@ -64,12 +68,10 @@ def q4(s1,s2,s3):
 ============================================================
 ______________________________Q5______________________________
 ============================================================
-  '''
-  Given an integer and limit, return a list of even multiples of the
-  integer up to and including the limit. For example, if integer==3 and
-  limit==30, the returned list should be [0,6,12,18,24,30]. Note, 0 is
-  a multiple of any integer except 0 itself.
-  '''
+Given an integer and limit, return a list of even multiples of the
+integer up to and including the limit. For example, if integer==3 and
+limit==30, the returned list should be [0,6,12,18,24,30]. Note, 0 is
+a multiple of any integer except 0 itself.
 
 def q5(integer, limit):
   finList = [0]
@@ -85,18 +87,50 @@ ______________________________Q6______________________________
 
 ============================================================
 ______________________________Q7______________________________
-============================================================
-
+==========================================================i==
+def q7(lst):
+  seen = set()
+  for i in lst:
+    if i in seen:
+      return i
+    else:
+      seen.add(i)
+  pass
 ============================================================
 ______________________________Q8______________________________
 ============================================================
+Given a sentence as a string with words being separated by a single 
+space, return the length of the shortest word.
 
+def q8(strng):
+  words = strng.split()
+  minlen = len(words)
+  for word in words:
+    if len(word) < minlen:
+      minlen = len(word)
+  return minlen
 ============================================================
 ______________________________Q9______________________________
 ============================================================
+Given an alphanumeric string, return the character whose ascii value
+is that of the integer represenation of all of the digits in the string
+concatenated in the order in which they appear. For example, given
+'hell9oworld7', the returned character should be 'a' which has
+the ascii value of 97.
 
+def q9(strng):
+  return chr(int(''.join([c for c in strng if c.isdigit()])))
+  pass
 ============================================================
 ______________________________Q10______________________________
 ============================================================
+Given a list of positive integers sorted in ascending order, return
+the first non-consecutive value. If all values are consecutive, retur
+None. For example, given [1,2,3,4,6,7], the returned value should be 6.
 
+def q10(arr):
+  for i in arr:
+    if (arr[i+1] - arr[i]) != 1:
+      return arr[i+1]
+  return None
 ============================================================
