@@ -8,7 +8,7 @@ s = 0
 for i in numbers:
     s = s + i
 listsize = len(numbers)
-average = s / listSize
+average = s / listsize
 print(average)
 
 ______________________________Even or Odd______________________________
