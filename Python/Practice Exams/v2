@@ -1,12 +1,12 @@
 ______________________________Q1______________________________
 ============================================================
-'''
-Given a string of multiple words separated by single spaces,
-return a new string with the sentence reversed. The words
-themselves should remain as they are. For example, given
-'it is accepted as a masterpiece on strategy', the returned
-string should be 'strategy on masterpiece a as accepted is it'.
-'''
+  '''
+  Given a string of multiple words separated by single spaces,
+  return a new string with the sentence reversed. The words
+  themselves should remain as they are. For example, given
+  'it is accepted as a masterpiece on strategy', the returned
+  string should be 'strategy on masterpiece a as accepted is it'.
+  '''
 
 def q1(sentence):
   s = sentence.split()[::-1]
@@ -15,15 +15,14 @@ def q1(sentence):
     l.append(i)
   return (' '.join(l))
   pass
-
 ============================================================
 ______________________________Q2______________________________
 ============================================================
-'''
-Given a positive integer, return its string representation with
-commas seperating groups of 3 digits. For example, given 65535
-the returned string should be '65,535'.
-'''
+  '''
+  Given a positive integer, return its string representation with
+  commas seperating groups of 3 digits. For example, given 65535
+  the returned string should be '65,535'.
+  '''
 
 def q2(n):
   return (f"{n:,}")
@@ -45,10 +44,10 @@ def q3(lst0, lst1):
 ============================================================
 ______________________________Q4______________________________
 ============================================================
-'''
-Given 3 scores in the range [0-100] inclusive, return 'GO' if
-the average score is greater than 50. Otherwise return 'NOGO'.
-'''
+  '''
+  Given 3 scores in the range [0-100] inclusive, return 'GO' if
+  the average score is greater than 50. Otherwise return 'NOGO'.
+  '''
 
 def q4(s1,s2,s3):
   scores = [s1,s2,s3]
@@ -61,7 +60,7 @@ def q4(s1,s2,s3):
     return 'GO'
   else:
     return 'NOGO'
-pass
+  pass
 ============================================================
 ______________________________Q5______________________________
 ============================================================
