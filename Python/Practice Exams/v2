@@ -65,7 +65,21 @@ pass
 ============================================================
 ______________________________Q5______________________________
 ============================================================
+  '''
+  Given an integer and limit, return a list of even multiples of the
+  integer up to and including the limit. For example, if integer==3 and
+  limit==30, the returned list should be [0,6,12,18,24,30]. Note, 0 is
+  a multiple of any integer except 0 itself.
+  '''
 
+def q5(integer, limit):
+  finList = [0]
+  newList = list(range(integer,limit+1, integer))
+  for i in newList:
+    if (i % 2 == 0):
+      finList.append(i)
+  return finList 
+  pass
 ============================================================
 ______________________________Q6______________________________
 ============================================================
