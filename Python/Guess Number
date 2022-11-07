@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+def guess_number(n):
+    while(True):
+        num = int(input('Insert a number between 0 and 100. '))
+        if (num == n):
+          print('WIN')
+          break
+        elif
+        n):
+    pass
+
+guess_number(23)
