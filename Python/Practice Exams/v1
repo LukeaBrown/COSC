@@ -18,6 +18,9 @@ def q1(floatstr):
 ============================================================
 ______________________________Q2______________________________
 ============================================================
+Given the variable length argument list, return the average
+of all the arguments as a float.
+
 def q2(*args):
   s = 0
   for arg in args:
@@ -27,12 +30,18 @@ def q2(*args):
 ============================================================
 ______________________________Q3______________________________
 ============================================================
+Given a list (lst) and a number of items (n), return a new 
+list containing the last n entries in lst.
+
 def q3(lst,n):
   return lst[-n:]
   pass
 ============================================================
 ______________________________Q4______________________________
 ============================================================
+Given an input string, return a list containing the ordinal numbers of 
+each character in the string in the order found in the input string.
+
 def q4(strng):
   ordNum = []
   for i in strng:
@@ -47,29 +56,61 @@ def q4(strng):
 ============================================================
 ______________________________Q5______________________________
 ============================================================
+Given an input string, return a tuple with each element in the tuple
+containing a single word from the input string in order.
+
 def q5(strng):
   return tuple(strng.split())
   pass
 ============================================================
 ______________________________Q6______________________________
 ============================================================
-total = []
-for product in catalog:
-  for item in order:
-    if item[0] == product:
-      total.append(catalog[product] * item[1])
-return sum(total)
+Given a dictionary (catalog) whose keys are product names and values are product
+prices per unit and a list of tuples (order) of product names and quantities,
+compute and return the total value of the order.
+
+def q6(catalog, order):
+  total = []
+  for product in catalog:
+    for item in order:
+      if item[0] == product:
+        total.append(catalog[product] * item[1])
+  return sum(total)
 ============================================================
 ______________________________Q7______________________________
 ============================================================
+Given a filename, open the file and return the length of the first line 
+in the file excluding the line terminator.
 
+def q7(filename):
+  with open(filename) as fp:
+    return len(fp.readline()) - 1
+  pass
 ============================================================
 ______________________________Q8______________________________
 ============================================================
+Given a filename and a list, write each entry from the list to the file
+on separate lines until a case-insensitive entry of "stop" is found in 
+the list. If "stop" is not found in the list, write the entire list to 
+the file on separate lines.
 
+def q8(filename,lst):
+  with open(filename, 'w') as fp:
+    for item in lst:
+      if item.lower() == 'stop':
+        break
+      fp.write('{}.\n'.format(item))
+  pass
 ============================================================
 ______________________________Q9______________________________
 ============================================================
+Given the military time in the argument miltime, return a string 
+containing the greeting of the day.
+0300-1159 "Good Morning"
+1200-1559 "Good Afternoon"
+1600-2059 "Good Evening"
+2100-0259 "Good Night"
+
 def q9(miltime):
   total = []
   for product in catalog:
@@ -79,7 +120,10 @@ def q9(miltime):
   return sum(total)
 ============================================================
 ______________________________Q10______________________________
-============================================================
+Given the argument numlist as a list of numbers, return True if all 
+numbers in the list are NOT negative. If any numbers in the list are
+negative, return False.
+
 def q10(numlist):
   for i in numlist:
     if i < 0:
