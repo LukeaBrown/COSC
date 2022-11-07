@@ -1,0 +1,45 @@
+Most specific code first.
+
+String Manipulation:
+'str'.format()
+
+  'Hello. My name is {}'.format('LCPL')
+  'Hello. My name is LCPL'
+  a = 'Albert'
+  b = 'today'
+  'Hello {}. How are you {}?'.format(a,b)
+  'Hello Albert. How are you today?'
+
+While Loops______While Loops______While Loops______While Loops______While Loops______While Loops
+
+(True and False) <----- Must be capitalized like this.
+  
+  while True:
+    print('This will never start')
+    
+    This will never start
+    This will never start
+    This will never start
+    This will never start
+    This will never start
+  
+Break stops the code even if still true.
+while i < 6:
+  print(i)
+  if i == 3:
+    break
+  i += 1
+
+Continue skips and continues on until no longer true.
+while i < 6:
+  print(i)
+  if i == 3:
+    continue
+  i += 1
+
+Functions______Functions______Functions______Functions______Functions
+
+def guess_number(n):    <------- Writes the function
+  pass
+  
+guess_number(23)        <-------Runs the function
