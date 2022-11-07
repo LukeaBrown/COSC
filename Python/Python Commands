@@ -1,0 +1,43 @@
+id(Variable) 
+
+type(Variable)
+  type(b)
+  class 'tuple'
+
+LIST >> (Var) = [List Data]
+  a = [1, 3, 5, 7, 11]
+  
+TUPLE >> (Var) = (Tuple Data)
+  a = (1, 3, 5, 7, 11)
+  Holds strings
+  
+
+APPEND >> a.append()
+
+SPLIT and JOIN
+
+'hello world' .split()
+['hello', 'world']
+
+'hello:world' .split(':')
+['hello', 'world']
+
+>>> '::' .join(s)
+'H::e::l::l::o'
+
+
+STRING to LIST
+
+s = 'Hello'
+list(s)
+['H', 'e', 'l', 'l', 'o']
+
+
+>>> num = input('What is your favorite number? ')
+What is your favorite number? 3
+>>> type(num)
+<class 'str'>
+>>> num = int(input('What is your favorite number? '))
+What is your favorite number? 4
+>>> type(num)
+<class 'int'>
