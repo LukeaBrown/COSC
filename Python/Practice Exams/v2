@@ -84,10 +84,28 @@ def q5(integer, limit):
 ============================================================
 ______________________________Q6______________________________
 ============================================================
+Given an integer and limit, return a list of even multiples of the
+integer up to and including the limit. For example, if integer==3 and
+limit==30, the returned list should be [0,6,12,18,24,30]. Note, 0 is
+a multiple of any integer except 0 itself.
 
+def q6(f0, f1):
+  diffs = 0
+  linenumber = 0
+  with open(f0) as file0:
+    with open(f1) as file1:
+      for l0,l1 in zip(file0,file1):
+        if l0 != l1:
+          diffs.append(linenumber)
+        linenumber += 1
+  return diffs
 ============================================================
 ______________________________Q7______________________________
-==========================================================i==
+============================================================
+Return the first duplicate value in the given list.
+For example, if given [5,7,9,1,3,7,9,5], the returned value
+should be 7.
+
 def q7(lst):
   seen = set()
   for i in lst:
