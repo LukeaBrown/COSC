@@ -2,7 +2,7 @@
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): mkdir {"1123","1134","1145","1156"}
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -12,7 +12,10 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): 
+mkdir $HOME/1123
+cd $HOME/1123
+touch {1..5}.txt {6..9}~.txt
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -22,7 +25,9 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): 
+cd /$HOME/1123
+find -name '*.txt'
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -32,7 +37,9 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s):
+cd /$HOME/1123
+find ./ -type f -name '[0-9].txt'
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -42,7 +49,7 @@ Solution:
 
 BLUF: "Copy all .txt from one directory to another using find cp and -exec option."
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): find -type f ! -name "*~*" -name "*.txt" -exec cp {} $HOME/CUT \;
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -52,7 +59,7 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): find /var -empty -printf '%i %f\n' 2>/dev/null
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -62,7 +69,7 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): find / -inum 4026532575 -printf '%f\n'
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
