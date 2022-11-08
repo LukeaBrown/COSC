@@ -1,0 +1,13 @@
+shopto
+
+man bash - Opens extensive BASH man page
+man find - Opens man page for FIND command
+
+G - move to end of man page
+g - Move to start of man page
+
+/<pattern> - Search forward for (N-th) matching line
+?<pattern> - Search backward for (N-th) matching line
+&<pattern> - Display only matching lines
+n or shift+n - 
+q - 
