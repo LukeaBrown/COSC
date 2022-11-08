@@ -1,8 +1,19 @@
-Redirection
-Alias
+Redirection ---- (Changing Output Eg [echo $PATH > info_path])
+Alias ---- New name for a command
 Parameter expansion, command substitution, arithmetic expansion, and quote removal
 Shell function
 Built-in commands
 Hash tables
 Path variable
 error{eg command not found}
+
+
+
+echo 'This is echo!'
+
+echo() { printf "fumction echo: %s\n" "$*"; }
+alias = echo='printf "alias echo: %s %s %s\n"'
+type -a echo
+
+echo -e '\u2261'
+alias echo: -e \u2261
