@@ -176,3 +176,16 @@ fi
         echo "Weak."
     fi
     
+If comparing letters (e.g a string of characters) use symbols (== or !=)
+If comparing numbers (e.g 1, 11, 42) use letters (-eq, )
+
+============================================================
+                  Command Substitution
+============================================================
+VAR=$(command) or VAR=$(command | command | command)
+command $(command)
+VAR='command' Legacy way using backticks (')
+
+  proc=$(ps -elf) Assign the output of ps -elf to the variable $proc
+  echo "Today os $(date)" Substitute output of date command into echo
+
