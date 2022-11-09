@@ -39,6 +39,8 @@ awk '/Loki/{print}' working
     Loki puny guy
     >>> awk '/Loki/{print}' working
     Loki puny guy
+    
+
 
 ==============================Command: sed==============================
 sed 's/abc/123/'
@@ -57,6 +59,9 @@ sed -i '<expression>' file.txt
     root:x:0:0:root:/root:/bin/bash
     >>> egrep "root" /etc/passwd | sed 's/root/Groot/g'
     Groot:x:0:0:Groot:/Groot:/bin/bash
+    
+sed 's/,/ /g'
+-Replace all commas in a line.
 
 ==============================Command: sort==============================
 sort
