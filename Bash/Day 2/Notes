@@ -130,7 +130,16 @@ uniq -c
 ==============================Conditionals: Operators==============================
 -e file exists
 -f file exist and is regualr file?
-
+-d file exists, and is a directory ?
+-s file exists, and is NOT empty ?
+-x file exists, and IS executable ?
+-w file exists, and is writable by me ?
+-gt > is greater than
+-lt < is less than
+-ge is greater than or equal to
+-le is less than or equal to
+-eq == is equal to
+-ne != is NOT equal to
 
 if [[ condition ]]; then 
     commands
@@ -139,3 +148,13 @@ elif [[ condition ]]; then
 else
     commands
 fi
+    
+    #!/bin/bash
+    
+    var='accepted'
+    if [[ $var == accepted ]];then
+        echo "Challenge $var >:]"
+    elif [[ $var != accepted ]];then
+        echo "Weak."
+    fi
+    
