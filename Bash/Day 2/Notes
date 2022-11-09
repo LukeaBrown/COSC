@@ -1,10 +1,96 @@
 ==============================Command: alias==============================
+alias
+-View all aliases
 
+alias vim='nano'
+-Makes alias vim for nano
 
+unalias vim
+-unalias vim so it no longer resolves to nano
 
+alias egrep='egrep --color=auto'
+-Best use of aliases to include common options of commands.
+
+\egrep
+-negates all options under the egrep alias.
 
 ==============================Command: awk==============================
+awk -F: '{print $1}'
+-Displays 1st field deliminated by a ":"
+
+awk '{print $2}'
+-Displays 2nd field, deliminated automatically by white space
+
+awk -F: '($3 == 0) {print $1}' /etc/passwd
+-Display 1st field (username) only if the 3rd field (UID) is equal to "0"
+
+    >>> head -n1 /etc/passwd
+    root:x:0:0:root:/root:/bin/bash
+    >>> head -n1 /etc/passwd | awk -F: '{print $1,$3,$4}'
+    root 0 0
+
 ==============================Command: sed==============================
+sed 's/abc/123/'
+-Replace first occurrence of abc in every line with 123
+
+sed 's/abc/123/g'
+-Replace every occurrence of abc in every line with 123
+
+sed '/sus/d'
+-Delete the sus lines. Output everything else.
+
+sed -i '<expression>' file.txt
+-"sed inplace" to makes changes permanent in file.txt
+
+    >>> egrep "root" /etc/passwd
+    root:x:0:0:root:/root:/bin/bash
+    >>> egrep "root" /etc/passwd | sed 's/root/Groot/g'
+    Groot:x:0:0:Groot:/Groot:/bin/bash
+
 ==============================Command: sort==============================
-==============================...==============================
-==============================...==============================
+sort
+-sort content according to position on the ASCII table
+
+sort -n 
+-sorts content numerically
+
+sort -u
+-sorts content uniquely
+
+sort -nr 
+-sort content numerically reversed
+
+sort -t'+'
+-specify field separator '+'
+
+==============================Command: uniq==============================
+uniq
+-select content uniquely, must already be sorted.
+
+uniq -c
+-select content uniquely with a count reading
+
+    >>> cat sauce.txt
+    mayo
+    Chick-Fil-A Sauce
+    Chick-Fil-A Sauce
+    Chick-Fil-A Sauce
+    Polynesian
+    Polynesian
+    Polynesian
+    Ketchup
+    Ketchup
+    Ketchup
+    Ketchup
+    Ketchup
+    Ketchup
+    Ketchup
+    
+    >>> uniq -c sauce.txt
+    1 Mayo
+    3 Chick-Fil-A Sauce
+    3 Polynesian
+    7 Ketchup
+
+==============================+++++==============================
+
