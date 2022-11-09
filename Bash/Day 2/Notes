@@ -50,6 +50,8 @@ awk '/Loki/{print}' working
 awk -v ss=$SUBJECT -v vv=$VERB -v oo=OBJECT '{$1=ss;$2=vv;$3=oo;print}'
 -Imports variables and then assingns them to a field on a line.
 
+awk -F: '{OFS="_"}{s}
+
 ==============================Command: sed==============================
 sed 's/abc/123/'
 -Replace first occurrence of abc in every line with 123
