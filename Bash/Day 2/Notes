@@ -73,6 +73,14 @@ sed -i '<expression>' file.txt
 sed 's/,/ /g'
 -Replace all commas in a line.
 
+    >>> cat sedfoo
+    /my/cool/directory
+    /this/one/is/cool/too
+    >>> cat sedfoo | sed 's/\/cool\/too/\/NotSoCool/'
+    
+    /my/cool/directory
+    /this/one/is/NotSoCool
+
 ==============================Command: sort==============================
 sort
 -sort content according to position on the ASCII table
@@ -89,6 +97,7 @@ sort -nr
 sort -t'+'
 -specify field separator '+'
 
+head -n10 /etc/passwd | sort -k3n | awk -F: '{print $1,$3,$4}' | column -t | 
 ==============================Command: uniq==============================
 uniq
 -select content uniquely, must already be sorted.
@@ -118,4 +127,15 @@ uniq -c
     3 Polynesian
     7 Ketchup
 
-==============================+++++==============================
+==============================Conditionals: Operators==============================
+-e file exists
+-f file exist and is regualr file?
+
+
+if [[ condition ]]; then 
+    commands
+elif [[ condition ]]; then 
+    commands
+else
+    commands
+fi
