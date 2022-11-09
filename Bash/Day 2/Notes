@@ -40,7 +40,15 @@ awk '/Loki/{print}' working
     >>> awk '/Loki/{print}' working
     Loki puny guy
     
-
+    >>> echo "Python is better than Bash"
+    Python is better than Bash
+    >>> echo "Python is better than Bash" | awk '{$1="Bash";$5="Python";print}'
+    Bash is better than Python
+    >>> echo "Python is better than Bash" | awk '{$1="Bash";$5="Python";print "More"$0"Class"}'
+    MoreBash is better than PythonClass
+    
+awk -v ss=$SUBJECT -v vv=$VERB -v oo=OBJECT '{$1=ss;$2=vv;$3=oo;print}'
+-Imports variables and then assingns them to a field on a line.
 
 ==============================Command: sed==============================
 sed 's/abc/123/'
