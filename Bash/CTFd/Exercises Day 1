@@ -89,7 +89,8 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s):
+cat ./StoryHiddenIPs | egrep -o "([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})" | sort -n | uniq -c | sort -nr
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -99,7 +100,8 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): 
+awk -F: '($7=="/bin/bash")&&($3>3){print $1}' $HOME/passwd > $HOME/SED/names.txt
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
@@ -109,7 +111,8 @@ Solution:
 
 BLUF: "Describe the activity and its requirements in one sentence"
 
-Command(s): List out commands used/steps taken.  Include comments.
+Command(s): 
+dmesg | egrep "CPU|BIOS" | egrep -iv "usable|reserved" | cut  -d] -f2-
 
 Rationale: A brief explanation of your methodology. Include any research performed, commands tried, and why you did what you did.
 
