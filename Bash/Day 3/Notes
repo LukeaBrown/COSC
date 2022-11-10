@@ -1,1 +1,71 @@
-============
+============================================================
+                      Parameters
+============================================================
+Assign variables
+  >>>me=Luke
+  >>>age=20
+  
+Reference variables (Must have $ before variable name)
+  >>>echo $me
+  Luke
+  >>>echo $age
+  20
+  >>>mkdir $me
+  >>>ls
+  Luke
+  Desktop
+  Downloads
+
+============================================================
+                   Special Parameters
+============================================================
+Already given by the system
+
+$# - Number of arguemtns passed
+$0 - Script name
+$2 - The 2nd arguemtn passed
+$* - Arguemnts passed to script
+$? - Exit status of last command that executed
+$_ - Last argument provided to previous command
+$$ - PID of current shell
+$- - Flags are set in the shell
+
+============================================================
+                    Functions
+============================================================
+
+  #!/bin/bash
+
+  function_name () {
+  commands
+  }
+  function_name
+  
+  or
+  
+  function_name () { commands }
+  
+  function variable_name () {
+    bacon ='gross'
+
+============================================================
+                    Killing Processes
+============================================================
+
+  >>>ps -aux | egrep <process_name>
+  >>>kill -9 <PID>
+
+============================================================
+                    Finding Hashes
+============================================================
+
+  >>>md5sum <filename>
+  
+  >>>md5sum secret.sh
+  4e338d3791133a45a31f00fd1f1fcbd5
+  
+  >>>cat secret.sh
+  4e338d3791133a45a31f00fd1f1fcbd5
+  
+  
+  
