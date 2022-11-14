@@ -1,2 +1,122 @@
-
+============================================================
+       Make multiple directories wiht brace expansion
+============================================================
 mkdir {"1123","1134","1145","1156"}
+
+============================================================
+          Make multiple files wiht brace expansion
+============================================================
+mkdir $HOME/1123
+cd $HOME/1123
+touch {1..5}.txt {6..9}~.txt
+
+============================================================
+      List all files in <directory> that end in .txt.
+============================================================
+cd /$HOME/1123
+find -name '*.txt'
+
+============================================================
+Copy all files in the <dir> that end in ".txt", and omit files containing a tilde "~" character, to directory <TGT DIR>.
+============================================================
+find -type f ! -name "*~*" -name "*.txt" -exec cp {} $HOME/CUT \;
+
+============================================================
+Find all emplty files and directories in /var and print only filname and inode numbers
+============================================================
+find /var -empty -printf '%i %f\n' 2>/dev/null
+
+============================================================
+shows all filenames with extensions ie: 1.txt, etc., but no directories
+============================================================
+ls -l $HOME/CUT | cut -d: -f2 | cut -d' ' -f2 | cut -d'.' -f1- -s > $HOME/CUT/names
+
+============================================================
+greps ONLY the IP addresses in the text file provided
+============================================================
+cat ./StoryHiddenIPs | egrep -o "([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})" | sort -n | uniq -c | sort -nr
+
+============================================================
+extracts ONLY the names of all the system and user accounts that are not UIDs 0-3.
+============================================================
+awk -F: '($7=="/bin/bash")&&($3>3){print $1}' $HOME/passwd > $HOME/SED/names.txt
+
+============================================================
+all dmesg kernel messages that contain CPU or BIOS (uppercase) in the string, but not usable or reserved (case-insensitive)
+============================================================
+dmesg | egrep "CPU|BIOS" | egrep -iv "usable|reserved" | cut  -d] -f2-
+
+============================================================
+replace all passwords, using openssl, from the file $HOME/PASS
+============================================================
+HASHED=$(openssl passwd -1 -salt bad4u Password1234)
+awk -F: -v hh=$HASHED '{OFS=":"}{$2=hh;print}' $HOME/PASS/shadow.txt
+
+============================================================
+find all files under the $HOME directory with a .bin extension ONLY.
+============================================================
+find $HOME -name '*.bin' -printf '%h\n' | sort -u
+
+============================================================
+12
+============================================================
+#!/bin/bash
+one=$1
+two=$2
+three=$3
+tail -n1 $one | awk -v name=$two -v id=$three -F: '{sub($1,name)sub($3,id)sub($4,id)sub($6,"/home/"name)sub($7,"/bin/bash"); print}' >> $one
+
+============================================================
+Find all executable files under the following four directories
+============================================================
+find /bin /sbin /usr/bin /usr/sbin -executable -type f | sort | md5sum $(sed -n 10p) | cut -d' ' -f1
+
+============================================================
+Sort the /etc/passwd file numerically by the GID field.
+For the 10th entry in the sorted passwd file, get an md5 hash of that entry’s home directory.
+============================================================
+cat /etc/passwd | sort -n -t ':' -k4 | cut -d: -f6 | echo $(sed -n 10p) | md5sum | cut -d' ' -f1
+
+============================================================
+find and hash the contents 3 levels deep from each of these directories:
+============================================================
+#!/bin/bash
+find /bin /etc /var -maxdepth 3 ! -type p  -exec md5sum {} \; >output.txt 2>fail.txt
+succ=$(cat output.txt | wc -l)
+unsucc=$(grep -vi perm fail.txt | wc -l)
+
+echo "Successfully Hashed Files: $succ"
+echo "Unsuccessfully Hashed Directories: $unsucc"
+
+============================================================
+detects the existence of directory: $HOME/.ssh
+============================================================
+#!/bin/bash
+dir=$HOME/.ssh
+if [ -d "$dir" ];
+then
+mkdir $HOME/SSH
+find $dir -type f -exec cp "{}" $HOME/SSH ";"
+else
+echo "Run ssh-keygen"
+fi
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
