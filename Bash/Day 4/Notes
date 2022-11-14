@@ -1,29 +1,121 @@
 ============================================================
-                      Parameters
+                      For Loops
 ============================================================
+The for lloop iterates over a lsit of items and peromrs the given set of commands.
+The BASH for loop takes the following for: for item in [LIST] do [COMMANDS] done.
 
-
-
-============================================================
-                      Parameters
-============================================================
-
-
-
-============================================================
-                      Parameters
-============================================================
-
-
-
-============================================================
-                      Parameters
-============================================================
-
-
+  Pseudo-Code
+    for item in List
+      commands
+    done
+    
+    for val in $var1
+    do
+      echo $val
+    done
+    
 
 ============================================================
-                      Parameters
+                   Break and Continue
 ============================================================
+Break
+-termiantes the current loop and passws program control to the statement that follows the terminated statement.
+
+    if [[ <condition> ]];then
+      break
+    done
+
+Continue
+- Stop current iteration of 
 
 
+============================================================
+                   While and Until Loops
+============================================================
+While Loop
+- Performs a given set of commands an unkown number of times as long as the given condition evaluates to true.
+
+    counter=1
+    while [[ $counter -le 10]]
+    do
+      echo $counter
+      ((counter++))
+    done
+    echo "All done!"
+    
+    while read line
+    do
+      echo $line
+    done < test.txt
+
+Until Loop
+-Executes a given set of commmands as long aws the given condition evaluets to false.
+
+    counter=1
+    until [[ $counter =gt 10]]
+    do
+      echo $counter
+      ((counter++))
+    done
+    echo "All done!"
+    
+    until [[ $NUM -ge 5 ]]
+    do
+      echo $NUM
+      ((++NUM))
+    done
+    
+============================================================
+                          Examples
+============================================================
+__________For Loops__________
+  #!/bin/bash
+  for x in {0..10} ; do
+    echo $x
+  done
+  
+  #!/bin/bash
+  for x in {pizza,pasta,meatballs,spagetti}
+  do
+    echo $x
+  done
+  
+  #!/bin/bash
+  start=1
+  end=5
+  for ((i=start; i<=end; i++))
+  do
+    echo $i
+  done
+  
+  #!/bin/bash
+  for x in $(cat /etc/passwd | awk -F: '{print $1}')
+  do
+    echo $x is a user on this system
+  done
+
+__________While Loop__________
+  #!bin/bash
+
+  counter=1
+  while [[ $counter -le 10 ]]
+  do
+    echo "Current cents count: $counter"
+    echo "Increment by 1"
+    ((counter++))
+  done
+  echo "Current cents counter: $counter cents"
+  echo "Not quite a dollar"
+  
+__________Until Loop__________
+  #!bin/bash
+  
+  counter=1
+  until [[ $counter -eq 10 ]]
+  do
+    echo $counter
+    ((counter++))
+  done
+  echo "Till all are one"
+  
+  
