@@ -1,0 +1,92 @@
+function q1()
+{
+infile=$1
+outfile=$2
+
+sed 's/cat/dog/g;s/Navy/Army/g' $infile > $outfile
+}
+
+
+function q2()
+{
+awk -F: '{print $1}'
+}
+
+
+function q3()
+{
+filename=$1
+
+sort -t: -k3n $filename | awk -F: '{print $1}'
+}
+
+
+function q4()
+{
+if  [[ -d $dirname ]];then
+  ls -A | wc -l
+else
+  echo "Invalid Directory"
+fi
+}
+
+
+function q5()
+{
+dirdel=$1
+
+rm -rf $dirdel
+}
+
+rm -rf $dirdel/*
+
+function q6()
+{
+newfile=$1
+filedate=$2
+
+touch -t ${filedate}1730 $newfile
+}
+
+
+function q7()
+{
+fname=$1
+
+contents=$(cat $fname)
+if [[ $contents -le 9 ]];then
+  echo "single digit"
+elif [[ $contents -le 99 ]];then
+  echo "double digit"
+elif [[ $contents -le 999 ]];then
+  echo "triple digit"
+else
+  echo "Error"
+fi
+}
+
+
+function q8()
+{
+src=$1
+dst=$2
+match=$3
+
+egrep -v "$match" $src > $dst
+}
+
+
+function q9()
+{
+procname=$1
+
+pkil $procname
+}
+
+
+function q10()
+{
+dirpath=$1
+
+find $dirpath -type f -mtime -1 2>/dev/null | sort
+}
