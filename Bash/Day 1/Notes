@@ -1,0 +1,96 @@
+============================================================
+                      What is BASH
+============================================================
+Show current shell.
+----------------
+echo $shell
+/bin/bash
+
+echo $0
+/bin/bash
+
+============================================================
+             File System and Manipulation
+============================================================
+Absolute, Home, and Relative File references
+  Home directory    ~/
+  Absolute Paths    /etc/passwd
+  Relative Paths    ./ or ..
+  
+Making and Deleting
+  Touch   touch -t [[CC]YY]MMDDhhmm[.ss]
+  Mkdir   mkdir -p
+  Rm    rm -rf
+  Rmdir   rmdir -p
+  Ls    ls -lisa
+  C    cd -
+  
+Links
+  Symbolic Links    A shortcut or pointer
+  Hard Links    :Persistent, cannot cross file systems.
+
+Processes and Memory
+  Kernel
+    Init - 01
+      BASH
+        ps
+
+Processes
+  ps
+
+Terminating
+  kill   kill -9 1234
+  pkill kill fire
+
+============================================================
+                  Man Page Navigation
+============================================================
+shopto
+
+man bash - Opens extensive BASH man page
+man find - Opens man page for FIND command
+
+G - move to end of man page
+g - Move to start of man page
+
+/<pattern> - Search forward for (N-th) matching line
+?<pattern> - Search backward for (N-th) matching line
+&<pattern> - Display only matching lines
+n or shift+n - 
+q - 
+
+
+============================================================
+                   Order of Evaluation
+============================================================
+Redirection ---- (Changing Output Eg [echo $PATH > info_path])
+Alias ---- New name for a command
+Parameter expansion, command substitution, arithmetic expansion, and quote removal
+Shell function
+Built-in commands
+Hash tables
+Path variable
+error{eg command not found}
+
+
+echo 'This is echo!'
+
+echo() { printf "fumction echo: %s\n" "$*"; }
+alias = echo='printf "alias echo: %s %s %s\n"'
+type -a echo
+
+echo -e '\u2261'
+alias echo: -e \u2261
+
+============================================================
+                   Working in the Shell
+============================================================
+CTRL+A  home key    Start of lines
+CTRL+E  end ky    End of line
+
+2>/dev/null ----- Put errors in trash.
+
+============================================================
+                      Parameters
+============================================================
+
