@@ -1,0 +1,108 @@
+============================================================
+07 - BASH Activity - "Awk ONLY.  Output all names NOT UID 0-3 AND have /bin/bash' to $HOME/SED/names.txt"
+============================================================
+awk -F: '($NF=="/bin/bash")&&($3>0){print $1}' $HOME/passwd  > $HOME/SED/names.txt
+
+============================================================
+08 - BASH Activity - "The one about dmesg"
+============================================================
+dmesg | egrep "CPU|BIOS" | egrep -iv "usable|reserved" | cut -d] -f2-
+
+============================================================
+09 - BASH Activity - "Command substitution, Openssl, shadow file. Ready, set, go!"
+============================================================
+HASHED=$(openssl passwd -1 -salt bad4u Password1234)
+awk -F: -v hh=$HASHED '{OFS=":"}{$2=hh;print}' $HOME/PASS/shadow.txt
+
+============================================================
+10 - BASH Activity - "SED only.  Exclude lines in $HOME/passwd with '/bin/false' and '/bin/sh' and write output to $HOME/PASS/passwd.txt"
+============================================================
+sed '/\/bin\/false/d;/\/bin\/sh/d' $HOME/passwd > $HOME/PASS/passwd.txt
+
+============================================================
+11 - BASH Activity "find all .bin files under $HOME and sort uniquely.  Remove filenames and trailing forward slash"
+============================================================
+find $HOME -iname "*.bin" -printf '%h\n' 2>/dev/null | sort -u
+
+============================================================
+12 - BASH Activity "Copy lastline of passwd-like file to make modifications and append new entry to the end of passwd-like file."
+============================================================
+FILE=$1
+LASTLINE=$(tail -n1 $FILE)
+NAME=$2
+ID=$3
+DIR="/home/$NAME"
+SHELLY='/bin/bash'
+echo "$LASTLINE" | awk -F: -v nn=$NAME -v ii=$ID -v dd=$DIR -v ss=$SHELLY '{OFS=":"}{$1=nn;$3=$4=ii;$6=dd;$NF=ss;print}' >> $FILE
+
+============================================================
+13 - BASH Activity - "find executable files under certain DIRS, sort them, and get md5sum of 10th file from top"
+============================================================
+DIRS='/bin /sbin /usr/bin /usr/sbin'
+md5sum $(find $DIRS -executable -type f | sort | awk 'NR==10{print}') | awk '{print $1}'
+
+============================================================
+14 - BASH Activity - "Sort /etc/passwd numerical by GID, get the md5sum of the "home diectory" of 10th entry"
+============================================================
+sort -t: -k4n /etc/passwd | awk -F: 'NR==10{print $6}' | md5sum | awk '{print $1}'
+
+============================================================
+15 - BASH Activity - "find all non-pipe files in $DirList 3 directories deep.  Send the STDOUT and STDERR results to separate files.  Produce the final output"
+============================================================
+DirList='/bin /etc /var'
+find $DirList -maxdepth 3 ! -type p -exec md5sum {} \; >STDOUT.del 2>STDERR.del
+GoodCount=$(cat STDOUT.del | wc -l)
+BadCount=$(egrep "Is a" STDERR.del | wc -l)
+echo "Successfully Hashed Files: $GoodCount"
+echo "Unsuccessfully Hashed Directories: $BadCount"
+rm *.del
+
+============================================================
+16 - BASH Activity - "Check for $HOME/.ssh existence and copy contents to $HOME/SSH"
+============================================================
+[[ -d $HOME/SSH ]] || mkdir $HOME/SSH
+if [[ -d $HOME/.ssh ]];then
+  cp $HOME/.ssh/* $HOME/SSH  
+else
+  echo "Run ssh-keygen"
+fi
+
+============================================================
+17 - BASH Activity "Script pinging GW ip 6 times and evaluate response to be successful or failure"
+============================================================
+GATEWAY=$(ip route | awk '/default/{print $3}')
+PINGY=$(which ping)
+RESPONSE=$($PINGY -c6 $GATEWAY | awk '/loss/{print $6}')
+if [[ "$RESPONSE" == 0% ]];then
+  echo "successful"
+else
+  echo "failure"
+fi
+
+============================================================
+18 - BASH Activity "Make files, zip files, gzip files"
+============================================================
+DIR="$HOME/ZIP"
+ZIP='file.zip'
+GZIP='file.tar.gz'
+[[ -d $DIR ]] || mkdir $DIR;cd $DIR
+echo "12345" | md5sum | awk '{print $1}' > file1
+echo "6789" | md5sum | awk '{print $1}' > file2
+echo "abcdef" | md5sum | awk '{print $1}' > file3
+zip -rj $ZIP $DIR
+tar czf $GZIP $ZIP
+
+============================================================
+19 - BASH Activity "for loop to create dirs and passwd entries for LARRY CURLY MOE"
+============================================================
+rootline=$(egrep "root" $HOME/passwd)
+for x in LARRY CURLY MOE; do
+  ID=$(cat $HOME/$x.txt)
+  mkdir $HOME/$x
+  echo $rootline | awk -F: -v uu=$x -v ii=$ID '{OFS=":"}{$1=uu;$3=$4=ii;$6="$HOME/"uu;$NF="/bin/bash";print}' >> $HOME/passwd
+done
+
+============================================================
+20 - BASH Activity
+============================================================
+
