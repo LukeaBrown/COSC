@@ -1,0 +1,85 @@
+============================================================
+                    Useful Cmdlets
+============================================================
+Get-Help
+Update-Help
+get-help *process*
+Get-Help Get-Process
+get-help Get-Process -Online
+get-command
+Get-Command -Noun Process
+start-transcript
+stop-transcript
+
+get-alias
+Start-Transcript
+get-alias -name dir
+get-alias -definition Get-ChildItem
+set-alias edit notepad.exe
+del alias:edit
+Test-Path -path $profile.AllUsersAllHosts
+$profile
+
+
+Get-Command -Verb get
+Get-Command Get-pr*
+
+============================================================
+                   	    Aliases
+============================================================
+get-alias
+get-alias -name <alias name>
+
+Make alias
+	set-alias <name> <action>
+	set-alias edit notepad.exe
+	
+Delete alias
+	del alias:<name>
+	del alias:edit
+
+============================================================
+                  	  Local Variables
+============================================================
+Only good for the current session
+
+Make variable
+	$var1 = "John"
+	
+Call variable
+	write-host "Hello $var1"
+	
+Delete variable
+	
+	
+'' = Literal
+"" = Able to use variables
+
+============================================================
+								Environemtnal Variables
+============================================================
+Tied to powershell, dont disappear when session is closed.
+
+make variable
+	$env:var = "Hello"
+	
+Call variable
+	$env:var
+
+Delete variable
+	del env:var
+
+============================================================
+                   Types of Variables
+============================================================
+
+
+============================================================
+                    Conditionals
+============================================================
+
+
+============================================================
+                  Comman
+============================================================
+
