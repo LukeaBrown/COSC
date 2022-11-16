@@ -39,7 +39,7 @@ Delete alias
 	del alias:edit
 
 ============================================================
-                  	  Local Variables
+           	      Local Variables
 ============================================================
 Only good for the current session
 
@@ -55,8 +55,10 @@ Delete variable
 '' = Literal
 "" = Able to use variables
 
+[string]$var = 100
+
 ============================================================
-								Environemtnal Variables
+		Environemtnal Variables
 ============================================================
 Tied to powershell, dont disappear when session is closed.
 
@@ -70,12 +72,84 @@ Delete variable
 	del env:var
 
 ============================================================
-                   Types of Variables
+                   	Arrays
 ============================================================
+Make array
+	$array = 1,2,3,4
+	$array
+
+non-array
+	$a = "Hello World"
+	
+Identify an array
+	$x -is [array]
+	$a -is [array]
+	
+Show elements in an array
+	$array[<element number>] - starts at 0
+	
+Sequential numbers array
+	$array1 = 1..4
+	$array1
+	
+Polymorphic arrays
+	$array2 = "world","Hello",5,10,(Get-Date)
+	$array2
+	
+Display multiple elements in an array.
+	$x[1,4,8,12]
 
 
 ============================================================
-                    Conditionals
+          	Jagged Arrays and Nested Arrays
+============================================================
+$jagarray = "joe","jim","wilma", (1, ('apple', 'pear'), 3), "jay"
+$jagarray[0]
+$jagarray[3]
+$jagarray[3][1]
+$jagarray[3][1][0]
+
+Append onto an array
+$a = 1,2,3
+$a += @(4,5,6)
+$a += @(7,8,9)
+$a += , @(10,11,12)
+
+============================================================
+						Hash Tables
+============================================================
+Make hash table
+	$mylist = @{First = "John"; Last = "Doe"; Mid = "Bon"; Age = 35}
+	$mylist
+		Name                           Value                                                                                                                                                     
+		----                           -----                                                                                                                                                     
+		Last                           Doe                                                                                                                                                       
+		First                          John                                                                                                                                                      
+		Age                            35                                                                                                                                                        
+		Mid                            Bon
+
+	$mylist["Last"]
+	$mylist.last
+	$mylist["first", "last"]
+	$mylist.keys
+	$mylist.values
+	
+Store arrays in hash tables
+	$list = @{element1 = 5; array1 = 1..5; array2 = 6,7,8}
+	$list
+
+Add Keys and assign values
+	$mylist["Location"] = "Germany"
+	$mylist
+	$mylist.date = Get-Date
+	$mylist
+	
+Remove Key
+	$mylist.date = Get-Date
+	$mylist
+
+============================================================
+                  Comman
 ============================================================
 
 
