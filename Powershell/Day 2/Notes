@@ -243,9 +243,36 @@ Use Compare-Object to compare the before and after variables
 	Compare-Object $before $after -Property Length, Name
 
 ============================================================
-                    Useful Cmdlets
+   						Objects
 ============================================================
+Custom Objects
+	Add Properties
+		$mycar = New-Object Object
 
+		Add-Member -MemberType NoteProperty -Name Color -Value "Brown" -InputObject $mycar
+
+		Add-Member -MemberType NoteProperty -Name Make -Value Chevy -InputObject $mycar
+
+		Add-Member -InputObject $mycar NoteProperty Model Cruz
+
+		$mycar | Add-Member NoteProperty Cab "Four-Door"
+	
+		$mycar
+	
+			Color Make  Model Cab      
+			----- ----  ----- ---      
+			Brown Chevy Cruz  Four-Door
+		
+	Add Methods
+		Add-Member -InputObject $mycar -MemberType ScriptMethod -Name Horn -Value {"Honk"}
+
+		Add-Member -InputObject $mycar -MemberType ScriptMethod -Name SpeedStatus -Value {"60 Mph on Highway"}
+
+		Add-Member -InputObject $mycar -MemberType ScriptMethod -Name ReachTopSpeed -Value {"30 Mph it is"}
+		
+		$mycar | Get-Member
+		
+		$mycar.horn()
 
 ============================================================
                     Useful Cmdlets
