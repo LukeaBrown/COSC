@@ -1,0 +1,22 @@
+#Find and extract the model number from the provided lines of text. If there isn’t a model number then display to the user that a model number wasn’t found
+
+#Check both lines for model numbers and report individually the line and model number if found.
+
+$line1 = "Do you have model number: MT5437 for john.doe@sharklasers.com?"
+$line2 = "What model number for john.doe@sharklasers.com?"
+$pattern = '([a-z{2}])(\d{2,5})'
+
+switch($pattern) {
+    { $line1 -match $_} {
+        $line1 -match $pattern | Out-Null
+        $model = $Matches[0]
+        "Yes the model number os $model. It is on line 1" }
+    { $line2 -match $_} {
+        $line2 -match $pattern | Out-Null
+        $model = $Matches[0]
+        "Yes the model number os $model. It is on line 2" }
+    { $line1 -notmatch $_ } { 
+        "There is no model number in line 1" }
+    { $line2 -notmatch $_ } { 
+        "There is no model number in line 2" }
+}
