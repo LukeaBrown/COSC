@@ -275,24 +275,142 @@ Custom Objects
 		$mycar.horn()
 
 ============================================================
-                    Useful Cmdlets
+		  Comparison Operators
 ============================================================
+# Equals (Exactly the same)
+	2 -eq 2 #True
+	2-eq 3 #False
+	1,2,3 -eq 2 #2
+	"abc" -eq "abc" #True
+	"abc" -eq "abc", "def" #False
+	"abc", "def" -eq "abc" #abc
+	
+# Not Equals
+    "abc" -ne "def" #True
+    "abc" -ne "abc" #False
+    "abc" -ne "abc", "def" #False
+    "abc", "def" -ne "abc" #def
 
+# Greater Than
+    8 -gt 6 #True
+    7,8,9 -gt 8 #9
+
+# Less Then
+    6 -lt 8 # True
+    7, 8, 9 -lt 9 #7 and 8
+
+# Greater Than or Equal to
+    6 -ge 6 #True
+    5, 6, 7 -ge 6 #6 and 7
+
+# Less Than or Equal to
+    6 -le 6
+    5, 6, 7 -le 6 #5 and 6
+
+# Like
+    "Inky" -like "*" #True
+    "Blinky" -like "Bl?nky" #True
+    "Pinky" -like "[L-Q]inky" #True
+    "Clyde" -like "[ABC]lyde" #True
+
+# Notlike
+    "Inky" -notlike "*" #False
+    "Blinky" -notlike "Bli?nky" #True
+    "Pinky" -notlike "[A-F]inky" #True
+    "Clyde" -notlike "[DEF]lyde" #True
+	
+# Match
+    $text = "Your account username is ACE4495"
+    $pattern = '([A-F{3}])(\d{4})'
+    $text -match $pattern # True
+    $Matches[0] # What matches in each part.
+	
+# Contains
+    $ghosts = 'Inky', 'Blinky', 'Pinky', 'Clyde'
+    $ghosts -contains 'pinky' # True
+    'Pinky' -in $ghosts # True
+	
+Case Sensitivity
+	-ceq
+	-cne
+	-cgt
+	-clt
+	
 
 ============================================================
-                    Useful Cmdlets
+			Combining Comparison Operators
 ============================================================
+# And
+	$num = 5
+	(($num -gt 1) -and ($num -lt 10) -and ($num -eq 5))
 
+# Or
+	$num1 = 10
+	(($num -gt 1) -or ($num -lt 4))
 
 ============================================================
-                    Useful Cmdlets
+                       Examples
 ============================================================
+# Display only the services with the status of 'running'
+	Get-Service | Where-Object{$_.Status -eq 'running'}
 
+# Show txt files with sizes greater than 100
+	Get-ChildItem *.txt | Where-Object{$_.Length -gt 100}
+
+# Display all  processes whose comapny namew begins with 'micro'
+	Get-Process | Where-Object {$_.Company -like 'micro*'} | Format-Table Name, Description, Company
 
 ============================================================
-                    Useful Cmdlets
+					If Statements
 ============================================================
+#Basic Layout
+	if (condition) {
+    	#Code to be executed
+	}
+	Elsif (condition){
+		#Code to be executed
+	}
+	Else{
+		#Code to be executed
+	}
 
+# Multiple values meet condition
+	Switch(10)
+	{
+    	(1 + 9) {
+        	"Congrats, you did adds right"
+    	}
+    		(1 + 10) {
+        	"This be wrong"
+    	}
+    	(11 - 1) {
+        	"Congrats, you did minus right"
+    	}
+    	(1 - 11) {
+        	"Congrats, you did math wrong"
+    	}
+	}
+
+# Multiple Values
+	$num = 2 #(Get-Random -Minimum 0 -Maximum 10)
+	Switch($num) {
+    	{$_ -le 3} { "Some number from 1 to 3" }
+    	6 { "It is the number 6" }
+    	{(($_ -ge 6) -and ($_ -le 9))} { "Some number from 7 to 9" }
+    	{$_ -gt 2} { "It is greater than 2"}
+    	{(($_ -ge 5) -and ($_ -le 8))} { "Some number from 5 to 8" }
+    	{$_ -le 7} { "It is less than 7"}
+	}
+
+# Using default
+	$val = "Meg"
+	Switch($val) {
+    	Peter { "That's the father" }
+    	Lois { "That's the mother" }
+    	Stewie { "That's the youngest child" }
+    	Chris { "That's the oldest child" }
+    	default { "Nobody cares about you $val" }
+	}
 
 ============================================================
                     Useful Cmdlets
