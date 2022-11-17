@@ -417,10 +417,75 @@ Case Sensitivity
 	}
 
 ============================================================
-                    Useful Cmdlets
+					Loops
 ============================================================
+#For Loop
+    for ($num = 1; $num -le 3; $num++){
+    #Code
+    }
+
+#While Loop
+    while(condition) {
+        #Code block to be executed
+    }
+
+#Do While Loop
+    do {
+        #Code block
+    }while(condition)
+
+    $num = 0
+    do {
+    	$num
+    	$num++
+    }while($num -lt 3)
+
+#Do Until Loop
+    do { 
+        #Code block
+    }until(condition)
+	
+#Foreach Loop (Doesn't give ouput unil completed)
+	foreach($i in $item){
+    	#Code
+	}
+
+	foreach($item in gci C:\ -Recurse){$item.name}
+
+#Foreach Object Loop (Can be stopped and read from at any time)
+	Get-ChildItem C:\ -Recurse | ForEach-Object{$_.name}
 
 
 ============================================================
-                    Useful Cmdlets
+					Flow and Control
 ============================================================
+#Break
+	$num = 0
+	while($num -lt 10) { 
+    	$num += 1
+    	if($num -eq 5) {
+        	break
+    	}
+    	$num
+	}
+
+#Continue
+	$num = 0
+	while($num -lt 4) { 
+    	$num += 1
+    	if($num -eq 2) {
+        	continue
+    	}
+    	$num
+	}
+	
+============================================================
+				Read and Write to Files
+============================================================
+#Write Content to Files
+    Set-Content -Path .\example.txt -value "A string."
+    Get-Content .\example.txt
+
+#Append Content to Files
+    Add-Content -Path .\example.txt -Value "an additional string"
+    Get-Content -Path .\example.txt
