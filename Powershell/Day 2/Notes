@@ -335,10 +335,14 @@ Case Sensitivity
 	-cne
 	-cgt
 	-clt
-	
+	-cge
+	-cle
+	-clike
+	-cnotlike
+	-cmatch
 
 ============================================================
-			Combining Comparison Operators
+		Combining Comparison Operators
 ============================================================
 # And
 	$num = 5
@@ -349,7 +353,7 @@ Case Sensitivity
 	(($num -gt 1) -or ($num -lt 4))
 
 ============================================================
-                       Examples
+                      Examples
 ============================================================
 # Display only the services with the status of 'running'
 	Get-Service | Where-Object{$_.Status -eq 'running'}
@@ -361,7 +365,7 @@ Case Sensitivity
 	Get-Process | Where-Object {$_.Company -like 'micro*'} | Format-Table Name, Description, Company
 
 ============================================================
-					If Statements
+				If Statements
 ============================================================
 #Basic Layout
 	if (condition) {
