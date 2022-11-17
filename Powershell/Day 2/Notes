@@ -1,0 +1,277 @@
+============================================================
+                    The Pipeline
+============================================================
+Get-Service | Out-Default - Basic Layout of a Cmdlet & pipe
+
+<cmdlet> | Get-Member - displays properties available to a cmdlet
+
+get-member | get-service
+
+  Get-Service
+  Get-Service | Format-Table *
+  Get-Service | Format-List *
+  Get-Service | Get-Member
+  (Get-Service PlugPlay).stop
+  Get-Process | Get-Member
+  Get-Member -InputObject Get-Service
+  
+  write-host 
+  -Write to the terminal, doesnt move into the pipeline
+  
+  write-output 
+  -Writes to the output, continues on into the pipeline  
+
+(( Any formating is done last in pipeline of cmdlet))
+
+Group using formatting cmdlets
+    Get-ChildItem | Sort-Object -Property Extension | Format-Table -GroupBy Extension
+
+
+    Directory: C:\windows\system32
+
+  Mode                 LastWriteTime         Length Name                                                                                                                                   
+  ----                 -------------         ------ ----                                                                                                                                   
+  d-----         12/7/2019   4:50 AM                0409                                                                                                                                   
+  d-----         12/7/2019   4:50 AM                slmgr                                                                                                                                  
+  d-----        11/17/2022   1:22 PM                SleepStudy                                                                                                                             
+  d-----         12/7/2019   4:52 AM                sl-SI                                                                                                                                  
+  d-----         12/7/2019   4:52 AM                sk-SK                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                si-lk                                                                                                                                  
+  d-----         6/25/2020   9:23 AM                ShellExperiences                                                                                                                       
+  d-----         12/7/2019   4:14 AM                Sgrm                                                                                                                                   
+  d-----         12/7/2019   4:51 AM                setup                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                SecureBootUpdates                                                                                                                      
+  d-----         12/7/2019   4:54 AM                ru-RU                                                                                                                                  
+  d-----         12/7/2019   4:52 AM                ro-RO                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                restore                                                                                                                                
+  d-----        12/15/2021  12:14 PM                Recovery                                                                                                                               
+  d-----         12/7/2019   4:14 AM                RasToast                                                                                                                               
+  d-----         12/7/2019   4:31 AM                SMI                                                                                                                                    
+  d-----         12/7/2019   4:31 AM                ras                                                                                                                                    
+  d-----         12/7/2019   4:14 AM                ProximityToast                                                                                                                         
+  d-----         12/7/2019   4:50 AM                Printing_Admin_Scripts                                                                                                                 
+  d-----         12/7/2019   4:31 AM                PointOfService                                                                                                                         
+  d-----         12/7/2019   4:54 AM                pl-PL                                                                                                                                  
+  d-----         5/11/2020   1:43 AM                PerceptionSimulation                                                                                                                   
+  d-----         12/7/2019   4:14 AM                osa-Osge-001                                                                                                                           
+  d-----        12/15/2021   1:13 PM                OpenSSH                                                                                                                                
+  d-----         6/25/2020   9:23 AM                oobe                                                                                                                                   
+  d---s-         12/7/2019   4:14 AM                Nui                                                                                                                                    
+  d-----         12/7/2019   4:54 AM                nl-NL                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                networklist                                                                                                                            
+  d-----         12/7/2019   4:14 AM                NDF                                                                                                                                    
+  d-----         12/7/2019   4:54 AM                nb-NO                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                my-mm                                                                                                                                  
+  d-----         12/7/2019   4:54 AM                pt-PT                                                                                                                                  
+  d-----         12/7/2019   4:50 AM                MUI                                                                                                                                    
+  d-----         12/7/2019   4:14 AM                Speech                                                                                                                                 
+  d-----         6/25/2020   9:09 AM                spool                                                                                                                                  
+  -a----         12/7/2019   4:09 AM           9571 ResPriHMImageList                                                                                                                      
+  -a----         12/7/2019   4:09 AM           9196 ResPriHMImageListLowCost                                                                                                               
+  -a----         12/7/2019   4:09 AM           8977 ResPriImageList                                                                                                                        
+  -a----         12/7/2019   4:09 AM           8690 ResPriImageListLowCost                                                                                                                 
+  d-----         12/7/2019   4:54 AM                zh-TW                                                                                                                                  
+  d-----         12/7/2019   4:54 AM                zh-CN                                                                                                                                  
+  d-----         12/7/2019   4:50 AM                winrm                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                WinMetadata                                                                                                                            
+  d-----         12/7/2019   4:31 AM                winevt                                                                                                                                 
+  d-----         12/7/2019   4:14 AM                WindowsPowerShell                                                                                                                      
+  d-----         12/7/2019   4:50 AM                WinBioPlugIns                                                                                                                          
+  d-----         6/25/2020   9:24 AM                WinBioDatabase                                                                                                                         
+  d-----        11/16/2022   2:14 PM                WDI                                                                                                                                    
+  d-----         12/7/2019   4:50 AM                WCN                                                                                                                                    
+  d-----         12/7/2019   4:31 AM                Speech_OneCore                                                                                                                         
+  d-----         6/25/2020   9:23 AM                wbem                                                                                                                                   
+  d-----         12/7/2019   4:52 AM                uk-UA                                                                                                                                  
+  d-----         12/7/2019   4:54 AM                tr-TR                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                ti-et                                                                                                                                  
+  d-----         12/7/2019   4:52 AM                th-TH                                                                                                                                  
+  d-----        11/16/2022   2:17 PM                Tasks                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                ta-lk                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                ta-in                                                                                                                                  
+  d-----         5/11/2020   1:43 AM                SystemResetPlatform                                                                                                                    
+  d-----        10/28/2022   3:44 PM                Sysprep                                                                                                                                
+  d-----         12/7/2019   4:54 AM                sv-SE                                                                                                                                  
+  d-----        11/17/2022   1:34 PM                sru                                                                                                                                    
+  d-----         12/7/2019   4:52 AM                sr-Latn-RS                                                                                                                             
+  d-----         12/7/2019   4:14 AM                sppui
+  d-----         12/7/2019   4:31 AM                spp
+  d---s-         5/11/2020   1:43 AM                UNP
+  d-----         12/7/2019   4:14 AM                MsDtc
+  d-----         12/7/2019   4:54 AM                pt-BR
+  d-----         6/25/2020   9:14 AM                MRT
+  d-----         6/25/2020   9:23 AM                en-US                                                                                                                                  
+  d-----         12/7/2019   4:52 AM                en-GB
+  d-----         12/7/2019   4:54 AM                en                                                                                                                                     
+  d-----         12/7/2019   4:54 AM                el-GR                                                                                                                                  
+  d---s-         12/7/2019   4:50 AM                dsc                                                                                                                                    
+  d-----         6/25/2020   9:24 AM                DriverStore                                                                                                                            
+  d-----         12/7/2019   4:14 AM                DriverState                                                                                                                            
+  d-----        12/15/2021   2:58 PM                drivers
+  d-----         12/7/2019   4:14 AM                downlevel
+  d-----         6/25/2020   9:23 AM                Dism
+  d---s-         6/25/2020   9:23 AM                DiagSvcs                                                                                                                               
+  d-----         5/11/2020   1:43 AM                de-DE
+  d-----         12/7/2019   4:14 AM                DDFs                                                                                                                                   
+  d-----         12/7/2019   4:54 AM                da-DK                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                MSDRM                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                ContainerSettingsProviders                                                                                                             
+  d---s-         12/7/2019   4:31 AM                Configuration                                                                                                                          
+  d-----         6/25/2020   9:23 AM                AdvancedInstallers                                                                                                                                                                                                                                           
+
+
+    Directory: C:\windows\system32
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                   
+----                 -------------         ------ ----                                                                                                                                   
+  -a----         12/7/2019   4:08 AM          34600 msadp32.acm                                                                                                                            
+  -a----         12/7/2019   4:53 AM         184320 l3codecp.acm                                                                                                                           
+  -a----         12/7/2019   4:08 AM          37440 imaadp32.acm                                                                                                                           
+  -a----         12/7/2019   4:53 AM          93184 l3codeca.acm                                                                                                                           
+  -a----         12/7/2019   4:08 AM          42904 msgsm32.acm                                                                                                                            
+  -a----         12/7/2019   4:08 AM          25824 msg711.acm                                                                                                                             
+
+
+    Directory: C:\windows\system32
+
+
+  Mode                 LastWriteTime         Length Name                                                                                                                                   
+  ----                 -------------         ------ ----                                                                                                                                   
+  -a----         12/7/2019   4:09 AM         103936 Mpeg2Data.ax                                                                                                                           
+  -a----         12/7/2019   4:09 AM         141312 Kswdmcap.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          67584 ksxbar.ax                                                                                                                              
+  -a----         6/25/2020   9:21 AM         266240 mpg2splt.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          79872 MSDvbNP.ax                                                                                                                             
+  -a----         12/7/2019   4:09 AM          60928 g711codc.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          95232 WSTPager.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          99840 psisrndr.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM         169984 VBICodec.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          47616 vbisurf.ax                                                                                                                             
+  -a----         12/7/2019   4:09 AM          34304 vidcap.ax                                                                                                                              
+  -a----         12/7/2019   4:09 AM         104960 kstvtune.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM         100864 bdaplgin.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM         260096 MSNP.ax                                                                                                                                
+  -a----         12/7/2019   4:09 AM         304128 ksproxy.ax
+
+============================================================
+                    Script Blocks
+============================================================
+A set of callable instructions that remain update unlike normal variables.
+Uses & when calling to evaluate and update information before being called.
+
+Make Script Block
+$myblock = {get-service | format-table Name, Status}
+
+Call Script Block
+& $myblock
+
+  $myblock = {get-service | format-table Name, Status}
+  & $myblock
+
+
+  $a = 1
+  $c = 1
+  $b = { 1 + 1 + $c }
+  & $b
+
+  $a += &$b
+  $a
+
+============================================================
+                   Sorting and Grouping
+============================================================
+Get-Service | Sort-Object Status -Descending
+
+Sorted Output
+  get-childitem | sort-object
+ 
+Sorted by filesize
+  get-childitem | sort-objeect -property length -descending
+  
+Grouped output
+	Get-Service | Group-Object Status
+	
+Sorted and grouped
+	get-childitem | sort-object Extension, name | format-tale -groupby Extension
+	
+Using type conversion with sort-object
+	'1', '7', '10', '8', '2', '3' | Sort-Object -Property { [Int]$_}
+	
+Produce random sorting with sort-object
+	1..10 | Sort-Object -Property {Get-Random}
+	
+View powershell automatic variable descriptions
+	Get-Variable | Sort-Object Name | Format-Table Name, Description -AutoSize -Wrap
+	
+============================================================
+                  	  Filtering
+============================================================
+Filter out all but running services
+	Get-Service | Where-Object {$_.Status -eq "Running"}
+	
+Filter process using where-object and sort-object
+	Get-Process | Where-Object {$_.Name -notlike 'powershell*'} | sort-object id -Descending
+	
+Using select-object to list top 10 processes
+	Get-Process | Select-Object -First 10
+	
+List 10 longest-running processes
+	Get-Process | Sort-Object StartTime | Select-Object -Last 10 | Format-Table ProcessName, StartTime
+	
+	Fix this command's error message
+		Get-Process | Where-Object ProcessName -NE "Idle" | Sort-Object StartTime | Select-Object -Last 10 | Format-Table ProcessName, StartTime
+		
+Using Get-Unique
+	1,2,3,4,5,1,1,3,1,3,4,5,3,4,5,4,3,2,4,2,3,4,1,1,1,3,3,3,3,3,3,3,3,2,1 | Sort-Object | Get-Unique
+	
+Using Measure-Object
+	Get-ChildItem | Measure-Object Length
+	
+Using parameters with Measure-Object
+	Get-ChildItem | Measure-Object Length -Average -Maximum -Minimum -Sum
+	
+Make test file and snapshot of directory
+	'What is the answer to life, the universe, and everything?' > test.txt
+	$before = Get-ChildItem
+	
+Modify test file and new snapshot
+	'42' > test.txt
+	$after = Get-ChildItem
+	
+Use Compare-Object to compare the before and after variables
+	Compare-Object $before $after -Property Length, Name
+
+============================================================
+                    Useful Cmdlets
+============================================================
+
+
+============================================================
+                    Useful Cmdlets
+============================================================
+
+
+============================================================
+                    Useful Cmdlets
+============================================================
+
+
+============================================================
+                    Useful Cmdlets
+============================================================
+
+
+============================================================
+                    Useful Cmdlets
+============================================================
+
+
+============================================================
+                    Useful Cmdlets
+============================================================
+
+
+============================================================
+                    Useful Cmdlets
+============================================================
