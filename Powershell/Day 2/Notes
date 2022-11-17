@@ -193,7 +193,7 @@ Grouped output
 	Get-Service | Group-Object Status
 	
 Sorted and grouped
-	get-childitem | sort-object Extension, name | format-tale -groupby Extension
+	get-childitem | sort-object Extension, name | format-table -groupby Extension
 	
 Using type conversion with sort-object
 	'1', '7', '10', '8', '2', '3' | Sort-Object -Property { [Int]$_}
