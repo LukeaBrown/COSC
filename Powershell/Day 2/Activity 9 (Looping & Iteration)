@@ -1,45 +1,63 @@
-#Part 1
+============================================================
+                        Part 1
+============================================================
 #Use an array to iterate and open the following
-    #Notepad
-    #MS Edge
-    #MSpaint
-$array1 = Notepad.exe, MSpaint.exe
-$array1
+  #Notepad
+  #MS Edge
+  #MSpaint
+    $array1 = 'C:\Windows\System32\notepad.exe', 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe', 'mspaint.exe'
+    $array2 = 'notepad', 'msedge', 'mspaint'
+    foreach($app in $array1){
+        Start-Process -FilePath $app
+    }
 
 #Query the processes
-
+foreach($app in $array2){
+    Get-Process -Name $app
+}
 
 #Kill the processes from PowerShell
+foreach($app in $array2){
+    kill -Name $app
+}
 
-
-
-#Part 2
+============================================================
+                        Part 2
+============================================================
 #Use an array to iterate and open the following
-    #Notepad
-    #MS Edge
-    #MSpaint
+  #Notepad
+  #MS Edge
+  #MSpaint
 
+    $array1 = 'C:\Windows\System32\notepad.exe', 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe', 'mspaint.exe'
+    $array2 = 'notepad', 'msedge', 'mspaint'
+    
+    foreach($app in $array1){
+        Start-Process -FilePath $app
+    }
 
 #Query the processes
-
+    foreach($app in $array2){
+        Get-Process -Name $app
+    }
 
 #Save the ProcessIDs to a text file called procs.txt
 
 
 #Iterate through the ProcessIDs in the text file and kill them
 
-
-#Part 3
+============================================================
+                        Part 3
+============================================================
 #Use an array to iterate and open the following
-#Notepad
-#MS Edge
-#MSpaint
+  #Notepad
+  #MS Edge
+  #MSpaint
 
 
 #Query the processes and display only the following information in order by process ID
-    #Process ID
-    #Process Name
-    #The time the process started
-    #The amount of time the process has spent on the processor
-    #The amount of memory assigned to the process
-
+  #Process ID
+  #Process Name
+  #The time the process started
+  #The amount of time the process has spent on the processor
+  #The amount of memory assigned to the process
