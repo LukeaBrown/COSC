@@ -1,0 +1,19 @@
+#Write a function that returns the Ordinal date of the current date.
+    $orddate = get-date
+    function Get-OrdDate {
+        write-host $orddate.Year "-" $orddate.Day
+    }
+    Get-OrdDate
+
+#Create a function that takes a number(n) as an argument and returns the square(n^2) of the number.
+    function Get-SquareNum([Int]$num) {
+        $result = $num * $num
+        $result
+    }
+    Get-SquareNum 14
+
+#Create a function that takes three (3) arguments and returns the product of the arguments.
+    function Get-Product($val1,$val2,$val3) {
+        return $val1 * $val2 * $val3
+    }
+    Get-Product 1 4 5
