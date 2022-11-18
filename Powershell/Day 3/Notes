@@ -188,6 +188,7 @@
         	else {
             	ipconfig
         	}
+		
     	}
     	End {
         	"`n " + (Get-Date).DateTime
@@ -195,36 +196,125 @@
 	}
 
 ============================================================
+					String Manipulation
+============================================================
+#Special Characters
+	"Here is `" quotes`""
+	"Here is another `nline of text"
+
+#Backtick Operator
+	Get-Service * | Sort-Object ServiceType `
+	| Format-Table name, ServiceType, Status -AutoSize
+
+# Here-String
+	$text = @"
+	Here is some text with `"quotes`".
+	1TB equals $(1TB / 1GB) GB.
+	Variables are resolved
+	"$PWD" is your current path
+	"@
+	$text
 
 ============================================================
-
-
+						REGEX
 ============================================================
+.
+	Any character except newline
 
-============================================================
+[^abc]
+	All characters except one specified
 
+[^a-z]
+	All characters except ones in range specified
 
-============================================================
+[abc]
+	One of the characters
 
-============================================================
+[a-z]
+	One of the characters in range
 
+\d
+	Any number [0-9]
 
-============================================================
+\D
+	Any non-number
 
-============================================================
+\n
+	Line Break
 
+\r
+	Carriage return
 
-============================================================
+\s
+	Any whitespace (space, tab, new line)
 
-============================================================
+\t 
+	tab
 
+\w 
+	Letter, number or underline
 
-============================================================
+\W 
+	Non-letter, number, or underline
 
-============================================================
+#Quantifiers
+*
+	Any
 
+?
+	None or one occurence
 
-============================================================
+{n,}
+	At least n occcurences
 
-============================================================
+{n,m}
+	At least n occurences, maximum m occurences
 
+{n}
+	Exactly n occurences
+
++
+	One or many occurences
+
+#Anchors
+$
+	End of text
+
+^
+	Start of text
+
+\b 
+	Word boundary
+
+\B 
+	No word boundary
+
+\G 
+	After last match
+	
+#IP Validator
+	if("1.1.1.257" -as [IPAddress]){
+    	"IP is valid"
+	}
+	Else {
+    	"IP is not valid"
+	}
+
+# -f
+	"{0} is here" -f $PWD
+	
+# -join
+	"abc def" -join " "
+		"abcdef"
+
+# -split
+	"abcdef" -split "."
+		"abc", "def"
+		
+# -match
+	"1.0.0.1","1.1.1.1",""abc","def","ghi" -match <IPAddr Regex> 
+		"1.0.0.1","1.1.1.1"
+
+# -replace
+	"Hello World" -replace "World","Tony"
+    	"Hello Tony"
