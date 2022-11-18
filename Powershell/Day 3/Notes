@@ -84,19 +84,86 @@
 	Do-ParamMandoStuff -parameter2 somevalue -DisplayParam2
 
 ============================================================
+					Parameter validation
+============================================================
+#Parameter validation
+	function Do-ValidParamStuff
+	{
+    	param(
+        	[parameter(Mandatory)]
+        	[ValidateSet('001','best')]
+        	[string]$parameter1,
+			
+        	[parameter()]
+        	[string]$parameter2,
+			
+        	[parameter()]
+        	[switch]$DisplayParam2
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	if ($DisplayParam2.IsPresent) {
+        	Write-Host "parameter 2 value is $parameter2"
+    	}
+	}
+	Do-ValidParamStuff
 
 ============================================================
-
+					CmdletBinding
+============================================================
+#Basic Function without CmdletBinding
+	function Do-SomethingRegular 
+	{
+    	[CmdletBinding()]
+    	param(
+        	[string]$message
+    	)
+    	Write-Verbose "We are going to write the messageby the user"
+    	Write-Output $message
+	}
+	Do-SomethingRegular -message "Hello World"
+	Do-SomethingRegular -message "Hello World" -Verbose
 
 ============================================================
-
+					Advanced Functions
 ============================================================
+#Advanced Functions Format
+	function bare-bones 
+	{
+    	[CmdletBinding()]
+    	param(
+        	<Define Parameters>
+    	)
+    	Begin {
+        	<Code>
+    	}
+    	Process {
+        	<Code>
+    	}
+    	End {
+        	<Code>
+    	}
+	}
 
-
-============================================================
-
-============================================================
-
+#Basic Advanced Function
+	function add-nums 
+	{
+    	param(
+        	[Parameter(Mandatory=$true)]
+        	[int32]$var1,
+			
+        	[Parameter(Mandatory=$true)]
+        	[int32]$var2
+    	)
+    	Begin {
+        	[int32]$sum = 0
+    	}
+    	Process {
+        	$sum = $var1+$var2
+    	}
+    	End {
+        	<Code>
+    	}
+	}
 
 ============================================================
 
