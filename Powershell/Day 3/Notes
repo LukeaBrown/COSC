@@ -1,7 +1,29 @@
 ============================================================
-
+                        Functions
 ============================================================
+#Simple Function
+    function Get-Version {
+        $PSVersionTable.PSVersion
+    }
 
+    Get-Version
+
+#Basic Function
+    function test-me($value) {
+        if($value) {
+            Write-Host -ForegroundColor Green "True"
+        }
+        else {
+            Write-Host -ForegroundColor Red "Flase"
+        }
+    }
+
+#List out Functions
+    gci -path Functions
+
+#Pipe Input to Simple Function
+    function Say-Hello {"Hello $input"}
+    "Brown" | Say-Hello
 
 ============================================================
 
