@@ -1,0 +1,47 @@
+#Create an advanced function using Begin, Process, and End, that takes two(2) arguments. 
+	function Get-MultiSum([array]$array,[int]$int)
+	{
+    	Begin {
+        	$sum = 0
+    	}
+    	Process {
+        	foreach($num in $array) {
+            	if ($num -eq $int) {
+              	continue
+            	}
+            	else {
+                	$sum += $num
+            	}
+        	}
+    	}
+    	End {
+        	$sum
+    	}
+	}
+	Get-MultiSum
+
+
+#Create an advanced function using Begin, Process, End, that prompts the user to enter the names of three(3) U.S. States then returns 
+#the names of the states in the order of longest name to shortest name and the amount of characters in each name.
+	function Get-LongestName
+	{
+    	Begin {
+        	$count = 0
+        	$states = @()
+    	}
+    	Process {
+        	while($count -lt 3) {
+            	$res = Read-Host "Enter a U.S. State"
+            	$states += $res
+            	$count += 1
+        	}
+    	}
+    	End {
+        	$list = $states | sort -Property Length -Descending
+        	foreach($state in $list) {
+            	"$state`: " + $state.length
+        	}
+    	}
+	}
+
+	Get-LongestName
