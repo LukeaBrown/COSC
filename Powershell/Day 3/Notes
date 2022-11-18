@@ -308,8 +308,8 @@ $
 		"abcdef"
 
 # -split
-	"abcdef" -split "."
-		"abc", "def"
+	"abc.def" -split "."
+		"abc","def"
 		
 # -match
 	"1.0.0.1","1.1.1.1",""abc","def","ghi" -match <IPAddr Regex> 
