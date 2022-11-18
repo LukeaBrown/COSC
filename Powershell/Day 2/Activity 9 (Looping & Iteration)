@@ -1,63 +1,70 @@
 ============================================================
                         Part 1
 ============================================================
-#Use an array to iterate and open the following
-  #Notepad
-  #Internet Explorer
-  #MSpaint
-    $array1 = 'C:\Windows\System32\notepad.exe', 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe', 'mspaint.exe'
-    $array2 = 'notepad', 'msedge', 'mspaint'
+#Use an array to iterate and open the following, Notepad, Internet Explorer, and MSpaint
+
+    $array1 = 'C:\Windows\System32\notepad.exe', 'C:\Program Files\Internet Explorer\iexplore.exe', 'mspaint.exe'
+    $array2 = 'notepad', 'iexplore', 'mspaint'
     foreach($app in $array1){
         Start-Process -FilePath $app
     }
 
 #Query the processes
-foreach($app in $array2){
-    Get-Process -Name $app
+foreach($process in $array2){
+    Get-Process -Name $process
 }
 
 #Kill the processes from PowerShell
-foreach($app in $array2){
-    kill -Name $app
+foreach($process in $array2){
+    kill -Name $process
 }
 
 ============================================================
                         Part 2
 ============================================================
-#Use an array to iterate and open the following
-  #Notepad
-  #Internet Explorer
-  #MSpaint
+#Use an array to iterate and open the following, Notepad, Internet Explorer, and MSpaint
 
-    $array1 = 'C:\Windows\System32\notepad.exe', 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe', 'mspaint.exe'
-    $array2 = 'notepad', 'msedge', 'mspaint'
+    $array1 = 'C:\Windows\System32\notepad.exe', 'C:\Program Files\Internet Explorer\iexplore.exe', 'mspaint.exe'
+    $array2 = 'notepad', 'iexplore', 'mspaint'
     
     foreach($app in $array1){
         Start-Process -FilePath $app
     }
 
 #Query the processes
-    foreach($app in $array2){
-        Get-Process -Name $app
+    foreach($process in $array2){
+        Get-Process -Name $process
     }
 
 #Save the ProcessIDs to a text file called procs.txt
+    $file = "$pwd\procs.txt"
 
+    foreach($process in $array1){
+        get-process | Where-Object{$_.Name -like $process} | ForEach-Object{Add-Content $file $_.Id}
+    }
 
 #Iterate through the ProcessIDs in the text file and kill them
+
+    Get-Content .\procs.txt | ForEach-Object{Stop-Process $_}
 
 ============================================================
                         Part 3
 ============================================================
-#Use an array to iterate and open the following
-  #Notepad
-  #Internet Explorer
-  #MSpaint
+##Use an array to iterate and open the following, Notepad, Internet Explorer, and MSpaint
 
-
+    $array1 = 'C:\Windows\System32\notepad.exe', 'C:\Program Files\Internet Explorer\iexplore.exe', 'mspaint.exe'
+    $array2 = 'notepad', 'iexplore', 'mspaint'
+    
+    foreach($app in $array1){
+        Start-Process -FilePath $app
+    }
 #Query the processes and display only the following information in order by process ID
   #Process ID
   #Process Name
   #The time the process started
   #The amount of time the process has spent on the processor
   #The amount of memory assigned to the process
+
+  foreach($process in $array2){
+    Get-Process| Where-Object{$_.Name -like $process} | Format-Table -Property id, Name, StartTime, TotalProcessorTime, VirtualMemorySize, WorkingSet64
+  }
