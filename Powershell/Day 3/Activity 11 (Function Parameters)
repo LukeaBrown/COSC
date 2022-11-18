@@ -1,0 +1,54 @@
+#Create a function that takes two(2) integer values, $a and $b, that are the lengths of two(2) legs of a right triangle and returns the length of the hypotenuse.
+function Find-Hypotenuse
+    {
+    	param(
+        	[parameter(Mandatory)]
+        	[string]$a,
+
+        	[parameter(Mandatory)]
+        	[string]$b
+        	)
+        $Hypotenuse = ($a * $a) + ($b * $b)
+    	return [math]::Sqrt($Hypotenuse)
+	}
+Find-Hypotenuse
+
+
+
+#Create a function that takes two(2) values, $a and $b, as two(2) angles in degrees of a triangle. Return the value of the missing angle.
+function Find-Angle
+    {
+    	param(
+        	[parameter(Mandatory)]
+        	[string]$a,
+
+        	[parameter(Mandatory)]
+        	[string]$b
+        	)
+        $MissingAngle = ((180 - $a) - $b)
+    	return $MissingAngle
+	}
+Find-Angle
+
+
+
+#Create a function that takes the following as mandatory parameters: (First Name, Last Name, Age, Weight in pounds(lbs))
+function Get-table
+    {
+    	param(
+        	[parameter(Mandatory, Position=1)]
+        	[string]$FirstName,
+
+        	[parameter(Mandatory, Position=2)]
+        	[string]$LastName,
+            
+            [parameter(Mandatory, Position=3)]
+        	[string]$Age,
+            
+            [parameter(Mandatory, Position=4)]
+        	[string]$Weight
+        	)
+        $mylist = [ordered] @{"First Name" = $FirstName; "Last Name" = $LastName; Age = $Age; Weight = ($Weight / 2.2)}
+        return $mylist
+	}
+Get-table
