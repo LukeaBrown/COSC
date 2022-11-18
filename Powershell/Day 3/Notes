@@ -161,7 +161,36 @@
         	$sum = $var1+$var2
     	}
     	End {
-        	<Code>
+        	$sum
+    	}
+	}
+
+# Example 2 advanced use
+	function Get-IPConfig {
+    	param(
+        	[Switch]$IP,
+        	[Switch]$Mac,
+        	[Switch]$All
+    	)
+    	Begin {
+        	Clear-Host
+    	}
+    	Process {
+        	if ($Mac) {
+            	ipconfig -all | Select-String "Physical"
+        	}
+        	elseif ($IP) {
+            	ipconfig -all | Select-String "IPv"
+        	}
+        	elseif ($all) {
+            	ipconfig -all
+        	}
+        	else {
+            	ipconfig
+        	}
+    	}
+    	End {
+        	"`n " + (Get-Date).DateTime
     	}
 	}
 
