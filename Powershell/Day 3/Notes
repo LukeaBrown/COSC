@@ -26,9 +26,62 @@
     "Brown" | Say-Hello
 
 ============================================================
-
+				Functions with Parameters
 ============================================================
+#Functions with Parameters
+	function Do-Paramstuff
+	{
+    	param(
+        	[parameter()]
+        	[string]$parameter1,
 
+        	[parameter()]
+        	[string]$parameter2
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	Write-Host "parameter 2 value is $parameter2"
+	}
+	Do-Paramstuff -parameter1 'Hello' -parameter2 'World'
+	
+#Function with Parameters Adding Switch Parameter
+	function Do-ParamSwitchStuff
+	{
+    	param(
+        	[parameter()]
+        	[string]$parameter1,
+			
+        	[parameter()]
+        	[string]$parameter2,
+			
+        	[parameter()]
+        	[switch]$DisplayParameter2value
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	if ($DisplaParameter2value.IsPresent) {
+        	Write-Host "parameter 2 value is $parameter2"
+    	}
+	}
+	Do-ParamSwitchStuff 1 5 -DisplayParameter2value
+
+#Mandatory Parameters
+	function Do-ParamMandoStuff
+	{
+    	param(
+        	[parameter(Mandatory)]
+        	[string]$parameter1,
+			
+        	[parameter()]
+        	[string]$parameter2,
+			
+        	[parameter()]
+        	[switch]$DisplayParam2
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	if ($DisplayParam2.IsPresent) {
+        	Write-Host "parameter 2 value is $parameter2"
+    	}
+	}
+	Do-ParamMandoStuff -parameter2 somevalue -DisplayParam2
 
 ============================================================
 
