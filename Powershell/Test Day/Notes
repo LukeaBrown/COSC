@@ -195,28 +195,7 @@ Group using formatting cmdlets
   d-----         12/7/2019   4:52 AM                ro-RO                                                                                                                                  
   d-----         12/7/2019   4:14 AM                restore                                                                                                                                
   d-----        12/15/2021  12:14 PM                Recovery                                                                                                                               
-  d-----         12/7/2019   4:14 AM                RasToast                                                                                                                               
-  d-----         12/7/2019   4:31 AM                SMI                                                                                                                                    
-  d-----         12/7/2019   4:31 AM                ras                                                                                                                                    
-  d-----         12/7/2019   4:14 AM                ProximityToast                                                                                                                         
-  d-----         12/7/2019   4:50 AM                Printing_Admin_Scripts                                                                                                            
-  d-----         12/7/2019   4:54 AM                zh-CN                                                                                                                                  
-  d-----         12/7/2019   4:50 AM                winrm                                                                                                                                  
-  d-----         12/7/2019   4:14 AM                WinMetadata                                                                                                                            
-  d-----         12/7/2019   4:31 AM                winevt                                                                                                                                 
-  d-----         12/7/2019   4:14 AM                WindowsPowerShell                                                                                                                      
-  d-----         12/7/2019   4:50 AM                WinBioPlugIns                                                                                                                          
-  d-----         6/25/2020   9:24 AM                WinBioDatabase                                                                                                                         
-  d-----        11/16/2022   2:14 PM                WDI                                                                                                                                    
-  d-----         12/7/2019   4:50 AM                WCN                                                                                                                                    
-  d-----         12/7/2019   4:31 AM                Speech_OneCore                                                                                                                         
-  d-----         6/25/2020   9:23 AM                wbem                                                                                                                                   
-  d-----         12/7/2019   4:52 AM                uk-UA                                                                                                                    
-  d-----         12/7/2019   4:54 AM                el-GR                                                                                                                                  
-  d---s-         12/7/2019   4:50 AM                dsc                                                                                                                                    
-  d-----         6/25/2020   9:24 AM                DriverStore                                                                                                                            
-  d-----         12/7/2019   4:14 AM                DriverState                                                                                                                            
-  d-----        12/15/2021   2:58 PM                drivers
+  d-----         12/7/2019   4:14 AM                RasToast
   d-----         12/7/2019   4:14 AM                downlevel
   d-----         6/25/2020   9:23 AM                Dism
   d---s-         6/25/2020   9:23 AM                DiagSvcs                                                                                                                               
