@@ -1,1 +1,921 @@
+============================================================
+                    Useful Cmdlets
+============================================================
+Get-Help
+Update-Help
+get-help *process*
+Get-Help Get-Process
+get-help Get-Process -Online
+get-command
+Get-Command -Noun Process
+start-transcript
+stop-transcript
 
+get-alias
+Start-Transcript
+get-alias -name dir
+get-alias -definition Get-ChildItem
+set-alias edit notepad.exe
+del alias:edit
+Test-Path -path $profile.AllUsersAllHosts
+$profile
+
+
+Get-Command -Verb get
+Get-Command Get-pr*
+
+============================================================
+                   	    Aliases
+============================================================
+get-alias
+get-alias -name <alias name>
+
+Make alias
+	set-alias <name> <action>
+	set-alias edit notepad.exe
+	
+Delete alias
+	del alias:<name>
+	del alias:edit
+
+============================================================
+           	      Local Variables
+============================================================
+Only good for the current session
+
+Make variable
+	$var1 = "John"
+	
+Call variable
+	write-host "Hello $var1"
+	
+Delete variable
+	
+	
+'' = Literal
+"" = Able to use variables
+
+[string]$var = 100
+
+============================================================
+		Environemtnal Variables
+============================================================
+Tied to powershell, dont disappear when session is closed.
+
+make variable
+	$env:var = "Hello"
+	
+Call variable
+	$env:var
+
+Delete variable
+	del env:var
+
+============================================================
+                   	Arrays
+============================================================
+Make array
+	$array = 1,2,3,4
+	$array
+
+non-array
+	$a = "Hello World"
+	
+Identify an array
+	$x -is [array]
+	$a -is [array]
+	
+Show elements in an array
+	$array[<element number>] - starts at 0
+	
+Sequential numbers array
+	$array1 = 1..4
+	$array1
+	
+Polymorphic arrays
+	$array2 = "world","Hello",5,10,(Get-Date)
+	$array2
+	
+Display multiple elements in an array.
+	$x[1,4,8,12]
+
+
+============================================================
+          	Jagged Arrays and Nested Arrays
+============================================================
+$jagarray = "joe","jim","wilma", (1, ('apple', 'pear'), 3), "jay"
+$jagarray[0]
+$jagarray[3]
+$jagarray[3][1]
+$jagarray[3][1][0]
+
+Append onto an array
+$a = 1,2,3
+$a += @(4,5,6)
+$a += @(7,8,9)
+$a += , @(10,11,12)
+
+============================================================
+			Hash Tables
+============================================================
+Make hash table
+	$mylist = @{First = "John"; Last = "Doe"; Mid = "Bon"; Age = 35}
+	$mylist
+		Name                           Value                                                                                                                                                     
+		----                           -----                                                                                                                                                     
+		Last                           Doe                                                                                                                                                       
+		First                          John                                                                                                                                                      
+		Age                            35                                                                                                                                                        
+		Mid                            Bon
+
+	$mylist["Last"]
+	$mylist.last
+	$mylist["first", "last"]
+	$mylist.keys
+	$mylist.values
+	
+Store arrays in hash tables
+	$list = @{element1 = 5; array1 = 1..5; array2 = 6,7,8}
+	$list
+
+Add Keys and assign values
+	$mylist["Location"] = "Germany"
+	$mylist
+	$mylist.date = Get-Date
+	$mylist
+	
+Remove Key
+	$mylist.date = Get-Date
+	$mylist
+
+============================================================
+                    The Pipeline
+============================================================
+Get-Service | Out-Default - Basic Layout of a Cmdlet & pipe
+
+<cmdlet> | Get-Member - displays properties available to a cmdlet
+
+get-member | get-service
+
+  Get-Service
+  Get-Service | Format-Table *
+  Get-Service | Format-List *
+  Get-Service | Get-Member
+  (Get-Service PlugPlay).stop
+  Get-Process | Get-Member
+  Get-Member -InputObject Get-Service
+  
+  write-host 
+  -Write to the terminal, doesnt move into the pipeline
+  
+  write-output 
+  -Writes to the output, continues on into the pipeline  
+
+(( Any formating is done last in pipeline of cmdlet))
+
+Group using formatting cmdlets
+    Get-ChildItem | Sort-Object -Property Extension | Format-Table -GroupBy Extension
+
+
+    Directory: C:\windows\system32
+
+  Mode                 LastWriteTime         Length Name                                                                                                                                   
+  ----                 -------------         ------ ----                                                                                                                                   
+  d-----         12/7/2019   4:50 AM                0409                                                                                                                                   
+  d-----         12/7/2019   4:50 AM                slmgr                                                                                                                                  
+  d-----        11/17/2022   1:22 PM                SleepStudy                                                                                                                             
+  d-----         12/7/2019   4:52 AM                sl-SI                                                                                                                                  
+  d-----         12/7/2019   4:52 AM                sk-SK                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                si-lk                                                                                                                                  
+  d-----         6/25/2020   9:23 AM                ShellExperiences                                                                                                                       
+  d-----         12/7/2019   4:14 AM                Sgrm                                                                                                                                   
+  d-----         12/7/2019   4:51 AM                setup                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                SecureBootUpdates                                                                                                                      
+  d-----         12/7/2019   4:54 AM                ru-RU                                                                                                                                  
+  d-----         12/7/2019   4:52 AM                ro-RO                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                restore                                                                                                                                
+  d-----        12/15/2021  12:14 PM                Recovery                                                                                                                               
+  d-----         12/7/2019   4:14 AM                RasToast                                                                                                                               
+  d-----         12/7/2019   4:31 AM                SMI                                                                                                                                    
+  d-----         12/7/2019   4:31 AM                ras                                                                                                                                    
+  d-----         12/7/2019   4:14 AM                ProximityToast                                                                                                                         
+  d-----         12/7/2019   4:50 AM                Printing_Admin_Scripts                                                                                                            
+  d-----         12/7/2019   4:54 AM                zh-CN                                                                                                                                  
+  d-----         12/7/2019   4:50 AM                winrm                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                WinMetadata                                                                                                                            
+  d-----         12/7/2019   4:31 AM                winevt                                                                                                                                 
+  d-----         12/7/2019   4:14 AM                WindowsPowerShell                                                                                                                      
+  d-----         12/7/2019   4:50 AM                WinBioPlugIns                                                                                                                          
+  d-----         6/25/2020   9:24 AM                WinBioDatabase                                                                                                                         
+  d-----        11/16/2022   2:14 PM                WDI                                                                                                                                    
+  d-----         12/7/2019   4:50 AM                WCN                                                                                                                                    
+  d-----         12/7/2019   4:31 AM                Speech_OneCore                                                                                                                         
+  d-----         6/25/2020   9:23 AM                wbem                                                                                                                                   
+  d-----         12/7/2019   4:52 AM                uk-UA                                                                                                                    
+  d-----         12/7/2019   4:54 AM                el-GR                                                                                                                                  
+  d---s-         12/7/2019   4:50 AM                dsc                                                                                                                                    
+  d-----         6/25/2020   9:24 AM                DriverStore                                                                                                                            
+  d-----         12/7/2019   4:14 AM                DriverState                                                                                                                            
+  d-----        12/15/2021   2:58 PM                drivers
+  d-----         12/7/2019   4:14 AM                downlevel
+  d-----         6/25/2020   9:23 AM                Dism
+  d---s-         6/25/2020   9:23 AM                DiagSvcs                                                                                                                               
+  d-----         5/11/2020   1:43 AM                de-DE
+  d-----         12/7/2019   4:14 AM                DDFs                                                                                                                                   
+  d-----         12/7/2019   4:54 AM                da-DK                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                MSDRM                                                                                                                                  
+  d-----         12/7/2019   4:14 AM                ContainerSettingsProviders                                                                                                             
+  d---s-         12/7/2019   4:31 AM                Configuration                                                                                                                          
+  d-----         6/25/2020   9:23 AM                AdvancedInstallers                                                                                                                                                                                                                                           
+
+
+    Directory: C:\windows\system32
+
+
+Mode                 LastWriteTime         Length Name                                                                                                                                   
+----                 -------------         ------ ----                                                                                                                                   
+  -a----         12/7/2019   4:08 AM          34600 msadp32.acm                                                                                                                            
+  -a----         12/7/2019   4:53 AM         184320 l3codecp.acm                                                                                                                           
+  -a----         12/7/2019   4:08 AM          37440 imaadp32.acm                                                                                                                           
+  -a----         12/7/2019   4:53 AM          93184 l3codeca.acm                                                                                                                           
+  -a----         12/7/2019   4:08 AM          42904 msgsm32.acm                                                                                                                            
+  -a----         12/7/2019   4:08 AM          25824 msg711.acm                                                                                                                             
+
+
+    Directory: C:\windows\system32
+
+
+  Mode                 LastWriteTime         Length Name                                                                                                                                   
+  ----                 -------------         ------ ----                                                                                                                                   
+  -a----         12/7/2019   4:09 AM         103936 Mpeg2Data.ax                                                                                                                           
+  -a----         12/7/2019   4:09 AM         141312 Kswdmcap.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          67584 ksxbar.ax                                                                                                                              
+  -a----         6/25/2020   9:21 AM         266240 mpg2splt.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          79872 MSDvbNP.ax                                                                                                                             
+  -a----         12/7/2019   4:09 AM          60928 g711codc.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          95232 WSTPager.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          99840 psisrndr.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM         169984 VBICodec.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM          47616 vbisurf.ax                                                                                                                             
+  -a----         12/7/2019   4:09 AM          34304 vidcap.ax                                                                                                                              
+  -a----         12/7/2019   4:09 AM         104960 kstvtune.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM         100864 bdaplgin.ax                                                                                                                            
+  -a----         12/7/2019   4:09 AM         260096 MSNP.ax                                                                                                                                
+  -a----         12/7/2019   4:09 AM         304128 ksproxy.ax
+
+============================================================
+                    Script Blocks
+============================================================
+A set of callable instructions that remain update unlike normal variables.
+Uses & when calling to evaluate and update information before being called.
+
+Make Script Block
+$myblock = {get-service | format-table Name, Status}
+
+Call Script Block
+& $myblock
+
+  $myblock = {get-service | format-table Name, Status}
+  & $myblock
+
+
+  $a = 1
+  $c = 1
+  $b = { 1 + 1 + $c }
+  & $b
+
+  $a += &$b
+  $a
+
+============================================================
+                   Sorting and Grouping
+============================================================
+Get-Service | Sort-Object Status -Descending
+
+Sorted Output
+  get-childitem | sort-object
+ 
+Sorted by filesize
+  get-childitem | sort-objeect -property length -descending
+  
+Grouped output
+	Get-Service | Group-Object Status
+	
+Sorted and grouped
+	get-childitem | sort-object Extension, name | format-table -groupby Extension
+	
+Using type conversion with sort-object
+	'1', '7', '10', '8', '2', '3' | Sort-Object -Property { [Int]$_}
+	
+Produce random sorting with sort-object
+	1..10 | Sort-Object -Property {Get-Random}
+	
+View powershell automatic variable descriptions
+	Get-Variable | Sort-Object Name | Format-Table Name, Description -AutoSize -Wrap
+	
+============================================================
+                      Filtering
+============================================================
+Filter out all but running services
+	Get-Service | Where-Object {$_.Status -eq "Running"}
+	
+Filter process using where-object and sort-object
+	Get-Process | Where-Object {$_.Name -notlike 'powershell*'} | sort-object id -Descending
+	
+Using select-object to list top 10 processes
+	Get-Process | Select-Object -First 10
+	
+List 10 longest-running processes
+	Get-Process | Sort-Object StartTime | Select-Object -Last 10 | Format-Table ProcessName, StartTime
+	
+	Fix this command's error message
+		Get-Process | Where-Object ProcessName -NE "Idle" | Sort-Object StartTime | Select-Object -Last 10 | Format-Table ProcessName, StartTime
+		
+Using Get-Unique
+	1,2,3,4,5,1,1,3,1,3,4,5,3,4,5,4,3,2,4,2,3,4,1,1,1,3,3,3,3,3,3,3,3,2,1 | Sort-Object | Get-Unique
+	
+Using Measure-Object
+	Get-ChildItem | Measure-Object Length
+	
+Using parameters with Measure-Object
+	Get-ChildItem | Measure-Object Length -Average -Maximum -Minimum -Sum
+	
+Make test file and snapshot of directory
+	'What is the answer to life, the universe, and everything?' > test.txt
+	$before = Get-ChildItem
+	
+Modify test file and new snapshot
+	'42' > test.txt
+	$after = Get-ChildItem
+	
+Use Compare-Object to compare the before and after variables
+	Compare-Object $before $after -Property Length, Name
+
+============================================================
+			Objects
+============================================================
+Custom Objects
+	Add Properties
+		$mycar = New-Object Object
+
+		Add-Member -MemberType NoteProperty -Name Color -Value "Brown" -InputObject $mycar
+
+		Add-Member -MemberType NoteProperty -Name Make -Value Chevy -InputObject $mycar
+
+		Add-Member -InputObject $mycar NoteProperty Model Cruz
+
+		$mycar | Add-Member NoteProperty Cab "Four-Door"
+	
+		$mycar
+	
+			Color Make  Model Cab      
+			----- ----  ----- ---      
+			Brown Chevy Cruz  Four-Door
+		
+	Add Methods
+		Add-Member -InputObject $mycar -MemberType ScriptMethod -Name Horn -Value {"Honk"}
+
+		Add-Member -InputObject $mycar -MemberType ScriptMethod -Name SpeedStatus -Value {"60 Mph on Highway"}
+
+		Add-Member -InputObject $mycar -MemberType ScriptMethod -Name ReachTopSpeed -Value {"30 Mph it is"}
+		
+		$mycar | Get-Member
+		
+		$mycar.horn()
+
+============================================================
+		  Comparison Operators
+============================================================
+# Equals (Exactly the same)
+	2 -eq 2 #True
+	2-eq 3 #False
+	1,2,3 -eq 2 #2
+	"abc" -eq "abc" #True
+	"abc" -eq "abc", "def" #False
+	"abc", "def" -eq "abc" #abc
+	
+# Not Equals
+    "abc" -ne "def" #True
+    "abc" -ne "abc" #False
+    "abc" -ne "abc", "def" #False
+    "abc", "def" -ne "abc" #def
+
+# Greater Than
+    8 -gt 6 #True
+    7,8,9 -gt 8 #9
+
+# Less Then
+    6 -lt 8 # True
+    7, 8, 9 -lt 9 #7 and 8
+
+# Greater Than or Equal to
+    6 -ge 6 #True
+    5, 6, 7 -ge 6 #6 and 7
+
+# Less Than or Equal to
+    6 -le 6
+    5, 6, 7 -le 6 #5 and 6
+
+# Like
+    "Inky" -like "*" #True
+    "Blinky" -like "Bl?nky" #True
+    "Pinky" -like "[L-Q]inky" #True
+    "Clyde" -like "[ABC]lyde" #True
+
+# Notlike
+    "Inky" -notlike "*" #False
+    "Blinky" -notlike "Bli?nky" #True
+    "Pinky" -notlike "[A-F]inky" #True
+    "Clyde" -notlike "[DEF]lyde" #True
+	
+# Match
+    $text = "Your account username is ACE4495"
+    $pattern = '([A-F{3}])(\d{4})'
+    $text -match $pattern # True
+    $Matches[0] # What matches in each part.
+	
+# Contains
+    $ghosts = 'Inky', 'Blinky', 'Pinky', 'Clyde'
+    $ghosts -contains 'pinky' # True
+    'Pinky' -in $ghosts # True
+	
+Case Sensitivity
+	-ceq
+	-cne
+	-cgt
+	-clt
+	-cge
+	-cle
+	-clike
+	-cnotlike
+	-cmatch
+
+============================================================
+		Combining Comparison Operators
+============================================================
+# And
+	$num = 5
+	(($num -gt 1) -and ($num -lt 10) -and ($num -eq 5))
+
+# Or
+	$num1 = 10
+	(($num -gt 1) -or ($num -lt 4))
+
+============================================================
+                      Examples
+============================================================
+# Display only the services with the status of 'running'
+	Get-Service | Where-Object{$_.Status -eq 'running'}
+
+# Show txt files with sizes greater than 100
+	Get-ChildItem *.txt | Where-Object{$_.Length -gt 100}
+
+# Display all  processes whose comapny namew begins with 'micro'
+	Get-Process | Where-Object {$_.Company -like 'micro*'} | Format-Table Name, Description, Company
+
+============================================================
+				If Statements
+============================================================
+#Basic Layout
+	if (condition) {
+    	#Code to be executed
+	}
+	Elsif (condition){
+		#Code to be executed
+	}
+	Else{
+		#Code to be executed
+	}
+
+# Multiple values meet condition
+	Switch(10)
+	{
+    	(1 + 9) {
+        	"Congrats, you did adds right"
+    	}
+    	(1 + 10) {
+        	"This be wrong"
+    	}
+    	(11 - 1) {
+        	"Congrats, you did minus right"
+    	}
+    	(1 - 11) {
+        	"Congrats, you did math wrong"
+    	}
+	}
+
+# Multiple Values
+	$num = 2 #(Get-Random -Minimum 0 -Maximum 10)
+	Switch($num) {
+    	{$_ -le 3} { "Some number from 1 to 3" }
+    	6 { "It is the number 6" }
+    	{(($_ -ge 6) -and ($_ -le 9))} { "Some number from 7 to 9" }
+    	{$_ -gt 2} { "It is greater than 2"}
+    	{(($_ -ge 5) -and ($_ -le 8))} { "Some number from 5 to 8" }
+    	{$_ -le 7} { "It is less than 7"}
+	}
+
+# Using default
+	$val = "Meg"
+	Switch($val) {
+    	Peter { "That's the father" }
+    	Lois { "That's the mother" }
+    	Stewie { "That's the youngest child" }
+    	Chris { "That's the oldest child" }
+    	default { "Nobody cares about you $val" }
+	}
+
+============================================================
+					Loops
+============================================================
+#For Loop
+    for ($num = 1; $num -le 3; $num++){
+    #Code
+    }
+
+#While Loop
+    while(condition) {
+        #Code block to be executed
+    }
+
+#Do While Loop
+    do {
+        #Code block
+    }while(condition)
+
+    $num = 0
+    do {
+    	$num
+    	$num++
+    }while($num -lt 3)
+
+#Do Until Loop
+    do { 
+        #Code block
+    }until(condition)
+	
+#Foreach Loop (Doesn't give ouput unil completed)
+	foreach($i in $item){
+    	#Code
+	}
+
+	foreach($item in gci C:\ -Recurse){$item.name}
+
+#Foreach Object Loop (Can be stopped and read from at any time)
+	Get-ChildItem C:\ -Recurse | ForEach-Object{$_.name}
+
+
+============================================================
+					Flow and Control
+============================================================
+#Break
+	$num = 0
+	while($num -lt 10) { 
+    	$num += 1
+    	if($num -eq 5) {
+        	break
+    	}
+    	$num
+	}
+
+#Continue
+	$num = 0
+	while($num -lt 4) { 
+    	$num += 1
+    	if($num -eq 2) {
+        	continue
+    	}
+    	$num
+	}
+	
+============================================================
+				Read and Write to Files
+============================================================
+#Write Content to Files
+    Set-Content -Path .\example.txt -value "A string."
+    Get-Content .\example.txt
+
+#Append Content to Files
+    Add-Content -Path .\example.txt -Value "an additional string"
+    Get-Content -Path .\example.txt
+
+============================================================
+                        Functions
+============================================================
+#Simple Function
+    function Get-Version {
+        $PSVersionTable.PSVersion
+    }
+
+    Get-Version
+
+#Basic Function
+    function test-me($value) {
+        if($value) {
+            Write-Host -ForegroundColor Green "True"
+        }
+        else {
+            Write-Host -ForegroundColor Red "Flase"
+        }
+    }
+
+#List out Functions
+    gci -path Functions
+
+#Pipe Input to Simple Function
+    function Say-Hello {"Hello $input"}
+    "Brown" | Say-Hello
+
+============================================================
+				Functions with Parameters
+============================================================
+#Functions with Parameters
+	function Do-Paramstuff
+	{
+    	param(
+        	[parameter()]
+        	[string]$parameter1,
+
+        	[parameter()]
+        	[string]$parameter2
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	Write-Host "parameter 2 value is $parameter2"
+	}
+	Do-Paramstuff -parameter1 'Hello' -parameter2 'World'
+	
+#Function with Parameters Adding Switch Parameter
+	function Do-ParamSwitchStuff
+	{
+    	param(
+        	[parameter()]
+        	[string]$parameter1,
+			
+        	[parameter()]
+        	[string]$parameter2,
+			
+        	[parameter()]
+        	[switch]$DisplayParameter2value
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	if ($DisplaParameter2value.IsPresent) {
+        	Write-Host "parameter 2 value is $parameter2"
+    	}
+	}
+	Do-ParamSwitchStuff 1 5 -DisplayParameter2value
+
+#Mandatory Parameters
+	function Do-ParamMandoStuff
+	{
+    	param(
+        	[parameter(Mandatory)]
+        	[string]$parameter1,
+			
+        	[parameter()]
+        	[string]$parameter2,
+			
+        	[parameter()]
+        	[switch]$DisplayParam2
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	if ($DisplayParam2.IsPresent) {
+        	Write-Host "parameter 2 value is $parameter2"
+    	}
+	}
+	Do-ParamMandoStuff -parameter2 somevalue -DisplayParam2
+
+============================================================
+					Parameter validation
+============================================================
+#Parameter validation
+	function Do-ValidParamStuff
+	{
+    	param(
+        	[parameter(Mandatory)]
+        	[ValidateSet('001','best')]
+        	[string]$parameter1,
+			
+        	[parameter()]
+        	[string]$parameter2,
+			
+        	[parameter()]
+        	[switch]$DisplayParam2
+        	)
+    	Write-Host "parameter 1 value is $parameter1"
+    	if ($DisplayParam2.IsPresent) {
+        	Write-Host "parameter 2 value is $parameter2"
+    	}
+	}
+	Do-ValidParamStuff
+
+============================================================
+					CmdletBinding
+============================================================
+#Basic Function without CmdletBinding
+	function Do-SomethingRegular 
+	{
+    	[CmdletBinding()]
+    	param(
+        	[string]$message
+    	)
+    	Write-Verbose "We are going to write the messageby the user"
+    	Write-Output $message
+	}
+	Do-SomethingRegular -message "Hello World"
+	Do-SomethingRegular -message "Hello World" -Verbose
+
+============================================================
+					Advanced Functions
+============================================================
+#Advanced Functions Format
+	function bare-bones 
+	{
+    	[CmdletBinding()]
+    	param(
+        	<Define Parameters>
+    	)
+    	Begin {
+        	<Code>
+    	}
+    	Process {
+        	<Code>
+    	}
+    	End {
+        	<Code>
+    	}
+	}
+
+#Basic Advanced Function
+	function add-nums 
+	{
+    	param(
+        	[Parameter(Mandatory=$true)]
+        	[int32]$var1,
+			
+        	[Parameter(Mandatory=$true)]
+        	[int32]$var2
+    	)
+    	Begin {
+        	[int32]$sum = 0
+    	}
+    	Process {
+        	$sum = $var1+$var2
+    	}
+    	End {
+        	$sum
+    	}
+	}
+
+# Example 2 advanced use
+	function Get-IPConfig {
+    	param(
+        	[Switch]$IP,
+        	[Switch]$Mac,
+        	[Switch]$All
+    	)
+    	Begin {
+        	Clear-Host
+    	}
+    	Process {
+        	if ($Mac) {
+            	ipconfig -all | Select-String "Physical"
+        	}
+        	elseif ($IP) {
+            	ipconfig -all | Select-String "IPv"
+        	}
+        	elseif ($all) {
+            	ipconfig -all
+        	}
+        	else {
+            	ipconfig
+        	}
+		
+    	}
+    	End {
+        	"`n " + (Get-Date).DateTime
+    	}
+	}
+
+============================================================
+					String Manipulation
+============================================================
+#Special Characters
+	"Here is `" quotes`""
+	"Here is another `nline of text"
+
+#Backtick Operator
+	Get-Service * | Sort-Object ServiceType `
+	| Format-Table name, ServiceType, Status -AutoSize
+
+# Here-String
+	$text = @"
+	Here is some text with `"quotes`".
+	1TB equals $(1TB / 1GB) GB.
+	Variables are resolved
+	"$PWD" is your current path
+	"@
+	$text
+
+============================================================
+						REGEX
+============================================================
+.
+	Any character except newline
+
+[^abc]
+	All characters except one specified
+
+[^a-z]
+	All characters except ones in range specified
+
+[abc]
+	One of the characters
+
+[a-z]
+	One of the characters in range
+
+\d
+	Any number [0-9]
+
+\D
+	Any non-number
+
+\n
+	Line Break
+
+\r
+	Carriage return
+
+\s
+	Any whitespace (space, tab, new line)
+
+\t 
+	tab
+
+\w 
+	Letter, number or underline
+
+\W 
+	Non-letter, number, or underline
+
+#Quantifiers
+*
+	Any
+
+?
+	None or one occurence
+
+{n,}
+	At least n occcurences
+
+{n,m}
+	At least n occurences, maximum m occurences
+
+{n}
+	Exactly n occurences
+
++
+	One or many occurences
+
+#Anchors
+$
+	End of text
+
+^
+	Start of text
+
+\b 
+	Word boundary
+
+\B 
+	No word boundary
+
+\G 
+	After last match
+	
+#IP Validator
+	if("1.1.1.257" -as [IPAddress]){
+    	"IP is valid"
+	}
+	Else {
+    	"IP is not valid"
+	}
+
+# -f
+	"{0} is here" -f $PWD
+	
+# -join
+	"abc def" -join " "
+		"abcdef"
+
+# -split
+	"abc.def" -split "."
+		"abc","def"
+		
+# -match
+	"1.0.0.1","1.1.1.1",""abc","def","ghi" -match <IPAddr Regex> 
+		"1.0.0.1","1.1.1.1"
+
+# -replace
+	"Hello World" -replace "World","Tony"
+    	"Hello Tony"
