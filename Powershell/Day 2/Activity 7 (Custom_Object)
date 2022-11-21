@@ -6,18 +6,18 @@
 
 #Use the cmdlet Get-WmiObject to obtain the needed information
 
-$MySystem = New-Object Object
+    $MySystem = New-Object Object
 
-$Computer = Get-WmiObject -Class Win32_ComputerSystem
-$Bios = Get-WmiObject -Class win32_BIOS
-$OS = Get-WmiObject -Class Win32_OperatingSystem
-$Disks = Get-WmiObject -Class Win32_LogicalDisk
+    $Computer = Get-WmiObject -Class Win32_ComputerSystem
+    $Bios = Get-WmiObject -Class win32_BIOS
+    $OS = Get-WmiObject -Class Win32_OperatingSystem
+    $Disks = Get-WmiObject -Class Win32_LogicalDisk
 
-Add-Member -MemberType NoteProperty -Name ComputerName -Value $Computer.Name -InputObject $MySystem
-Add-Member -MemberType NoteProperty -Name OperatingSystem -Value $OS.Caption -InputObject $MySystem
-Add-Member -MemberType NoteProperty -Name Version -Value $OS.Version -InputObject $MySystem
-Add-Member -MemberType NoteProperty -Name Manufacturer -Value $Bios.Manufacturer -InputObject $MySystem
-Add-Member -MemberType NoteProperty -Name Disks -Value $disks._path -InputObject $MySystem
+    Add-Member -MemberType NoteProperty -Name ComputerName -Value $Computer.Name -InputObject $MySystem
+    Add-Member -MemberType NoteProperty -Name OperatingSystem -Value $OS.Caption -InputObject $MySystem
+    Add-Member -MemberType NoteProperty -Name Version -Value $OS.Version -InputObject $MySystem
+    Add-Member -MemberType NoteProperty -Name Manufacturer -Value $Bios.Manufacturer -InputObject $MySystem
+    Add-Member -MemberType NoteProperty -Name Disks -Value $disks._path -InputObject $MySystem
 
 
 $MySystem
