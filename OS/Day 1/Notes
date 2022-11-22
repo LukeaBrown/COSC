@@ -1,0 +1,135 @@
+============================================================
+						Powershell
+============================================================
+Requires <<<System.Management.Automation.dll>>> to run.
+
+#Do Loop
+	$a = 1
+	do
+	{
+	"Starting Loop $a"
+	$a
+	$a++
+	"Now `$a is $a"
+	}while ($a -le 5)
+
+#While Loop
+	$var = 2
+	while ($var -le 5)
+	{
+	Write-Host The value of var is: $var
+	$var++
+	}
+	Write-Host End of while loop.
+
+#Foreach Loop
+	$Collection = 1..5
+	foreach ($item in $Collection) {
+    	Write-Host The value of Item is: $item
+	}
+	Write-Host End of foreach loop
+	
+	#For Loop
+	for (($x=' '),($fgcolor = $colors | Get-Random) ;$x.length -le 30;($x=$x+'x'),($fgcolor = $colors | Get-Random)) {
+	
+	}
+
+#If Statements
+	$a = 3
+	if ($a -gt 2){
+    	Write-Host "The value of $a is greater than 2"
+	}
+	elsif ($a -eq 2){
+    	Write-Host "The value of $a is equal to 2"
+	}
+	else{
+    	Write-Host "The value of $a is not greater than 2"
+	}
+	
+Powershell ExecutionPolicies are not persistent, they are specific to the powershell session
+
+============================================================
+						Profiles
+============================================================
+Powershell:
+	- All Users, All Hosts
+	- All Users, Current Host
+	- Current User, All Hosts
+	- Current User, Current Hosts
+	
+ISE:
+	- Current User, Current Host
+	- All Users, Current Host
+	
+Profile Variables
+	- $PSHOME
+	- $HOME
+	
+Variable Values
+	- $profile | Get-Member -type NoteProperty
+	
+Test if profile exists
+	- Test-Path -Path $profile.CurrentUserAllHosts
+	
+Make new profile
+	- New-Item -ItemType File -Path $profile -force
+
+============================================================
+						Remoting
+============================================================
+PSSession
+	Get-PSSessionConfiguration
+	
+Start PSSession
+	Enter-PSSession -ComputerName Server1
+	
+Queries current network profiles.
+	Get-ChildItem 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles'
+	
+	Network Location Category	Data Value
+	
+	Public						0 (ZERO)
+	Private						1
+	Domain						2
+
+============================================================
+			Powershell Remoting Security
+============================================================
+WinRM uses Kerberos for authentication by default.
+	- It also encrypts all communications with a per-session AES-256 symmetric key.
+	- Uses ports 5985 for HTTP by default or 5986 for HTTPS. HTTPS requires extra set-up for SSL certificates.
+
+============================================================
+			Temporary and Persistant Sessions
+============================================================
+#Creates 1-to-1 Temporary Session
+	Invoke-Command -ComputerName File-Server {Get-Service}
+	
+#Running a Temporary Session as a Job (in the background)
+	Invoke-Command -ComputerName File-Server,Domain-Controll,Workstation2 {Get-Service} -asjob
+	
+#Displays the job's Results
+	Receive-Job <job #> 
+
+============================================================
+					.NET API Framework
+============================================================
+Locating .NET API Functions
+	- NET APIs are broken into namespaces. 
+	- Microsoft .NET API Browser
+
+#Using a Namespace
+	[System.Text.Encoding]::GetBytes()
+	
+#Converts the text into a Unicode Array
+	([System.Text.Encoding]::Unicode.GetBytes("This Might be important")) 
+	
+#Download a File with Powershell
+	$url = "http://downloads.volatilityfoundation.org/releases/2.6/volatility_2.6_win64_standalone.zip"
+	$output = "$PSScriptRoot\volatility_2.6_win64_standalone.zip"
+	$start_time = Get-Date
+
+	$wc = New-Object System.Net.WebClient #Create a new Webclient object
+	$wc.DownloadFile($url, $output) #Use the Downloadfile method to download a file
+
+	(New-Object System.Net.WebClient).DownloadFile($url, $output)
