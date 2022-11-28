@@ -129,7 +129,72 @@ Forensically Relevant Keys
         	Index of Search results by SID
 	 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search
 			Recent files searched
+			
+Registry locations that can be utilized for persistence
+	- HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+
+	- HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+	- HKU\<SID>\Software\Microsoft\Windows\CurrentVersion\Run
+
+	- HKU\<SID>\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+	- HKLM\SYSTEM\CurrentControlSet\services
+
+	- HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders
+
+	- HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+
+	- HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+
+Critical Registry Locations
+	-HKLM\BCD00000000
+		Replacement of old boot.ini file
+	-HKLM\SAM\SAM
+		Use "psexec -s -i regedit" from administrator cmd.exe to view the SAM
+		
+	-HKU\<SID>\Software\Policies\Microsoft\Windows\System\Scripts
+		Group policy Logon/Logoff Scripts defined here
 
 ============================================================
 
 ============================================================
+
+
+    Each key in the registry of Windows NT versions can have an associated Security Descriptor.
+
+    The security descriptor contains an Access Control List (ACL) that describes which user groups or individual users are granted or denied access permissions.
+
+    An ACL is a list of Access Control Entries (ACE). The security descriptor can be explicit or inherited from a parent object.
+
+        Each ACE in an ACL identifies a trustee and specifies the access rights allowed, denied, or audited for that trustee.
+
+        The security descriptor for a securable object can contain two types of ACLs: a DACL and a SACL.
+
+            A Discretionary Access Control List (DACL) identifies the trustees that are allowed or denied access to a secured object.
+
+            A System Access Control List (SACL) enables administrators to log attempts to access a secured object.
+
+
+
+Permission				Description
+
+Query Value				The right to read the registry key value.
+
+Set Value				The right to write a new value
+
+Create Subkey				The right to create subkeys.
+
+Enumerate				Subkeys Allow the enumeration of subkeys.
+
+Notify					The right to request change notifications for registry keys or subkeys.
+
+Create Link				Reserved by the operating system.
+
+Delete					The right to delete a key.
+
+Write DACL				The right to modify permissions of the container’s DACL.
+
+Write Owner				The right to modify the container’s owner.
+
+Read Control				The right to read the DACL.
