@@ -23,6 +23,11 @@ Powershell
 		- new-item
 		- new-itemproperty
 		- remove-itemproperty
+		
+Remote Access
+	Only these keys 
+		- HKLM
+		- HKU
 
 ============================================================
 					Registry Layout
