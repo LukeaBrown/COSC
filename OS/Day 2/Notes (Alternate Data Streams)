@@ -1,0 +1,65 @@
+============================================================
+Alternate Data Streams (ADS)
+============================================================
+- ADS was first introduced to NTFS in Windows NT 3.1 and was Microsoft’s attempt at implementing filesystem forks in order to maintain compatibility with other filesystems like Apple’s HFS+ and Novell’s NWFS and NSS.
+
+- In NTFS – files consists of attributes, security settings, mainstreams and alternate streams. By default, only the mainstream is visible.
+
+- ADS has been used to store metadata, like file attributes, icons, image thumbnails.
+
+- Great way to hide data using NTFS.
+
+- Can be scanned by antivirus (Windows Defender Smartscreen is ADS aware).
+
+- Does not change the MD5 hash of the file.
+
+- Deleted once copied to a fat32.
+
+- Cannot be disabled.
+
+- [filename.extension]:[alternate_stream_name]:$DATA
+
+============================================================
+ADS with CLI
+============================================================
+echo Join the Empire > Imperial.txt
+
+dir Imperial.txt
+  Volume in drive C is OS
+  Volume Serial Number is A214-0667
+
+  Directory of c:\Users\student\demo
+
+  11/28/2022  03:38 PM                18 Imperial.txt
+                1 File(s)             18 bytes
+                0 Dir(s)  15,779,483,648 bytes free
+
+echo This is Fulcrum > Imperial.txt:Rebel.Message
+
+dir Imperial.txt
+  Volume in drive C is OS
+  Volume Serial Number is A214-0667
+
+  Directory of c:\Users\student\demo
+
+  11/28/2022  03:40 PM                18 Imperial.txt
+                1 File(s)             18 bytes
+                0 Dir(s)  15,779,483,648 bytes free
+                
+more < Imperial.txt:Rebel.Message
+
+  This is Fulcrum
+  
+streams.exe -d .\coffee.txt
+
+============================================================
+ADS with powershell
+============================================================
+Set-Content .\coffee.txt -Value "Bank account Information" -Stream Bank.Info
+gci .\coffee.txt
+Get-Item .\coffee.txt -Stream *
+Get-Content .\coffee.txt -Stream Bank.Info
+
+rm .\coffee.txt -Stream bank.info
+
+Set-Content notepad.exe .\coffee.txt:Sercet.vbs
