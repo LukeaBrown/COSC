@@ -12,6 +12,7 @@ Reg.exe
 		- Reg Add
 		- Reg Query 
 		- Reg Delete
+		- wmic useraccount get name,sid
 		
 Powershell
 	- Root Hive Keys loaded as powershell drives
