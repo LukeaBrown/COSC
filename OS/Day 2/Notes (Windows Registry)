@@ -1,37 +1,134 @@
 ============================================================
-Windows Registry
+		Viewing and Manipulating the Registry
 ============================================================
+Regedit.exe
+	- GUI
+	- Located st "C:\Windows\regedit.exe"
 
-
-============================================================
-
-============================================================
-
-
-============================================================
-
-============================================================
-
-
-============================================================
-
-============================================================
-
-
-============================================================
-
-============================================================
-
-
-============================================================
-
-============================================================
-
+Reg.exe
+	- CLI
+	- Located at "C:\Windows\System32\reg.exe"
+	- Minimum commands to know
+		- Reg Add
+		- Reg Query 
+		- Reg Delete
+		
+Powershell
+	- Root Hive Keys loaded as powershell drives
+	- Commands used:
+		- Get-item
+		- get-itemproperty
+		- get-childitem
+		- set-itemproperty
+		- new-item
+		- new-itemproperty
+		- remove-itemproperty
 
 ============================================================
+					Registry Layout
+============================================================
+Hive
+	KEY
+		Subkey
+				Name : Data : Value
 
 ============================================================
+					Registry Hive Keys
+============================================================
+HKU : Users
+	- The root key containing the ntuser.dat hives for ALL users on the machine
+	
+HKLM : Local Machine
+	- System related information, SAM, Critical boot/kernel functions, 3rd party software, hardware, BCD.dat		
+	
+HKCU : Current User
+	- Contains the individual user’s settings
+	
+HKCR : Classes Root
+	- Contains file association and COM objects, backward compatibility, and file extension information
 
+HKCC : Current Config
+	- Current hardware profile or ControlSet, information that is gathered at runtime
+
+
+============================================================
+					Common Data Types
+============================================================
+REG_SZ
+	- String
+
+REG_BINARY
+	- Binary data
+
+REG_DWORD
+	- 32 bit integer. Max 7FFF,FFFF or 2,147,483,647.
+
+REG_LINK
+	- Symbolic links- A link that will take you to the actual location of the data
+
+REG_MULTI_SZ
+	- Multi-String values- Multiple strings that are terminated with "\0". Example: "abc\0def\0"
+
+REG_QWORD
+	- 64 bit integer. Max 7FFF,FFFF,FFFF,FFFF or 9,223,372,036,854,775,807.
+
+
+============================================================
+			Powershell Registry Edit/Query
+============================================================
+Get-ChildItem HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
+
+Get-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+New-Item "HKLM:\software\Microsoft\Office\14.0\Security\Trusted Documents\TrustRecords" -force
+
+New-ItemProperty "HKLM:\software\Microsoft\Office\14.0\Security\Trusted Documents\TrustRecords" -Name "%USERPROFILE%Downloads/test-document.doc" -PropertyType string -Value "Hello There"
+Remove-ItemProperty "HKLM:\software\Microsoft\Office\14.0\Security\Trusted Documents\TrustRecords" -Name "%USERPROFILE%Downloads/test-document.doc"
+
+============================================================
+					Powershell PSDrive
+============================================================
+Query PSDrives
+	Get-PSDrive
+	Get-ChildItem ENV:
+
+New-PSDrive -Name Demo -PSProvider FileSystem -Root C:\Users\student\demo
+New-PSDrive -name HKU -PSProvider Registry -Root HKEY_Users
+Remove-PSDrive -Name Demo
+
+Map to an Internal Server
+    New-PSDrive -Name FileServer -PSProvider FileSystem -Root "\\File-server\warrior share"
+
+
+============================================================
+Registry Locations of Interest
+============================================================
+Forensically Relevant Keys
+	- Microsoft Edge Internet URL history and Browser Artifacts and Forensics
+		HKEY_CLASSES_ROOT\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\Children\001\Internet Explorer\DOMStorage
+		
+	- USB history / USB Forensics
+		HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USB
+		
+	- Recent MRU history / Most Recently Used in forensics
+		HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePidlMRU
+		
+	- Recent Files with LNK files
+		HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+
+	- Windows User Profiles User Account Forensics
+		HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList
+		
+	- Saved Network Profiles and How to decode Network history
+		HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles
+		
+	- Windows Virtual Memory and why it is important
+		HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+		
+	- Recent search terms using Windows default search and Cortana
+    	HKEY_CURRENT_USER\Software\Microsoft\Windows Search\ProcessedSearchRoots
+        	Index of Search results by SID
+	 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search
+			Recent files searched
 
 ============================================================
 
