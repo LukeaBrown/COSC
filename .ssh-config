@@ -1,9 +1,8 @@
 vim .ssh/config
-
-Host linops
-	hostname 10.50.43.125
-	User student
-	Port 22
+	Host linops
+		hostname 10.50.43.125
+		User student
+		Port 22
 	
 chmod 600 .ssh/config
 
