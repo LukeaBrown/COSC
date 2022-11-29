@@ -22,14 +22,14 @@ Who can I talk to? "Networking"
 	ifconfig (Deprecated)
 		ip addr
 	netstat (Deprecated)
-		ss =ntlpsud
+		ss -ntlp
 	arp (Deprecated)
 		ip neigh
 	route (Deprecated)
 		ip route
 
 What's going on?
-	
+	ss -ntlp
 
 Why's that happening?
 	
