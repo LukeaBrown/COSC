@@ -35,14 +35,48 @@ Why's that happening?
 	
 
 ============================================================
+		    Linux Filesystem Hierarchy
+============================================================
+Everything in the filesystem is a file, including directories.
+
+/ 	    - Root of the filesytem
+/bin 
+/boot
+/dev	- Extra device files
+/etc
+/home	- User home directory
+/lib	- Common used libraries for files to draw from
+/media
+/mnt	- Placeholder for mounting file shares
+/opt	- Placeholder for things user installs
+/proc	- Information relating to processes running on the system
+/root	- Roots home directory
+/run	- Containts info from the current instance of the system from the start of its runtime
+/sbin
+/srv    - Placeholder for server resources
+/sys    - Info about the system
+/tmp    - Temporary files
+/usr    - Universal System Resources
+/var    - Variable data
 
 ============================================================
-
-
+                        Permissions
 ============================================================
+421     421     421
+rw-     rw-     r--
+User    Group   Other
 
-============================================================
+r - Read
+w - write
+x - execute
 
+SUID - 4
+    
+SGID - 2
+    
+Sticky Bit - 1
+    
+<SUID/GUID/Sticky Bit>471
 
 ============================================================
 
