@@ -40,10 +40,10 @@ Why's that happening?
 Everything in the filesystem is a file, including directories.
 
 / 	    - Root of the filesytem
-/bin 
+/bin	- executable programs (binaries) which are needed in single user mode
 /boot
 /dev	- Extra device files
-/etc
+/etc	- Base Location for config files
 /home	- User home directory
 /lib	- Common used libraries for files to draw from
 /media
@@ -52,7 +52,7 @@ Everything in the filesystem is a file, including directories.
 /proc	- Information relating to processes running on the system
 /root	- Roots home directory
 /run	- Containts info from the current instance of the system from the start of its runtime
-/sbin
+/sbin	- Contains binaries only accessible by the root user
 /srv    - Placeholder for server resources
 /sys    - Info about the system
 /tmp    - Temporary files
