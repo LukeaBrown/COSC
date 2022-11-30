@@ -1,0 +1,66 @@
+============================================================
+					BIOS vs UEFI
+============================================================
+BIOS
+	MBR
+		Active partition identified in the Partition Table
+		Partition Boot Record (PBR) on the active partition is loaded
+		Code in the PBR loads bootmgr
+	Windows Boot Manager (bootmgr)
+	BCD Store
+	OS Loader
+		winload.exe or winresume.exe
+			Loads Kernel (ntoskrnl.exe)
+
+UEFI
+	GPT
+	UEFI Boot Manager (bootmgrfw.efi)
+	BCD Store
+	OS Loader
+		winload.efi or winresume.efi
+			Loads Kernel (ntoskrnl.exe)
+
+============================================================
+				Windows Pre-Boot Process
+============================================================
+										NTLDR.exe <Kernel 5>
+									  /
+	Bios - MBR - (Volume Boot Sector) - bootmgr.exe <Kernel 6+>
+	/
+Post
+	\
+	UEFI - (GUID Partition Table) - (-->) - Boot Manager (bootmgrfw.efi)
+
+============================================================
+					Windows Boot Process
+============================================================
+
+
+
+
+============================================================
+				Query Windows Services
+============================================================
+Query Service in Powershell
+	sc.exe query <service>
+	reg.exe query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services | findstr <service name>
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
