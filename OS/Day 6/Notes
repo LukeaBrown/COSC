@@ -144,34 +144,59 @@ sysvinit - /sbin/init
 		5 - GUI
 		6 - Reboot
 	Init Scripts
-	config /etc/inittab
+	config: /etc/inittab
 	script location: /etc/init.d
 	
 systemd - /lib/systemd/systemd
 	system + user service, process, networking, dns resolution, login, authentication, portable home dir, boot, service-timing, system resource, etc manager.
 	Parallel Loading
 	Targets
+		poweroff.target
+		rescue.target
+		multi-user.target
+		multi-user.target
+		multi-user.target
+		graphical.target
+		reboot.target
+			single user dows not need a gui.
 	.service files
 	config: /etc/systemd/systemd.conf
-	unit location: /lib/systemd/system/etc/systemd/system
+	unit location: </lib/systemd/system> </etc/systemd/system>
 	
 Check run levels on system.
 	ls -l /etc/rc2.d/
 
 ============================================================
-
+systemctl cat default.target
 ============================================================
 
 
 ============================================================
+						Partitions
+============================================================
+BLOCK DEVICE (Physical or Virtual) >> Partition Table >> Logical Partition >> Filesystem (ext3,ext4,FAT)
+
+Hard disks, USBs, SD cards, or anything with storage space must have at least one partition in order to be used
+
+Multiple partitions can exist on a single storage device, and you can format each partition with a different file system
+
+A partition is the logical segmentation of a single storage device into multiple usable sections
+
+Two main types of HD Partitioning:
+
+	MBR - Master Boot Record
+
+	GPT - GUID (Globally Unique Identifiers) Partition Table
 
 ============================================================
-
-
+systemctl list-dependencies graphical.target
 ============================================================
+systemctl show -p wants graphical.target
 
-============================================================
-
+all unit files
+	systemctl list-unit-files --all
+	
+	systemctl.cat
 
 ============================================================
 
