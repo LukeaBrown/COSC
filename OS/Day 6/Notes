@@ -136,6 +136,7 @@ sysvinit - /sbin/init
 	process manager
 	serial loading
 	Run levels
+			Check Current Run Level: who -r
 		0 - Halt
 		1 - Single-user
 		2 - Multi-user
