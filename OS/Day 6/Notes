@@ -199,9 +199,14 @@ all unit files
 	systemctl.cat
 
 ============================================================
-
+					Config Files
 ============================================================
-
+/etc/environment
+/etc/profile		- Ineractive Logon Shell
+/etc/bash.bashrc	- Interactive NonLogon Shell
+~/.profile			- Ineractive Logon Shell
+~/.bash_profile		- Ineractive Logon Shell
+~/.bashrc			- Interactive NonLogon Shell
 
 ============================================================
 
