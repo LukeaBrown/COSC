@@ -1,0 +1,86 @@
+============================================================
+			Host Enumeration Questionnaire
+============================================================
+Where am I?
+	hostname
+	uname -a (More Detailed)
+	
+Who am I?
+	whoami
+	id (More Detailed)
+	who (Who else is logged on)
+	w (What are other logged on users doing)
+
+What am I allowed to do?
+	sudo -l (What can you sudo)
+	which
+		- Displays commands executable
+	whereis
+		- Displays executable file and other documentation files
+
+Who can I talk to? "Networking"
+	ifconfig (Deprecated)
+		ip addr
+	netstat (Deprecated)
+		ss -ntlp
+	arp (Deprecated)
+		ip neigh
+	route (Deprecated)
+		ip route
+
+What's going on?
+	ss -ntlp
+
+Why's that happening?
+	
+
+============================================================
+		    Linux Filesystem Hierarchy
+============================================================
+Everything in the filesystem is a file, including directories.
+
+/ 	    - Root of the filesytem
+/bin	- executable programs (binaries) which are needed in single user mode
+/boot
+/dev	- Extra device files
+/etc	- Base Location for config files
+/home	- User home directory
+/lib	- Common used libraries for files to draw from
+/media
+/mnt	- Placeholder for mounting file shares
+/opt	- Placeholder for things user installs
+/proc	- Information relating to processes running on the system
+/root	- Roots home directory
+/run	- Containts info from the current instance of the system from the start of its runtime
+/sbin	- Contains binaries only accessible by the root user
+/srv    - Placeholder for server resources
+/sys    - Info about the system
+/tmp    - Temporary files
+/usr    - Universal System Resources
+/var    - Variable data
+
+============================================================
+                        Permissions
+============================================================
+421     421     421
+rw-     rw-     r--
+User    Group   Other
+
+r - Read
+w - write
+x - execute
+
+SUID - 4
+    
+SGID - 2
+    
+Sticky Bit - 1
+    
+<SUID/GUID/Sticky Bit>471
+
+============================================================
+			Extra
+============================================================
+man hier
+
+/etc/hosts
