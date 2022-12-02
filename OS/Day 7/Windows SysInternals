@@ -1,0 +1,132 @@
+============================================================
+Set up Sysinternals
+============================================================
+Make sysinternals drive
+  net use * http://live.sysinternals.com
+
+============================================================
+Procmon
+============================================================
+Captures:
+    - Registry = Anything from creating, reading, deleting, or querying keys
+    - File System = File creation, writing, deleting, etc and this includes both local and network drives
+  - Network = This only shows source and destination TCP/UDP traffic
+  - Process = These events are for processes and threads where a process starts, a thread starts or exits, etc. Probably better in ProcExp
+  - Profiling = Checks the amount of processor time and memory use of each process
+  
+
+============================================================
+Autoruns
+============================================================
+shows applications automatically started on during system boot or login as well as the Registry and file system locations for auto-start configurations.
+
+============================================================
+Procexp
+============================================================
+Task manager and system monitor which collects information on running processes with such features as Hierarchical view of processes, live CPU activity, ability to kill and suspend processes, display DLLs loaded, create process dumps, display handles and much more.
+
+	Colors (Selected by default)
+		Green - New Objects - Briefly flashes "Green" before changing into one of the 9 other colors.
+		Red - Deleted Objects - Dead.
+		Lavender - Own Processes - Processes owned by the current logged in user.
+		Salmon - Services
+		Gray - Suspended Processes
+		Purple - Packed Images -Processes might contain compressed code hidden inside them. Malware uses it because it obfuscates the contents of the file.
+		Cyan - Immersive Process - Windows Store App related, Uses Windows 8+ new APIs
+
+
+============================================================
+TCPView
+============================================================
+Shows you detailed listings of all TCP and UDP endpoints on your system, including the local and remote addresses and state of TCP connections.
+
+	Known malicious ports:
+		1337 Leet Port
+		31337 Eleet port
+		4444 Metasploit default listener port
+		
+============================================================
+PsExec
+============================================================
+light-weight telnet-replacement that lets you execute processes on other systems, complete with full interactivity for console applications
+
+	Switches
+    	-s Run as System account
+    	-i interacts with the desktop
+    	-c Copy the specified program to the remote system for execution.
+
+============================================================
+PsLoggedon
+============================================================
+Lists users that are logged on currently to a system
+
+	Run
+		PsLoggedon.exe
+		
+============================================================
+LogonSessiosn
+============================================================
+Shows how that user logged on
+	.\logonsessions.exe -p
+
+	Logon Types
+		2 - Interactive
+			A user logged on to this computer.
+			
+		3 - Network
+			A user or computer logged on to this computer from the network.
+			
+		4 - Batch
+			Batch logon type is used by batch servers, where processes may be executing on behalf of a user without their direct intervention.
+			
+		5 - Service
+			A service was started by the Service Control Manager.
+			
+		7 - Unlock
+			This workstation was unlocked.
+			
+		8 - NetworkCleartext
+			A user logged on to this computer from the network. The user’s password was passed to the authentication package in its un-hashed form. The built-in authentication packages all hash credentials before sending them across the network. The credentials do not traverse the network in plaintext (also called cleartext).
+			
+		9 - NewCredentials
+			A caller cloned its current token and specified new credentials for outbound connections. The new logon session has the same local identity, but uses different credentials for other network connections.
+			
+		10 - RemoteInteractive
+			A user logged on to this computer remotely using Terminal Services or Remote Desktop.
+			
+		11 - CachedInteractive
+			A user logged on to this computer with network credentials that were stored locally on the computer. The domain controller was not contacted to verify the credentials.[2]
+
+============================================================
+PsList
+============================================================
+Another command line tool for gathering process information and Allows you to refresh the tool for a specified period of time
+
+	How can I get a process list that updates every 10 seconds for 100 seconds?
+		pslist -s 100 -r 10
+			-s [n] run for this many seconds
+			-r [n] refresh every n seconds
+		
+============================================================
+PsInfo
+============================================================
+Gathers key system information from both local and remote systems
+
+============================================================
+Strings
+============================================================
+Analyze Windows files using Strings
+
+	Switches
+		-a ASCII
+
+Must provide literal file path
+
+============================================================
+Handles
+============================================================
+Shows the handles in use with a process
+	handle.exe -p <pid of process> -accepteula
+
+Shows the handles in use with powershell.exe
+	handle.exe -p <pid of powershell>
