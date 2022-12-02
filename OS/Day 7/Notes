@@ -1,1 +1,76 @@
+============================================================
+Windows Processes
+============================================================
+Processes
+	Powershell
+			Get-Process | sort -Property Id | more
+			Get-Process | select Name, Id, Description | sort -Property Id | more
+			Get-Process smss,csrss,lsass
 
+		#Process exe and dlls
+			Get-Process "*chrome*" | Select-Object -ExpandProperty Modules | more
+			Get-Process "*chrome*" | Select-Object -ExpandProperty Modules | Where-Object Modulename -like '*chrome*' | sort -Unique
+
+	CLI
+		#View all services
+			tasklist /v
+		#View Images and services
+			tasklist /svc
+		#View Images and modules
+			tasklist /m
+		
+		tasklist /m /fi "IMAGENAME eq chrome.exe"
+
+Services
+	Powershell
+		Get-CimInstance Win32_Service | select name,ProcessId,PathName
+		Get-Service
+		Get-Service ALG | Format-List *
+		sc.exe
+
+		Get All Services from registry
+			HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services
+
+	CLI
+		tasklist /fo:table | more
+		
+		#List running network services
+			net start
+
+============================================================
+Scheduled Tasks
+============================================================
+Powershell
+	Get-ScheduledTask | select * | select -First 3
+
+CLI
+	schtaks /query /v /fo list
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
