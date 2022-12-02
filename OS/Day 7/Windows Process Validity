@@ -21,8 +21,10 @@ Processes
 		
 		tasklist /m /fi "IMAGENAME eq chrome.exe"
 
+============================================================
 Services
-	Powershell
+============================================================
+Powershell
 		Get-CimInstance Win32_Service | select name,ProcessId,PathName
 		Get-Service
 		Get-Service ALG | Format-List *
@@ -36,7 +38,7 @@ Services
 		
 		#List running network services
 			net start
-
+	
 ============================================================
 Scheduled Tasks
 ============================================================
@@ -46,15 +48,18 @@ Powershell
 CLI
 	schtaks /query /v /fo list
 
-============================================================
+
+
 
 ============================================================
-
-
+			Network Process
 ============================================================
-
-============================================================
-
+Powershell
+	Get-NetTCPConnection -state Established
+	netcat.exe -anob | more
+	
+CLI
+	netstat
 
 ============================================================
 
