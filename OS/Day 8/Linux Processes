@@ -1,0 +1,103 @@
+============================================================
+				Startup Processes (sysV)
+============================================================
+Kernel-space processes 
+	- Forked from [kthreadd] ( PID = 2 )
+	- Hardware
+	- Directly handleds by the kernwe
+	Hav ehteir own memory space
+
+User-space processes 
+	- Forked from /sbin/init ( PID = 1 )
+	
+
+============================================================
+				Kernel vs User Space
+============================================================
+Kernel processes
+	- Run in its own memory space
+	- Code running ion kernel mode have unrestricted access to processor and main memory
+	
+User process
+	- Run in a separate memory space
+	- User space refers to the parts of main memory that the user processes can access.
+
+============================================================
+					Process Ownership
+============================================================
+RUID (Real User ID) 
+	Who you are
+
+EUID (Effective User ID)
+	Who you are running as
+	
+Uid < 999
+	System User
+Uid > 1000
+	Regular user
+
+============================================================
+					System Calls
+============================================================
+An interaction between a process and the kernel
+	
+fork()
+	- kernel creates a nearly identical copy of the process
+
+exec()
+	- kernel starts program, replacing the current process
+	
+shell -->> fork() -->> shell
+				  -->> copy of shell -->> exec(ls) -->> ls
+
+
+			Ring 3
+		Ring 2
+	Ring 1
+Ring 0
+	Device Drivers
+		Device Drivers
+			Applications
+
+============================================================
+Enumerate Processes
+============================================================
+View all running processes
+	ps -elf
+	
+View all running processes and thei parent process
+	ps -elf --forest
+	
+View all process with e certain parent process
+	ps -lf --forest --ppid 2
+	
+View all process witouth a certain parent process
+	ps -Nlf --forest --ppid 2
+
+Interactive Output of running proceses
+	top
+		f - Choose fields
+		L - Locate string
+		
+		Average over 1m, 5m, and 15m	
+		load average: 1.25
+	
+	htop
+	
+	btop
+		Faster updating
+		Network information
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
