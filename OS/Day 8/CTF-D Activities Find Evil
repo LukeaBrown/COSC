@@ -1,0 +1,34 @@
+============================================================
+
+============================================================
+Where am I?
+	hostname
+	uname -a (More Detailed)
+	
+Who am I?
+	whoami
+	id (More Detailed)
+	who (Who else is logged on)
+	w (What are other logged on users doing)
+
+What am I allowed to do?
+	sudo -l (What can you sudo)
+	which
+		- Displays commands executable
+	whereis
+		- Displays executable file and other documentation files
+
+Who can I talk to? "Networking"
+	ifconfig (Deprecated)
+		ip addr
+	netstat (Deprecated)
+		ss -ntlp
+	arp (Deprecated)
+		ip neigh
+	route (Deprecated)
+		ip route
+
+What's going on?
+	ss -ntlp
+
+Why's that happening?
