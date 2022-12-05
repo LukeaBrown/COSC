@@ -89,14 +89,72 @@ Interactive Output of running proceses
 		Network information
 
 ============================================================
+			Orphan and Zombie (defunct) Processes
+============================================================
+Orphan
+	- Parent process exited, adopted by sbin/init with PPID of 1
+	- All daemons are orphans
+		
+		#Close a shell/terminal and force all children to be adopted
+		disown -a && exit
+
+Zombie
+	- completed process, but still has an entry in the process table, waiting on parent to acknowledge or terminate
+	- Cant be killed or terminated due to already being terminated.
+	- Do not use resources, but do take up an entry of the process table which is a finite resource
+	
+Fork bomb
+	- Denial-of-service attack wherein a process continually replicates itself to deplete available system resources
 
 ============================================================
+					Daemons (Services)
+============================================================
+Program that runs as a background process
 
+Daemons
+	- All daemons are Orphans, but all orphans are not Daemons
+	- Purpose is to manage/monitor a service: {status, start, restart}
+	
+	Persistance
+		Daemons are service that should run for duration of system operation, since init is parent, would require shutdown for parent to die
 
 ============================================================
-
+						Cron Jobs
 ============================================================
+cron daemon checks the directories once a minute and executes any commands specified that match the time
+	- /var/spool/cron
+	- /etc/cron.d
+	- /etc/crontab
 
+Two types of cron jobs:
+	System Cron Jobs:
+		- run as root and rigidly scheduled
+		- perform system-wide maintenance tasks
+		- controlled by /etc/crontab
+	
+	User Cron Jobs:
+		- Use 'crontab’ command to create user cron jobs
+		- stored in /var/spool/cron/crontabs/
+		
+			    ‘crontab -u [user] file’ - sets users crontab file to the contents of listed file
+
+    			‘crontab -l -u [user]’ - Displays user’s crontab contents
+
+				‘crontab -r -u [user]’ - Removes user’s crontab contents
+
+    			‘crontab -e -u [user]’ - edits user’s crontab contents
+
+    			crontab jobs run with the permissions of the owner of the crontab file
+			
+View users crontab
+	crontab -l
+View others users crontab
+	crontab -l -u <username>
+	
+	
+	root		cron -f (Parent Process)
+	root		CRON -f (Child Process)
+	student		<job>
 
 ============================================================
 
