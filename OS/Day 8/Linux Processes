@@ -157,5 +157,20 @@ View others users crontab
 	student		<job>
 
 ============================================================
-
+				Open files for a command
 ============================================================
+
+sudo lsof -c <command>
+Fields to look at
+	Command	Name
+
+Pay attention to numbered files
+	Numbered in order of when they were opened
+	0 - STDERROR
+	1 - STDIN
+	2 - STDOUT
+	
+View open network sockets
+	ls -l /proc/net/
+	cat /proc/net/<tcp or udp>
+	
