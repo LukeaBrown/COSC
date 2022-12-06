@@ -1,0 +1,176 @@
+============================================================
+					Windows Artifacts
+============================================================
+Objects or areas within a computer system that contain important information relevant to the activities performed on the system by the user.
+
+Getting User SID
+	(POWERSHELL) -- get-wmiobject win32_useraccount | select name,sid 
+		Show local and domain Users with SID
+	(POWERSHELL) -- get-localuser | select name,sid 
+		Show local Users and SID
+	(CMD) -- wmic useraccount get name,sid 
+	
+The GUID represents a particular file extension.
+    - CEBFF5CD-ACE2-4F4F-9178-9926F41749EA >>> A list of applications, files, links, and other objects that have been accessed
+    - F4E57C4B-2036-45F0-A9AB-443BCFE33D9F >>> Lists the Shortcut Links used to start programs	
+		
+	The UserAssist registry key tracks the GUI-based programs that were ran by a particular user.
+		Get-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
+		
+	Look at all users Userassist artifacts
+		Get-ItemProperty "Registry::Hkey_Users\*\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
+			##Replace * with user sid for looking at specific user.
+
+============================================================
+		Windows Background Activity Moderator (BAM)
+============================================================
+Windows service that Controls activity of background applications.This service exists only in Windows 10 
+	Provides:
+		- full path of an executable
+		- last execution date/time.
+		
+Location:	HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bam\State\UserSettings
+
+BAM entries for every user on the system
+	Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\*
+Bam Entries for a specific user
+	Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings\<User SID>
+
+============================================================
+						Recycle Bin
+============================================================
+When a user deletes a file in Windows it goes into the Recycle bin. This data is recoverable during an investigation using built in tools.
+
+Content in the recycle bin is identified by:
+	SID - determines which user deleted it
+	Timestamp - When it was deleted
+	$RXXXXXX - content of deleted files
+	$IXXXXXX - original PATH and name
+	
+Find the Contents of the Recycle Bin
+	Get-Childitem 'C:\$RECYCLE.BIN' -Recurse -Verbose -Force
+	
+Match SID to USER:
+	wmic useraccount where 'sid="S-1-5-21-1584283910-3275287195-1754958050-1005"' get name
+	
+Reads the contents of a particular file within the Recycle BIN
+	Get-Content 'C:\$Recycle.Bin\S-1-5-21-1584283910-3275287195-1754958050-1005\$R8QZ1U8.txt'
+
+============================================================
+						Prefetch
+============================================================
+Prefetch files are created by the windows operating system when an application is run from a specific location for the first time.
+
+Shows the programs that were run and when they were executed that are stored in the Prefetch location.
+	Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue
+
+============================================================
+					Jump Lists
+============================================================
+Engineered to allow users to “jump” or access items they have frequently or recently used quickly and easily.
+
+The data stored in the Automatic Destinations folder will each have a unique file prepended with the AppID of the associated application.
+    First time of execution of application.
+    Creation Time = First time item added to the AppID file.
+    Last time of execution of application w/file open.
+    Modification Time = Last time item added to the AppID file.
+
+Programs/Items that were recently used
+	Get-Childitem -Recurse C:\Users\*\AppData\Roaming\Microsoft\Windows\Recent -ErrorAction Continue | select FullName, LastAccessTime
+	
+============================================================
+					Recent Files
+============================================================
+Registry Key that will track the last files and folders opened and is used to populate data in “Recent” menus of the Start menu.
+    Tracks last 150 files or folders opened.
+    Entry and modification time of this key will be the time and location the last file of a specific extension was opened.
+	
+Location
+    HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+    HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt
+	
+Query the Hex Value Stored in the Key
+	Get-Item 'Registry::\HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.*'
+	
+Converting a Single Value from Hex to Unicode
+	[System.Text.Encoding]::Unicode.GetString((gp "REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt")."0")
+Convert all of a users values from HEX to Unicode
+	[System.Text.Encoding]::Unicode.GetString((gp "REGISTRY::HKEY_USERS\*\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt")."0")
+		Get-Item "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" | select -Expand property | ForEach-Object {
+    [System.Text.Encoding]::Default.GetString((Get-ItemProperty -Path "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" -Name $_).$_)
+
+============================================================
+					Browser Artifacts
+============================================================
+Stores details for each user account. Records number of times a site is visited (frequency).
+
+Location
+	%USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\history
+		Requires SQlite to view or sysinternals strings.exe
+
+Areas of interest in Google Chrome History Files:
+	1. URLS
+		The urls table contains the basic browsing history for Chrome. This will include a single instance for all the URLs visited, a timestamp for the last time visited, and a counter for the number of times visited.
+	2. Current Session/Tabs
+		If you are examining a system that still has an active session available, Chrome will store the browsing activity here under current session and if there are multiple tabs open it will store it under current tabs.
+	3. Top Sites
+		Chrome shows the user their most frequently visited sites in panels on a homepage, which allows the user to quickly click on a frequently visited site. We recover the data around any URL that is listed as a “Top Site” in Chrome.
+
+Locations
+	Frequency
+		.\strings.exe 'C:\users\andy.dwyer\AppData\Local\Google\Chrome\User Data\Default\History'
+	Most visited
+		strings.exe 'C:\users\andy.dwyer\AppData\Local\Google\Chrome\User Data\Default\Top Sites'
+	User Names
+		strings.exe  'C:\users\andy.dwyer\AppData\Local\Google\Chrome\User Data\Default\Login Data'
+
+============================================================
+						Event Logs
+============================================================
+Logs are records of events that happen in your computer, such as when a user logs on to the computer or when a program encounters an error.
+
+3 types of logs:
+	- Application Log
+	- Security Log
+	- System Log
+	
+Locations
+*.evtx files accessed by:
+    Windows Event View Application
+    Get-Eventlog or Get-WinEvent in Powershell
+    wevtutil in Command Prompt
+	
+Viewing Logs in Command Prompt
+	wevtutil el
+	
+View Event Logs in Powershell
+	Get-EventLog -LogName System -Newest 3 | Format-Table -Wrap -Autosize
+	
+Search the Security Event Log and show the entire message
+	Get-Eventlog -LogName Security | ft -wrap
+	
+Search through the entire Security log for a specific string
+	Get-Eventlog -LogName Security | ft -wrap | findstr /i StR1nG
+	
+- Get-EventLog is limited to the default Windows Logs of Security, Application, System,and Windows Powershell (Windows 8.1 and up)
+
+- Get-Winevent will cover all the default eventlogs and all of the remaining custom application logs
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
