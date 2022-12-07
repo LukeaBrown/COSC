@@ -153,3 +153,6 @@ Show rotated logs
 
 Example
 	Xpath Syntax: xpath -q -e '//element/@attribute' file.xml
+
+Take out certain entries in vim
+	:%! egrep -i -v
