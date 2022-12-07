@@ -32,6 +32,8 @@ Logging at a glance
 ============================================================
 					Logging Daemon
 ============================================================
+RFC 5424
+
 /usr/sbin/rsyslogd
 	User space daemon - Reads messages written to /dev/log and formats and stores them based on /etc/rsyslog.conf rules.
 		syslog() via libc
@@ -80,26 +82,74 @@ Utilize cron jobs / scripts
 	- Logrotate
 		/etc/logrotate.conf
 		How large to let files get. How long to keep them.
+		
 ============================================================
-
+				Useful Logging Commands
 ============================================================
-
-
-============================================================
-
-============================================================
-
-
-============================================================
+tail -f - Continuously show end of file
+less /var/log/syslog - View Log in page viewer
+logger - Send a user generated message to system Log i.e. Starting Update
+> /var/log/messages - Wipes Logs
+last -f /var/log{wtmp,btmp} - Needed to view data files
 
 ============================================================
+				Auditing vs Logging
+============================================================
+Logging system/application defined
+Auditing is user defined
+[kauditd] - runs at the kernel level and can monitor individual syscalls (/sbin/auditd)
+auditctl - control/config command
+aureport - summary reports of audit logs
+ausearch - query audit logs
 
+# Wipe rule cponfig file for auditd
+	cat /dev/null > /etc/audit/audit.rules
+
+# List any Filesystem or System Call rules
+	auditctl -l
+
+# Show summary report
+	aureport
+	
+# Show authentication logs
+	aureport -au
 
 ============================================================
+						Journald
+============================================================
+Systemd logging daemon
+
+Tell journalctl to show the last logs its received with -e
+	journalctl -e
+	
+Show boot ids which separate logs based on when the machine was restarted
+	ournalctl --list-boots
+
+Tell journalctl to only show logs relating to that boot id.
+	journalctl -b b3076f6774b841e08c19236bf327f529
+	
+Show only ssh.service logs in journalctl
+	journalctl -u ssh.service
+
+Filtering Logs since a specific time period
+	journalctl -u ssh.service --since "2 days ago"
 
 ============================================================
+					Log Rotation
+============================================================
+Show Log Rotations
+	cat /etc/logrotate.conf
+	
+Show rotated logs
+	ls -l /var/log
 
+##vim and zcat will read zip files without extracting them.
 
 ============================================================
-
+					Markup Languages
 ============================================================
+- Human readable, but designed to be parsed using special programs.
+- Uses a schema like HTML so it has tags and attributes like a webpage. Also, it is serialized.
+
+Example
+	Xpath Syntax: xpath -q -e '//element/@attribute' file.xml
