@@ -1,0 +1,79 @@
+============================================================
+					Active Directory
+============================================================
+Adminsitrator Best Practices
+	- Least privilege
+		Enure users only have enough permissions to do their job.
+	- Group Nesting
+		Dont have group inside other groups, as they will take the permissions of the parent group
+	- Administrator Local Login
+		Local logining in to admin accounts should be disabled.
+
+	Get-ADDefaultDomainPasswordPolicy
+Get active directory forest
+	get-adforest
+get domains
+	get-addomain
+Find all domain groups
+	get-adgroup -filter *
+	
+Get specific domain group and users
+	get-adgroup -Identity 'Power Users' -recursive
+		get-adgroupmember -Identity 'Power Users' -recursive
+		
+get all active domain users
+	get-adgroupmember -Identity 'Power Users' -recursive
+	
+view specific domain user
+	get-aduser -Identity 'Ramon.Gibbs' -Properties description, telephonenumber
+	get-aduser -Identity 'Ramon.Gibbs' -Properties *
+
+============================================================
+					Sid Breakdown
+============================================================
+S-1-5-32-546
+
+S = SID identifier
+1 = Revision level
+5 = Identifier Atuhroity Level
+32 = First subauthority value
+546 = Second subauthority value
+
+============================================================
+					Enumerate users
+============================================================
+Find disabled users
+	GET-ADUSER -Filter {Enabled -eq "FALSE"} -Properties name, enabled
+	
+Enalbe user and give them a privileged group
+	Enable-ADAccount -Identity Guest
+	Set-AdAccountPassword -Identity guest -NewPassword (ConvertTo-SecureString -AsPlaintext -String "PassWord12345!!" -Force)
+	get-adgroup -filter *
+	Add-ADGroupMember -Identity "Administrators" -members Guest
+	
+View all admin group members that are enabled
+	Get-ADGroupMember -Identity "Administrators" -Recursive | %{Get-ADUser -Identity $_.DistinguishedName} | select name, Enabled
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
