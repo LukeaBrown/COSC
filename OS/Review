@@ -48,6 +48,7 @@ netstat -anob (Win) -anop (Linux)
 What's going on?
 Why?
 How?
+Whats in there?
 
 sudo -l
 lsof
