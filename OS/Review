@@ -1,0 +1,53 @@
+============================================================
+					Connect to systems
+============================================================
+xfreerdp /u:student /v:10.50.42.27 /dynamic-resolution +glyph-cache +clipboard
+http://live.sysinternals.com/
+
+============================================================
+						Windows
+============================================================
+Looks for sonsecutive number, extremely large numbers, and werd ports.
+
+tcpview - sysinternals
+get-nettcpconnection - powershell
+netstat -anob (Win) -anop (Linux)
+
+#Processes
+	get-process
+	tasklist 
+	procexp - Sysinternals
+
+#services
+	scquery
+	autoruns - sysinternals
+	get-service	
+	
+#Artifacts
+	$Recycle Bin
+		$I - Full path of files
+		$R - aplications and executables
+	Jump-Lists
+	Recent Files
+	Prefetch
+	Userassist - Rot13
+	
+#Persistance
+	autoruns
+	run key
+	scheduled tasks
+	
+#Query registry keys
+	reg query
+	reg edit
+	
+	
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
