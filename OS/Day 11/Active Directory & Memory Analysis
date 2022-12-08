@@ -55,25 +55,96 @@ View all admin group members that are enabled
 	Get-ADGroupMember -Identity "Administrators" -Recursive | %{Get-ADUser -Identity $_.DistinguishedName} | select name, Enabled
 
 ============================================================
+ Resultant Set of Policy (RSoP)
+============================================================
+gpresult /user administrator /v
+geresult /r
 
 ============================================================
-
+Group Nesting
+============================================================
+	Get-ADGroupMember -Identity 'Domain Admins' | select name
+		name
+		----
+		Administrator
+		System Admins LV1
+		
+	Get-ADGroupMember -Identity 'System Admins LV1' | select name
+		name
+		----
+		System Admins
+		
+	Get-ADGroupMember -Identity 'System Admins' | select name
+		
 
 ============================================================
+			Memory Analysis Using Volatility
+============================================================
+Order of Volatility - The Halflife of Data
+	1. CPU registers, cache
+	2. Routing Table, ARP cache, proccess table, kernel stats, memory
+	3. Temporary file systems
+	4. Disk
+	5. Remote logging and monitoring data
+	6. Physical configuration, network topology
+	7. Archival media - backups
 
 ============================================================
+				Installing Volatility
+============================================================
+Installing the Python version of Volatility
+	Download python < 3.0
 
+            Click "Add python to path"
+
+        Download Volatility from git
+
+        Run install: setup.py install
+		
+		    Some dependencies are missing. Need to install:
+
+        diStorm3
+
+            click "distorm3-3.3.4.win-amd64.exe"
+
+        Visual C++ Compiler
+
+        pyCrypto or python -m pip install pycrypto
+
+        Yara for python 2.7
+
+        openpyxl: python -m pip install openpyxl
+
+        ujson: python -m pip install ujson
 
 ============================================================
-
+					Aquiring Memory
 ============================================================
+cd 'C:\Users\andy.dwyer\Desktop\Memory Analysis'
 
+#Help page
+.\volatility_2.6_win64_standalone.exe -h
 
-============================================================
+#Grab image info
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem imageinfo
 
-============================================================
+#Grab Last Running Processes
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem --profile=WinXPSP2x86 pslist
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem --profile=WinXPSP2x86 psscan
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem --profile=WinXPSP2x86 pstree
 
+#Dump a specific executable to determine if ,alware of some kind.
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem --profile=WinXPSP2x86 procdump -p 1640 -D .
+ls
+Get-FileHash .\executable.1640.exe
 
-============================================================
+#Memory Dump
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem --profile=WinXPSP2x86 memdump -p 1640 -D .
+C:\Users\andy.dwyer\Desktop\SysinternalsSuite\strings.exe -accepteula .\1640.dmp > .\1640.txt
+    #edit with notepad++
+    #search -> find -> regex ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
 
-============================================================
+#Active TCP Connections
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem --profile=WinXPSP2x86 connections
+#Most Recent Connections
+.\volatility_2.6_win64_standalone.exe -f .\cridex.vmem --profile=WinXPSP2x86 connscan
