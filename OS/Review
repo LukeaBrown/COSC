@@ -43,9 +43,30 @@ netstat -anob (Win) -anop (Linux)
 	
 	
 ============================================================
-
+						Linux
 ============================================================
+What's going on?
+Why?
+How?
 
+sudo -l
+lsof
+htop / top / ps | grep <open suspicious port>
+	Look at parent process
+		ls -l /sbin/init
+		
+sysv
+	/etc/inittab
+	run level rc directories
+	
+Cron Jobs
+	User field = Whose are they
+	 	System
+			/etc/crontab
+		/etc/cron
+		User
+		
+		
 
 ============================================================
 
