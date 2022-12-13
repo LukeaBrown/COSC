@@ -1,3 +1,88 @@
+TmV0d29ya2luZyBpcyBiZXN0ZXN0Cg==
+============================================================
+						OSI Model
+============================================================
+Physical Layer:
+	Hardware Specifications
+	Encoding and Signaling
+	Data Transmission and Reception
+	Physical Network Design
+	
+
+
+============================================================
+			Ethernet Header (64-1518 bytes)
+============================================================
+Destination MAC Addr	Source MAC Addr		Ethertype		Payload/Data/SDU  
+Ethertype
+ 	0x0800 - IPv4
+	0x0806 - ARP
+	0x86DD - IPv6
+	0x8100 - VLAN Tag
+  
+============================================================
+Fragmentation Process
+============================================================
+https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/Fragmentation.png
+
+============================================================
+IPv6 Header
+============================================================
+https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/IPv6_Header.png
+
+============================================================
+Fingerprinting
+============================================================
+Operating System	IP Iniital TTL		TCP window size
+Linux				64					5840
+Googles' linux		64					5720
+FreeBSD				64					65535
+Windows XP			128					65335
+Windows 7, Vista	128					8192
+Cisco router		255					4128
+
+============================================================
+					Zero Configuration
+============================================================
+IPv4 Auto Configuration
+	APIPA
+	RFC 3927
+	
+IPv6 Auto Configuration
+	SLAAC (StateLess Address Auto-configuration)
+	RFC 4862
+
+============================================================
+					SSH Architecture
+============================================================
+Server
+
+Client
+
+Session
+
+Keys:
+	User Key - Asymmetric public key used to identify the user to the server
+	Host Key - Asymmetric public key used to identify the server to the user
+	Session Key - Symmetric key created by the client and server to protect the session’s communication.
+	
+Key Generator
+
+Known-Hosts Database - collection of host keys that the client and server use for mutual authentication.
+
+Agent - Stores keys as a convenience for users (prevents constant passphrase entry prompt)
+
+Signer - signs the host-based authentication packets
+
+Random Seed - used for entropy in creating pseudo-random numbers
+
+Configuration File - settings that exist on the client and server to dictate configuration of ssh and sshd respectively.
+
+============================================================
+
+============================================================
+
+
 ============================================================
 
 ============================================================
