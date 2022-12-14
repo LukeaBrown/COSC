@@ -1,0 +1,61 @@
+============================================================
+				Network Traffic Sniffing
+============================================================
+Capture Library
+  - Libpcap
+  - WinPcap
+  - NPCAP
+
+============================================================
+					TCPDUMP Demo
+============================================================
+Set up listening interfaces
+	sudo tcpdump -D
+	
+Run tcpdump on eth0 interface
+	sudo tcpdump -i eth0
+	
+View most relevant information and headers
+	sudo tcpdump -i eth0 -vvnXX
+	
+View spedic network traffic based on port numbers
+	sudo tcpdump port 80 or 80 -vvnXX
+
+============================================================
+				Berkeley packet Filters
+============================================================
+tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 && tcp[2:2] != 23)'
+
+tcpdump {A} [B:C] {D} {E} {F} {G}
+
+A = Protocol (ether | arp | ip | ip6 | icmp | tcp | udp)
+B = Header Byte offset
+C = optional: Byte Length. Can be 1, 2 or 4 (default 1)
+D = optional: Bitwise mask (&)
+E = Operator (= | == | > | < | <= | >= | != | () | << | >>)
+F = Result of Expresion
+G = optional: Logical Operator (&& ||) to bridge expressions
+
+============================================================
+					Bitwise Masking
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
