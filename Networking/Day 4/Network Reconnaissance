@@ -1,0 +1,147 @@
+============================================================
+						Reconnaissance
+============================================================
+Active/Passive Internal/External Graphic
+https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/Recon2.png
+
+============================================================
+				Passive Reconnaissance
+============================================================
+- Gathering information about targets without direct interaction
+
+- Not as straight forward and requirews more time than active Reconnaissance
+
+- Lower risk of discovery
+
+- Involves identifying:
+	- IP addresses and Sub-Doomains
+	- External and 3rd party sites
+	- People and Technologies
+	- Content of Interest
+	- Vulnerabilites
+	
+- Possible tools for gathering
+	- WHOIS queries
+	- Job site listings
+	- Phone numbers
+	- Google searches
+	- Passive OS fingerprinting
+
+============================================================
+			Passive External Network Reconnaissance
+============================================================
+	- information gathered outside of the network using passive methods
+ 
+	- Allows for more efficient attacks and plans
+	
+DNS
+	- Resolves hostnames to IP addresses
+	
+	- RFC 3912
+	
+	- WHOIS queries
+	
+DIG
+	- Typically between primary and secondary DNS servers
+	
+	- If allowed to transfer externally hostnames, IPs, and IP blocks can be determined
+	
+		+ dig zonetransfer.me A
+		+ dig zonetransfer.me TXT
+		+ dig zonetransfer.me MX
+	
+Zone Transfers
+	- Returns DNS information
+	
+	- Supplements base queries
+	
+Host History
+	- netcraft
+	
+	- wayback machine
+	
+SHODAN
+	- Reveals information about technologies, remote access services, improperly configured services, and network infrastructure.
+
+    - When selected can give additional information and applicable vulnerabilities
+
+============================================================
+					Network Scanning
+============================================================
+Strategies:
+	- Remote to Local
+
+	- Local to Remote
+
+	- Local to Local
+
+	- Remote to Remote
+	
+Scanning Approach:
+	- Aim
+		- Wide range target scan
+		
+		- Target specific scan
+		
+	-Method
+		- Single source scan
+		
+		- Distributed scan
+		
+Scans:
+	- Broadcast Ping and Ping sweep
+
+	- ARP scan
+
+	- SYN scan
+
+	- Full connect scan
+
+	- Null scan
+
+	- FIN scan
+
+	- XMAS tree scan
+
+	- UDP scan
+
+	- Idle scan
+	
+	- ACK/Window scan
+
+	- RPC scan
+
+	- FTP scan
+
+	- decoy scan
+
+	- OS fingerprinting scan
+
+	- version scan
+
+	- Protocol ping
+
+	- Discovery probes
+
+	- SCTP INIT scan
+	
+============================================================
+				Network Scanning - Code
+============================================================
+nmap [Options] [Target IP/ Subnet]
+
+nc [Options] [Target IP] [Target Port]
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
+
+
+============================================================
+
+============================================================
