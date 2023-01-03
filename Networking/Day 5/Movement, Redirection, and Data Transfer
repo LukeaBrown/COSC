@@ -1,35 +1,129 @@
 ============================================================
+					Transferring Data
+============================================================
+TFTP (Trivial File Transfer Protocol)
+	- RFC 1350 Rev2
+	- UDP Transport
+	- Small and simple communication
+	- No terminal communication
+	- No authentication or encryption
+	- No directory services
+	- Used often for BOOTP and PXE
+FTP
+	- RFC 959
+	- TCP Transport
+	- Multiple TCP connections
+		Control Connection - 21
+		Data connections - 20
+	- Clear text authentication
+	- Insecure in default configuration
+	- Has Directory services
+	- Can be enhanced with SSL/TLS (FTPS)
+SFTP
+	- TCP transport (TCP port 22)
+	- Uses symmetric and asymmetric encryption
+	- Adds FTP like services to SSH
+	- Authentication through sign in (username and password) or with SSH key
+	- Interactive terminal access
+
+SCP
+	- TCP Transport (TCP port 22)
+	- Uses symmetric and asymmetric encryption
+	- Authentication through sign in (username and password) or with SSH key
+	- Non Interactive
+
+	#local to Remote File tranfer with SCP
+		scp secretstuff.txt student@10.50.22.243:
+		
+	#Remote to Local Transfer
+		scp student@172.16.82.106:topsecret.txt .
+		
+	#Remote to Remote Transfer
+		scp -3 student@172.16.82.106:neato student@172.16.82.112:
+		
+	#Alternate SSH port
+		scp -P port local remote
+	
+FTPS
+	- TCP transport (TCP port 443)
+	- Adds SSL/TLS encryption to FTP
+	- Authentication with username/password and/or PKI
+	- Interactive terminal access
 
 ============================================================
+					Traffic Redirection
+============================================================
+Netcat
+	- Can be used for the following:
+		- inbound and outbound connections, TCP/UDP, to or from any ports
+		- troubleshooting network connections
+		- sending/receiving data (insecurely)
+		- port scanning (similar to -sT in Nmap)
+		
+	#Send file through a listener to another file
+		nc -lp 8080 < stretchypants.txt
+		
+		nc 10.10.0.40 8080 > nacho
+		
+	NETCAT: Client to listener file transfer
+		Client (sends file): nc 10.2.0.2 9001 < file.txt
+		Listener (receive file): nc -l -p 9001 > newfile.txt
 
+	Named Pipes
+		mknod mypipe p
+		mkfifo piper
+	
+	Relay
+		nc -nv 172.16.82.106 1111
+		nc -lp 3333 0<mypipe | nc -lp 1111 1>mypipe
+		nc 172.16.82.106 3333 < sus.txt
+		
+============================================================
+					Network Tunneling
+============================================================
+Various Implementations (v1 and v2)
+Provides authentication, encryption, and integrity.
+Allows remote terminal sessions
+Used for tunneling
+Created as a secure replacement for Berkeley Remote commands:
+	- rsh - replaced with ssh, provides a channel for running a shell on a remote computer.
+	- rlogin - replaced with rlogin, provides remote login capability.
+	- rcp - replaced with scp for secure file transfer
+sftp (not a unix r command replacement) - creates remote directory listing and file transfer capability over SSH
 
 ============================================================
+					NET RECON METHODOLOGY
+============================================================
+1. Host Discovery (ping sweep, scan.sg, nc)
+	nmap -Pn 192.168.0.1 -p 21-23,80 -T4 | egrep -i "scan report|open|succ"
+	nmap -Pn 192.168.0.1,27,55 -p 21-23,80 -T4
+	nmap -Pn 192.168.0.1/24 -p 21-23,80 -T4
+	for i in {1..254} ;do (ping -c 192.168.1.$i 2>/dev/null | grep "bytes from" &) ;done
+	./scan.sh
+
+2. Port discovery (nmap, nc, scan.sh)
+3. Port Validation (banner grab with nc)
+	nc 192.168.0.1/ 22
+4. Follow on actions based on ports found:
+	4a. If 22 or 23, CONNECT TO IT and do PASSIVE RECON
+	4b. If 21 or 80, PULL THE FILES (wget -r <IP ADDR>, wget -r http://ip_addr, wget -r ftp://ip_addr)
 
 ============================================================
+					SCAN METHODOLOGY
+============================================================
+1. Quick Scan Ports: 21-23, 80
+2. Well Known Ports: 0-1023
+3. Chunks of 2000 (1024-3024)
+4. First 10000 parts
+5. Hail Mary (all the ports R belong to us)
 
 ============================================================
-
+				PASSIVE RECON METHODOLOGY
 ============================================================
+1. Hostname
+2. Interfaces/subnets? ip a
+3. Neighbors? arp -a, ip neigh
+4. Files of Interest? find, ls
+5. Other listening ports? netstat -nltp, ss -nltp
+6. Available Tools? which tcpdump wireshark nmap nc telnet wget
 
-
-============================================================
-
-============================================================
-
-============================================================
-
-============================================================
-
-
-============================================================
-
-============================================================
-
-============================================================
-
-============================================================
-
-
-============================================================
-
-============================================================
