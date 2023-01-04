@@ -127,3 +127,7 @@ sftp (not a unix r command replacement) - creates remote directory listing and f
 5. Other listening ports? netstat -nltp, ss -nltp
 6. Available Tools? which tcpdump wireshark nmap nc telnet wget
 
+============================================================
+SSH Dynamic Port Forwarding
+============================================================
+ssh -D <port> -p <alt port> <user>@<pivot ip> -NT
