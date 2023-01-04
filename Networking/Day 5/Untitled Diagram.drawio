@@ -1,35 +1,163 @@
-<mxfile host="app.diagrams.net" modified="2023-01-03T21:24:10.674Z" agent="5.0 (X11)" version="20.8.0" etag="arGD-tO_PIh11W5epglh" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-01-04T15:59:10.952Z" agent="5.0 (X11)" etag="DoLCUF3d1y0Dpn17y1jo" version="20.8.0" type="github" pages="2">
   <diagram id="7zNDK23arRzc1YxvEAij" name="Page-1">
-    <mxGraphModel dx="804" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="822" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="PjDHVibkdD0pz717Lirt-1" value="&lt;div&gt;IH&lt;/div&gt;&lt;div&gt;10.50.22.243&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="PjDHVibkdD0pz717Lirt-1" value="&lt;div&gt;IH&lt;/div&gt;&lt;div&gt;10.50.22.243&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="160" y="640" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="HclEa4xDX47lZjebfP_8-1" value="&lt;div&gt;192.168.0.1/24&lt;br&gt;&lt;/div&gt;&lt;div&gt;Initial &lt;br&gt;&lt;/div&gt;&lt;div&gt;Pivot&lt;/div&gt;&lt;div&gt;22(f)&lt;br&gt;&lt;/div&gt;&lt;div&gt;23&lt;/div&gt;&lt;div&gt;80&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="HclEa4xDX47lZjebfP_8-1" value="&lt;div&gt;192.168.0.1/24&lt;br&gt;&lt;/div&gt;&lt;div&gt;Initial &lt;br&gt;&lt;/div&gt;&lt;div&gt;Pivot&lt;/div&gt;&lt;div&gt;22(f)&lt;br&gt;&lt;/div&gt;&lt;div&gt;23&lt;/div&gt;&lt;div&gt;80&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="390" y="630" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="HclEa4xDX47lZjebfP_8-2" value="&lt;div&gt;&lt;u&gt;NET RECON METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Host Discovery (ping sweep, scan.sg, nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;nmap -Pn 192.168.0.1 -p 21-23,80 -T4 | egrep -i &quot;scan report|open|succ&quot;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;nmap -Pn 192.168.0.1,27,55 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;nmap -Pn 192.168.0.1/24 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;for i in {1..254} ;do (ping -c 192.168.1.$i 2&amp;gt;/dev/null | grep &quot;bytes from&quot; &amp;amp;) ;done&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;./scan.sh&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Port  discovery (nmap, nc, scan.sh)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Port Validation (banner grab with nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;nc 192.168.0.1/ 22&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. Follow on actions based on ports found:&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;4a. If 22 or 23, CONNECT TO IT and do PASSIVE RECON&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;4b. If 21 or 80, PULL THE FILES (wget -r &amp;lt;IP ADDR&amp;gt;, wget -r http://ip_addr, wget -r ftp://ip_addr)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="HclEa4xDX47lZjebfP_8-2" value="&lt;div&gt;&lt;u&gt;NET RECON METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Host Discovery (ping sweep, scan.sg, nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1 -p 21-23,80 -T4 | egrep -i &quot;scan report|open|succ&quot;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1,27,55 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1/24 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;for i in {1..254} ;do (ping -c 192.168.1.$i 2&amp;gt;/dev/null | grep &quot;bytes from&quot; &amp;amp;) ;done&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;./scan.sh&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Port  discovery (nmap, nc, scan.sh)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Port Validation (banner grab with nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nc 192.168.0.1/ 22&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. Follow on actions based on ports found:&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;4a. If 22 or 23, CONNECT TO IT and do PASSIVE RECON&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;4b. If 21 or 80, PULL THE FILES (wget -r &amp;lt;IP ADDR&amp;gt;, wget -r http://ip_addr, wget -r ftp://ip_addr)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry y="160" width="480" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="HclEa4xDX47lZjebfP_8-6" value="&lt;div&gt;&lt;u&gt;SCAN METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Quick Scan Ports: 21-23, 80&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Well Known Ports: 0-1023&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Chunks of 2000 (1024-3024)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. First 10000 parts&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;5. Hail Mary (all the ports R belong to us)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="HclEa4xDX47lZjebfP_8-6" value="&lt;div&gt;&lt;u&gt;SCAN METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Quick Scan Ports: 21-23, 80&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Well Known Ports: 0-1023&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Chunks of 2000 (1024-3024)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. First 10000 parts&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;5. Hail Mary (all the ports R belong to us)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="120" y="380" width="210" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="HclEa4xDX47lZjebfP_8-9" value="&lt;div&gt;&lt;u&gt;PASSIVE RECON METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Hostname&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Interfaces/subnets? ip a&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Neighbors? arp -a, ip neigh&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. Files of Interest? find, ls&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;5. Other listening ports? netstat -nltp, ss -nltp&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;6. Available Tools? which tcpdump wireshark nmap nc telnet wget&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="HclEa4xDX47lZjebfP_8-9" value="&lt;div&gt;&lt;u&gt;PASSIVE RECON METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Hostname&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Interfaces/subnets? ip a&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Neighbors? arp -a, ip neigh&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. Files of Interest? find, ls&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;5. Other listening ports? netstat -nltp, ss -nltp&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;6. Available Tools? which tcpdump wireshark nmap nc telnet wget&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="70" y="480" width="310" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="HclEa4xDX47lZjebfP_8-11" value="&lt;div&gt;@IH wget -r http://192.168.0.1&lt;/div&gt;&lt;div&gt;@IH ls (192.168.0.1)&lt;/div&gt;&lt;div&gt;@IH cd 192.168.0.1&lt;/div&gt;&lt;div&gt;ls&lt;/div&gt;&lt;div&gt;hint1.png&lt;/div&gt;&lt;div&gt;@IH: eom hint1.png&lt;/div&gt;&lt;div&gt;@IH telnet 192.168.0.1&lt;/div&gt;&lt;div&gt;@Initial Pivot: &lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="HclEa4xDX47lZjebfP_8-11" value="&lt;div&gt;@IH wget -r http://192.168.0.1&lt;/div&gt;&lt;div&gt;@IH ls (192.168.0.1)&lt;/div&gt;&lt;div&gt;@IH cd 192.168.0.1&lt;/div&gt;&lt;div&gt;ls&lt;/div&gt;&lt;div&gt;hint1.png&lt;/div&gt;&lt;div&gt;@IH: eom hint1.png&lt;/div&gt;&lt;div&gt;@IH telnet 192.168.0.1&lt;/div&gt;&lt;div&gt;@Initial Pivot: &lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="120" y="725" width="160" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="u5nmb-pmG8p4cwbTZxRo" name="Page-2">
-    <mxGraphModel dx="1407" dy="1074" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram id="u5nmb-pmG8p4cwbTZxRo" name="SHH Tunneling">
+    <mxGraphModel dx="1842" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="49NkRZBQjTo_p9Dt8vRW-4" value="&lt;div&gt;Connection Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="51" y="942" width="166" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="49NkRZBQjTo_p9Dt8vRW-3" value="&lt;div&gt;Tunnel Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="217" y="942" width="73" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="49NkRZBQjTo_p9Dt8vRW-2" value="&lt;div align=&quot;left&quot;&gt;172.16.82.0/27&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;(.1-.30)&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;.1 B (eth1)&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;strokeColor=default;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="290" width="300" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-44" value="&lt;div&gt;Tunnel Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="159" y="837" width="133" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-45" value="&lt;div&gt;Connection Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="61" y="837" width="98" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-17" value="&lt;div&gt;Connection Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="10" y="340" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-5" value="ssh" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="120" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-7" value="-R" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-8" value="-D" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="120" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-9" value="-NT" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-10" value="-L" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-11" value="9050" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="80" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-12" value="localhost" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="120" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-13" value="ssh" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="360" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-14" value="-p PORT" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="80" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-15" value="-p PORT" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="360" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-16" value="USER@IP_ADDRESS" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="360" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-49" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;" edge="1" parent="1" source="bUNB_9pCfM0xM4ogcWUX-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-19" value="&lt;div&gt;INTERNET_HOST&lt;/div&gt;&lt;div&gt;Tunnel Ports:&lt;/div&gt;&lt;div&gt;12345 -&amp;gt; B&lt;/div&gt;&lt;div&gt;1721 -&amp;gt; 172.16.82.22 (telnet)&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="120" y="520" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-20" value="USER@IP_ADDRESS" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="160" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-21" value="&lt;div&gt;Connection Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-22" value="&lt;div&gt;Tunnel Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="80" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-23" value="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;Definitions:&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;-L is a local port forward (Wherever you RAN THE COMMAND from)&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;-D dynamic port forward. can only be one. Gets made locally where &lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;you RAN THE COMMAND. Default port for proxychains is 9050&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="680" y="90" width="390" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-25" value="&lt;div&gt;A&lt;/div&gt;&lt;div&gt;22&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="360" y="520" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-26" value="PORT:IP_ADDRESS:PORT" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="200" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-28" value="&lt;div&gt;Tunnel Piece&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="340" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-29" value="-L" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-31" value="PORT:IP_ADDRESS:PORT" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="360" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-32" value="-NT" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p9xIMbihNqj7WDHYV2rm-3" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;" edge="1" parent="1" source="bUNB_9pCfM0xM4ogcWUX-36" target="p9xIMbihNqj7WDHYV2rm-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9xIMbihNqj7WDHYV2rm-4" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;" edge="1" parent="1" source="bUNB_9pCfM0xM4ogcWUX-36" target="p9xIMbihNqj7WDHYV2rm-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-36" value="&lt;div&gt;B&lt;br&gt;&lt;/div&gt;&lt;div&gt;4444(alt-ssh)&lt;/div&gt;&lt;div&gt;&lt;b&gt;eth0&lt;/b&gt;:&lt;/div&gt;&lt;div&gt;&amp;nbsp;192.168.0.25/24&lt;/div&gt;&lt;div&gt;&lt;b&gt;eth1&lt;/b&gt;:&lt;/div&gt;&lt;div&gt;&amp;nbsp;172.16.82.1/27&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="600" y="520" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-39" value="&lt;div align=&quot;left&quot;&gt;&lt;u&gt;Terminal Pane [1]&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH ssh username@A_IP&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@A ssh -p 4444 username@B_IP&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@B exit&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@A exit&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH ssh username@A_IP -L 12345:B_IP:4444 -NT&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry y="730" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-43" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeColor=default;" edge="1" parent="1" source="bUNB_9pCfM0xM4ogcWUX-41" target="bUNB_9pCfM0xM4ogcWUX-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-41" value="12345" style="whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="1">
+          <mxGeometry x="200" y="630" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-42" value="4444" style="whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="1">
+          <mxGeometry x="610" y="630" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-50" value="&lt;div align=&quot;left&quot;&gt;&lt;u&gt;Terminal Pane [2]&lt;/u&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH ss - #Verify Making of your tunnel port with ss/netstat. You should see &quot; 127.0.0.1:12345&quot;&lt;/div&gt;&lt;div&gt;@IH ssh -p 12345 username@127.0.0.1 &lt;b&gt;{{--or--&lt;/b&gt;}} ssh -p 12345 username@localhost&lt;/div&gt;&lt;div&gt;@B ip a&lt;/div&gt;&lt;div&gt;@B exit&lt;/div&gt;&lt;div&gt;@IH ssh -p 12345 username@localhost -D 9050 -NT&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry y="875" width="520" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bUNB_9pCfM0xM4ogcWUX-51" value="C" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="385" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="49NkRZBQjTo_p9Dt8vRW-5" value="&lt;div align=&quot;left&quot;&gt;&lt;u&gt;Terminal Pane [3]&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH ss -ntlp&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH proxychains nmap -Pn 172.16.82.0/27 -p 21-23,80 -T4 | egrep -i &quot;scan report|open|succ&quot;&lt;br&gt;&lt;/div&gt;&lt;div&gt;@IH proxychains wget -r 172.16.82.22&lt;/div&gt;&lt;div&gt;@IH proxychains telnet &lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;#DONT DO THIS&lt;/div&gt;&lt;div&gt;@IH &lt;u&gt;ssh -p 12345 username@localhost&lt;/u&gt; &lt;u&gt;-L 1721:172.16.82.22:23 -NT&lt;/u&gt; &lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;Connection to B&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;tunnel to .22&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry y="985" width="520" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p9xIMbihNqj7WDHYV2rm-1" value="&lt;div&gt;C&lt;/div&gt;&lt;div&gt;.22&lt;/div&gt;&lt;div&gt;23, 80&lt;/div&gt;&lt;div&gt;22 (filtered)&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="840" y="560" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p9xIMbihNqj7WDHYV2rm-2" value="&lt;div&gt;?&lt;/div&gt;&lt;div&gt;.15&lt;/div&gt;&lt;div&gt;21, 22&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="840" y="680" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="u1P4sUwArEv4shATch_F-5" value="&lt;div align=&quot;left&quot;&gt;&lt;u&gt;Terminal Pane [4]&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH ss -nltp&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH ssh &lt;u&gt;-p 1721 username@localhost&lt;/u&gt;&amp;nbsp;&amp;nbsp; #Connection to 172.16.82.22 maybe???&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@IH telnet localhost 1721&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;@C&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; #Passive Recon Here&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry y="1085" width="450" height="160" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
