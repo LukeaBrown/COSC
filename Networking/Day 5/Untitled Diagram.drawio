@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-05T19:01:11.125Z" agent="5.0 (X11)" etag="f9MZ-HUmicai-R4LQZvg" version="20.8.0" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2023-01-05T19:18:05.666Z" agent="5.0 (X11)" etag="EgXuhAMy59yqBut3eRb6" version="20.8.0" type="github" pages="4">
   <diagram id="7zNDK23arRzc1YxvEAij" name="Page-1">
     <mxGraphModel dx="849" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -180,7 +180,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="l4Gm-F1aQgAJc3ONyCu6" name="Task 3 Map">
-    <mxGraphModel dx="793" dy="537" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="757" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -289,6 +289,18 @@
         </mxCell>
         <mxCell id="MVu3h1OuJh14mWbq166z-1" value="10.3.0.0/24" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="360" y="80" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="HMfbMqwTVdJgWRF5PTAT-1" value="/usr/share/perl/5.28.1/autodie/hints.pm" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="810" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="HMfbMqwTVdJgWRF5PTAT-2" value="/hint.txt" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="235" y="840" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="HMfbMqwTVdJgWRF5PTAT-5" value="&amp;nbsp;" style="text;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="-140" y="920" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="HMfbMqwTVdJgWRF5PTAT-10" value="You are on this workstation as Jose Cuervo, a local strongman. You have the ability to execute commands on this Pineland workstation as an actor for Pineland. Jose has a friend in Atropia that has provided him with the ability to SSH to the Allies&#39; pivot point. You (Jose) should look into providing intel on other interesting workstations in the area controlled by Keith Mohammand, a wanted terrorist. Those workstations are not directly reachable from Atropia, but are on the same subnet as Jose&#39;s workstation which may be used to exfiltrate information. Jose also has a flag that can be found by using the find command on his system. The directory where the flag is found has been commonly used throughout the network." style="whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="190" y="860" width="140" height="230" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
