@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-05T19:57:23.976Z" agent="5.0 (X11)" etag="CB8ZNbL9lRHSHnn2M1qx" version="20.8.0" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2023-01-05T20:45:22.722Z" agent="5.0 (X11)" etag="8ipj1uKQJa89bF3fFrmU" version="20.8.0" type="github" pages="4">
   <diagram id="7zNDK23arRzc1YxvEAij" name="Page-1">
-    <mxGraphModel dx="849" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="846" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -32,7 +32,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="u5nmb-pmG8p4cwbTZxRo" name="SHH Tunneling">
-    <mxGraphModel dx="542" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="538" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -180,7 +180,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="l4Gm-F1aQgAJc3ONyCu6" name="Task 3 Map">
-    <mxGraphModel dx="755" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="833" dy="997" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -200,6 +200,9 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="H-wNZwcdA5rv0CwiOXED-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-2" target="H-wNZwcdA5rv0CwiOXED-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HMfbMqwTVdJgWRF5PTAT-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-2" target="HMfbMqwTVdJgWRF5PTAT-11">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="H-wNZwcdA5rv0CwiOXED-2" value="&lt;div&gt;T3&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
@@ -301,6 +304,15 @@
         </mxCell>
         <mxCell id="HMfbMqwTVdJgWRF5PTAT-10" value="You are on this workstation as Jose Cuervo, a local strongman. You have the ability to execute commands on this Pineland workstation as an actor for Pineland. Jose has a friend in Atropia that has provided him with the ability to SSH to the Allies&#39; pivot point. You (Jose) should look into providing intel on other interesting workstations in the area controlled by Keith Mohammand, a wanted terrorist. Those workstations are not directly reachable from Atropia, but are on the same subnet as Jose&#39;s workstation which may be used to exfiltrate information. Jose also has a flag that can be found by using the find command on his system. The directory where the flag is found has been commonly used throughout the network." style="whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="190" y="860" width="140" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="HMfbMqwTVdJgWRF5PTAT-11" value="&lt;div&gt;.1&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="220" y="-120" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HMfbMqwTVdJgWRF5PTAT-13" value="10.4.0.0/24" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="-150" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="uSp-zlJ4U_TgBg06vTWB-1" value="&lt;div&gt;10.5.0.1&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="320" y="-200" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
