@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-04T21:23:56.487Z" agent="5.0 (X11)" etag="n4ymE3EMJvpV677pPSar" version="20.8.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-01-05T19:01:11.125Z" agent="5.0 (X11)" etag="f9MZ-HUmicai-R4LQZvg" version="20.8.0" type="github" pages="4">
   <diagram id="7zNDK23arRzc1YxvEAij" name="Page-1">
-    <mxGraphModel dx="1474" dy="1074" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="849" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -10,8 +10,8 @@
         <mxCell id="HclEa4xDX47lZjebfP_8-1" value="&lt;div&gt;192.168.0.1/24&lt;br&gt;&lt;/div&gt;&lt;div&gt;Initial &lt;br&gt;&lt;/div&gt;&lt;div&gt;Pivot&lt;/div&gt;&lt;div&gt;22(f)&lt;br&gt;&lt;/div&gt;&lt;div&gt;23&lt;/div&gt;&lt;div&gt;80&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="390" y="630" width="100" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="HclEa4xDX47lZjebfP_8-2" value="&lt;div&gt;&lt;u&gt;NET RECON METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Host Discovery (ping sweep, scan.sg, nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1 -p 21-23,80 -T4 | egrep -i &quot;scan report|open|succ&quot;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1,27,55 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1/24 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;for i in {1..254} ;do (ping -c 192.168.1.$i 2&amp;gt;/dev/null | grep &quot;bytes from&quot; &amp;amp;) ;done&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;./scan.sh&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Port  discovery (nmap, nc, scan.sh)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Port Validation (banner grab with nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;nc 192.168.0.1/ 22&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. Follow on actions based on ports found:&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;4a. If 22 or 23, CONNECT TO IT and do PASSIVE RECON&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt; &lt;/span&gt;4b. If 21 or 80, PULL THE FILES (wget -r &amp;lt;IP ADDR&amp;gt;, wget -r http://ip_addr, wget -r ftp://ip_addr)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry y="160" width="480" height="220" as="geometry" />
+        <mxCell id="HclEa4xDX47lZjebfP_8-2" value="&lt;div&gt;&lt;u&gt;NET RECON METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Host Discovery (ping sweep, scan.sg, nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1 -p 21-23,80 -T4 | egrep -i &quot;scan report|open|succ&quot;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;nmap -Pn 192.168.0.1,27,55 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;nmap -Pn 192.1&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;/span&gt;nmap&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;68.0.1/24 -p 21-23,80 -T4&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;for i in {1..254} ;do (ping -c 192.168.1.$i 2&amp;gt;/dev/null | grep &quot;bytes from&quot; &amp;amp;) ;done&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;./scan.sh&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Port  discovery (nmap, nc, scan.sh)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Port Validation (bannnmap -Pn 10.2.0.0/24 -p 21-23,80 -T4 | egrep -i &quot;scan report|open|succ&quot;er grab with nc)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;nc 192.168.0.1/ 22&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. Follow on actions based on ports found:&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;4a. If 22 or 23, CONNECT TO IT and do PASSIVE RECON&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;&lt;span style=&quot;&quot;&gt; &lt;/span&gt;4b. If 21 or 80, PULL THE FILES (wget -r &amp;lt;IP ADDR&amp;gt;, wget -r http://ip_addr, wget -r ftp://ip_addr)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="-15" y="160" width="510" height="220" as="geometry" />
         </mxCell>
         <mxCell id="HclEa4xDX47lZjebfP_8-6" value="&lt;div&gt;&lt;u&gt;SCAN METHODOLOGY&lt;/u&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1. Quick Scan Ports: 21-23, 80&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;2. Well Known Ports: 0-1023&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;3. Chunks of 2000 (1024-3024)&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;4. First 10000 parts&lt;/font&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;5. Hail Mary (all the ports R belong to us)&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="120" y="380" width="210" height="100" as="geometry" />
@@ -25,20 +25,17 @@
         <mxCell id="O1TgoaBoYxVaw5ZdT5EC-1" value="&amp;nbsp;" style="text;whiteSpace=wrap;html=1;fontSize=24;" parent="1" vertex="1">
           <mxGeometry x="740" y="20" width="40" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="zISjojjxOZ2qw5Va3ejf-1" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;You are on this workstation as Jose &#xa;Cuervo, a local strongman. You have the ability to execute commands on &#xa;this Pineland workstation as an actor for Pineland. Jose has a friend in&#xa; Atropia that has provided him with the ability to SSH to the Allies&#39; &#xa;pivot point. You (Jose) should look into providing intel on other &#xa;interesting workstations in the area controlled by Keith Mohammand, a &#xa;wanted terrorist. Those workstations are not directly reachable from &#xa;Atropia, but are on the same subnet as Jose&#39;s workstation which may be &#xa;used to exfiltrate information. Jose also has a flag that can be found &#xa;by using the find command on his system. The directory where the flag is&#xa; found has been commonly used throughout the network.&lt;/font&gt;" style="text;whiteSpace=wrap;html=1;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="640" width="290" height="130" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="u5nmb-pmG8p4cwbTZxRo" name="SHH Tunneling">
-    <mxGraphModel dx="1474" dy="1074" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="542" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="49NkRZBQjTo_p9Dt8vRW-4" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Connection Piece&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="51" y="807" width="166" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="49NkRZBQjTo_p9Dt8vRW-3" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Tunnel Piece&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="217" y="807" width="73" height="40" as="geometry" />
-        </mxCell>
         <mxCell id="49NkRZBQjTo_p9Dt8vRW-2" value="&lt;div align=&quot;left&quot;&gt;172.16.82.0/27&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;(.1-.30)&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;.1 B (eth1)&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;align=left;rounded=0;labelBackgroundColor=none;arcSize=0;" parent="1" vertex="1">
           <mxGeometry x="1090" y="400" width="300" height="250" as="geometry" />
         </mxCell>
@@ -179,6 +176,128 @@
         <mxCell id="-61bzgpVwBlIhUOnHTZO-10" value="&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;PORT NAMING CONDITION:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;10900-10999&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;net1_student9&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;password9&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelBackgroundColor=none;" parent="1" vertex="1">
           <mxGeometry x="20" y="170" width="340" height="120" as="geometry" />
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="l4Gm-F1aQgAJc3ONyCu6" name="Task 3 Map">
+    <mxGraphModel dx="793" dy="537" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-1" value="&lt;div&gt;IH&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="440" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-2" target="H-wNZwcdA5rv0CwiOXED-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-2" target="H-wNZwcdA5rv0CwiOXED-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-2" target="H-wNZwcdA5rv0CwiOXED-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-2" target="H-wNZwcdA5rv0CwiOXED-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-2" target="H-wNZwcdA5rv0CwiOXED-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-2" value="&lt;div&gt;T3&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-3" target="H-wNZwcdA5rv0CwiOXED-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-3" target="H-wNZwcdA5rv0CwiOXED-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-3" target="H-wNZwcdA5rv0CwiOXED-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-3" target="H-wNZwcdA5rv0CwiOXED-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=8;" edge="1" parent="1" source="H-wNZwcdA5rv0CwiOXED-3" target="H-wNZwcdA5rv0CwiOXED-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-3" value="T4" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="200" y="680" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-4" value=".200" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="220" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-10" value="&lt;div&gt;.27&lt;/div&gt;Victoria HTTP Server" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="140" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-11" value="&lt;div&gt;.1&lt;/div&gt;&lt;div&gt;&amp;nbsp;Cortina FTP Server&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="60" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-12" value=".201" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="300" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-13" value=".254" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="380" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-14" value=".200" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="700" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-15" value=".3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="620" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-16" value=".2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="540" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-17" value=".201" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="780" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-18" value=".254" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="860" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-32" value="10.50.21.247" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="250" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-33" value="10.50.20.228" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="730" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-34" value="&amp;nbsp;" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=8;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="920" as="sourcePoint" />
+            <mxPoint x="120" y="80" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-36" value="10.10.0.40" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="490" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-1" value="10.2.0.1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="320" y="720" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-2" value="10.3.0.10" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="315" y="240" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-3" value="Open Ports:21,80" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="90" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-4" value="Open Ports:21,80" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="170" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-5" value="Open Ports: " style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="570" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-6" value="Open Ports: " style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="650" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="MVu3h1OuJh14mWbq166z-1" value="10.3.0.0/24" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="360" y="80" width="60" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="dDzCqRLFs5yfzUkO1OEE" name="Task 4 Map">
+    <mxGraphModel dx="786" dy="1074" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
       </root>
     </mxGraphModel>
   </diagram>
