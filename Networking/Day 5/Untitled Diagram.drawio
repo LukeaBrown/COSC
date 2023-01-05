@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-05T19:44:00.222Z" agent="5.0 (X11)" etag="mv22g6QNqTYLyGZxyulA" version="20.8.0" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2023-01-05T19:57:23.976Z" agent="5.0 (X11)" etag="CB8ZNbL9lRHSHnn2M1qx" version="20.8.0" type="github" pages="4">
   <diagram id="7zNDK23arRzc1YxvEAij" name="Page-1">
     <mxGraphModel dx="849" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -226,10 +226,10 @@
         <mxCell id="H-wNZwcdA5rv0CwiOXED-4" value=".200" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="520" y="220" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="H-wNZwcdA5rv0CwiOXED-10" value="&lt;div&gt;.27&lt;/div&gt;Victoria HTTP Server" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-10" value="&lt;div&gt;.27&lt;/div&gt;&lt;div&gt;Cortina HTTP Server&lt;/div&gt;&lt;div&gt;Victoria FTP server&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="520" y="140" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="H-wNZwcdA5rv0CwiOXED-11" value="&lt;div&gt;.1&lt;/div&gt;&lt;div&gt;&amp;nbsp;Cortina FTP Server&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-11" value="&lt;div&gt;.1&lt;/div&gt;&lt;div&gt;&amp;nbsp;Victoria FTP Server&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="520" y="60" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="H-wNZwcdA5rv0CwiOXED-12" value=".201" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
@@ -244,7 +244,7 @@
         <mxCell id="H-wNZwcdA5rv0CwiOXED-15" value=".3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="520" y="620" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="H-wNZwcdA5rv0CwiOXED-16" value=".2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
+        <mxCell id="H-wNZwcdA5rv0CwiOXED-16" value="&lt;div&gt;.2&lt;/div&gt;Mohammed FTP Server" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="520" y="540" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="H-wNZwcdA5rv0CwiOXED-17" value=".201" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=8;" vertex="1" parent="1">
@@ -281,11 +281,11 @@
         <mxCell id="aXhIvmH2wEqgExWdyOyQ-4" value="Open Ports:21,80" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="590" y="170" width="90" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="aXhIvmH2wEqgExWdyOyQ-5" value="Open Ports: " style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="600" y="570" width="70" height="20" as="geometry" />
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-5" value="Open Ports:21,80" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="570" width="90" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="aXhIvmH2wEqgExWdyOyQ-6" value="Open Ports: " style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="600" y="650" width="70" height="20" as="geometry" />
+        <mxCell id="aXhIvmH2wEqgExWdyOyQ-6" value="Open Ports:22,23" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="650" width="90" height="20" as="geometry" />
         </mxCell>
         <mxCell id="MVu3h1OuJh14mWbq166z-1" value="10.3.0.0/24" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=8;" vertex="1" parent="1">
           <mxGeometry x="360" y="80" width="60" height="20" as="geometry" />
