@@ -1,0 +1,85 @@
+Tunnels Training - Task 3 Start
+1. Tunnels Training - Local Practice
+	Flag: We are not interested in the possibilities of defeat. They do not exist.
+
+2. Tunnels Training - Dynamic Practice
+	Flag: If I'm not back in five minutes, just wait longer!
+
+	Files: welcome.msg
+		Welcome, archive user %U@%R !
+
+		The local time is: %T
+
+		This is an experimental FTP server.  If you have any unusual 		problems,
+		please report them via e-mail to <root@%L>.
+
+3. Tunnels Training - Compromised
+	Flag: Star Wars!
+
+4. Tunnels Training - Remote Practice
+	Flag: Millennium Falcon!
+
+5. Tunnels Training - Mohammed FTP
+	Flag: I'm sorry, Dave. I'm afraid I can't do that-Hal, A Space Odyssey!
+
+6. Tunnels Training - Cortina HTTP
+	Flag: We are not interested in the possibilities of defeat. They do not exist.
+
+7. Tunnels Training - Victoria FTP
+	Flag: Invention, my dear friends, is 93% perspiration, 6% electricity, 4% evaporation, and 2% butterscotch ripple.
+
+8. Tunnels Training - Mojave FTP
+	Flag: I find your lack of faith disturbing.
+
+9. Tunnels Training - Mojave HTTP
+	Flag: Captain Kirk
+
+10. Tunnels Training - Parumphia FTP
+	Flag: I'd just as soon kiss a wookiee!
+
+11. Tunnels Training - Parumphia HTTP
+	Flag: Don't call me a mindless philosopher, you overweight blob of grease!
+
+Data Collection - Task 4 Start
+1. Data Collection - Initial Ports
+	Flag: Please Do Not Throw Sausage Pizza Away
+
+2. Data Collection - High port
+	Flag: finland
+
+3. Data Collection - 1st Pivot
+	Flag: 192.168.0.20
+
+4. Data Collection - 1st Pivot Flag
+	Flag: <> <> <> <>
+
+5. Data Collection - 1st Pivot Access
+	Flag: <>< <>< <>< <><
+
+6. Data Collection - 2nd Pivot
+	Flag: Goodbye my friend, you messed up again.
+
+7. Data Collection - 2nd Pivot Access
+	Flag: 172.16.0.0/24
+
+8. Data Collection - Inner Net
+	Flag: 172.16.0.60
+
+9. Data Collection - Inner Flag
+	Flag: 0x8100
+
+12. Data Collection - Inner Time
+	Flag: Datagram
+
+13. Data Collection - Inner Pivot Access
+	Flag: 172.16.0.100
+
+14. Data Collection - Inner Pivot Flag
+	Flag: badbeef5
+
+11. Data Collection - Inner leet Flag
+	Flag: Peanut Butter Jelly Time
+
+10. Data Collection - Inner 80 Flag
+	Flag: 
+
