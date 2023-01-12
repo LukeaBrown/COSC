@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-12T21:58:15.357Z" agent="5.0 (X11)" etag="ErLBdjKJ3PKutCSA76ty" version="20.8.4" type="github" pages="5">
+<mxfile host="app.diagrams.net" modified="2023-01-12T21:59:26.914Z" agent="5.0 (X11)" etag="_k_Y84efZuQKsF1Hclk0" version="20.8.4" type="github" pages="5">
   <diagram id="7zNDK23arRzc1YxvEAij" name="Page-1">
     <mxGraphModel dx="875" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -527,6 +527,11 @@
         <mxCell id="SE7MiC6bYkPo5DkJzZYa-2" value="&lt;div&gt;Open Ports: &lt;br&gt;&lt;/div&gt;&lt;div&gt;125 (ALT SSH)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="725" y="380" width="100" height="40" as="geometry" />
         </mxCell>
+        <UserObject label="10.50.23.177/32" link="10.50.23.177/32" id="SE7MiC6bYkPo5DkJzZYa-4">
+          <mxCell style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+            <mxGeometry x="120" y="500" width="120" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
       </root>
     </mxGraphModel>
   </diagram>
