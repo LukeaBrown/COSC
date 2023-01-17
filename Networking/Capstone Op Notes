@@ -162,4 +162,6 @@ MALWARE DISCOVERY:	I just want to say LOVE YOU SAN >>> SSBqdXN0IHdhbnQgdG8gc2F5I
 
 ssh net1_student9@10.2.2.6 -p 7777 -R 10904:localhost:2222 -NT
 
-
+ssh student@localhost -p 10902 -L 10904:localhost:2222 -NT
+ssh net1_student9@localhost -p 10902 -L 10905:10.10.10.140:301 -NT
+ssh net1_student9@localhost -p 10902 -L 10906:10.10.10.140:21 -NT
