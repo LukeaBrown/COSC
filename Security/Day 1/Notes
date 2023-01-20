@@ -105,21 +105,15 @@ Advanced Scanning Techniques
 ============================================================
     Host Discovery (Ping Sweep)
         Find hosts that are online
+	for i in {1..254} ;do (ping -c 1 192.168.1.$i 2>/dev/null | egrep -i "bytes from" &) ;done
 		
     Port Enumeration (NMAP)
         Find ports for each host that is online
+	nmap -Pn -T4 --min-rate 5654654654684 10.10.0.1 -p22-25,80,8888 2>/dev/null
 		
     Port Interrogation (Netcat)
         Find what service is running on each open/available port
-		
-Ping Sweep
-for i in {1..254} ;do (ping -c 1 192.168.1.$i 2>/dev/null | egrep -i "bytes from" &) ;done
-
-NMAP
-nmap -Pn -T4 --min-rate 5654654654684 10.10.0.1 -p22-25,80,8888 2>/dev/null
-
-Netcat
-nc
+	nc
 
 ============================================================
 NMAP Scripting Language
