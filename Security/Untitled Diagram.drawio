@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-25T15:21:12.818Z" agent="5.0 (X11)" etag="9wBXg57W0Cjc02VoUrkv" version="20.8.9" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-25T15:30:26.697Z" agent="5.0 (X11)" etag="rFD4ieXe85wCPSkn-ojq" version="20.8.9" type="github">
   <diagram name="Page-1" id="PPI7aoxtq6jr2701zAh0">
-    <mxGraphModel dx="912" dy="898" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="754" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -82,8 +82,8 @@
         <mxCell id="hsKAHakp5D6jIXOr1AbQ-32" value="Open Ports:53" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="320" y="845" width="100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="hsKAHakp5D6jIXOr1AbQ-33" value="Open Ports: 80,8080" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="320" y="245" width="130" height="30" as="geometry" />
+        <mxCell id="hsKAHakp5D6jIXOr1AbQ-33" value="&lt;div&gt;Open Ports: 80,8080&lt;/div&gt;2222 (ALT SSH)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="320" y="240" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="hsKAHakp5D6jIXOr1AbQ-34" value="192.168.150.224/27" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="70" y="650" width="130" height="30" as="geometry" />
