@@ -1,0 +1,124 @@
+============================================================
+						CTFD-D
+============================================================
+Username: BRLU-001-M
+Password: Marines=2611
+
+Jumpbox: 10.50.29.204
+Username: student
+Password: WpT06tCvnFwFSKP
+
+Lin_Ops: 10.50.30.120
+Win_Ops: 10.50.20.48
+
+============================================================
+Penetration Testing
+============================================================
+Testing vulnerabilites of a network or machine.
+
+Phase 1: Mission Definition
+	- Define mission goals and targets
+	- Determine scope of mission
+	- Define RoE (Rules of Engagement) 
+	
+Phase 2: Recon
+	- Information gathering about the target through public sources
+	
+Phase 3: Footprinting (Research Recon)
+	- Accumulate data through scanning and/or interaction with the target/target resources
+	
+Phase 4: Exploitation & Initial Access
+	- Gain an initial foothold on network
+	
+Phase 5: Post-Exploitation
+	- Establish persistence
+	- Escalate privileges
+	- Cover your tracks
+	- Exfiltrate target data
+	
+Phase 6: Document Mission
+	- Document and report mission details
+
+============================================================
+				Penetration Test Reporting
+============================================================
+Operation Notes (OPNOTES)
+	Taken during 
+	
+Formalized Reporting
+	Executive Summary: Meant for officers
+
+	Technical Summary: Actual information
+
+============================================================
+		Vulnerability and Exploitation Research
+============================================================
+Exploit Research
+	- Transition from reconnaissance to weaponization
+	- Leverage intelligence/data about network
+	- Pair vulnerabilities to exploits
+	- Align exploits to operational objectives
+	
+Capabilities
+	- Mission Objectives drive requirements
+		= Collection
+		= Effects
+	- Additional functionality to fulfill requirements
+	- Communications security (COMSEC)
+	
+Testing
+	- Exploit Development occurs from vulnerability pairing and mission-drivens requirement
+		= Test and verify success
+	- Testing provides a number of benefits:
+		= Faster time to breakout of initial foothold
+		= Reduced risk of detection and/or tool failure
+		= Improved recovery times
+		
+Plan
+	Procure Hardware and software
+	Assign developer
+	Assign a tester to develop TTPs and break it
+	Document testing results
+	Testing environment
+
+============================================================
+				Scanning and Reconnaissance
+============================================================
+Open Source Intelligence
+	produced from publicly available information that is collected, exploited, and disseminated in a timely manner to an appropriate audience for addressing a specific intelligence requirement.
+
+Limitations on Collection
+	Are there rules that guide our operations and collection parameters?
+	What are important factors when collecting data about a target?
+
+============================================================
+			Hyper-Text Markup Language (HTML)
+============================================================
+Standardized markup language for browser interpretation of webpages
+    - Client-side interpretation (web browser)
+    - Utilizes elements (identified by tags)
+    - Typically redirects to another page for server-side interaction
+    - Cascading Stylesheets (CSS) for page themeing
+
+============================================================
+Advanced Scanning Techniques
+============================================================
+    Host Discovery (Ping Sweep)
+        Find hosts that are online
+	for i in {1..254} ;do (ping -c 1 192.168.1.$i 2>/dev/null | egrep -i "bytes from" &) ;done
+		
+    Port Enumeration (NMAP)
+        Find ports for each host that is online
+	nmap -Pn -T4 --min-rate 5654654654684 10.10.0.1 -p22-25,80,8888 2>/dev/null
+		
+    Port Interrogation (Netcat)
+        Find what service is running on each open/available port
+	nc
+
+============================================================
+NMAP Scripting Language
+============================================================
+nmap -Pn -T4 10.50.27.84 -p80 --script http-enum.nse
+
+nmap -Pn -T4 10.50.27.84 -p445,139 --script smb-os-discovery.nse
+
