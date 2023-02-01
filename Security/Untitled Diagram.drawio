@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-31T18:35:57.150Z" agent="5.0 (X11)" etag="_b1XeZd_bnUSLx2RBDBz" version="20.8.9" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-01T16:04:06.429Z" agent="5.0 (X11)" etag="1fnSmZSoXxDsLlyRNVS7" version="20.8.9" type="github">
   <diagram name="Page-1" id="PPI7aoxtq6jr2701zAh0">
-    <mxGraphModel dx="590" dy="513" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="707" dy="616" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -51,6 +51,9 @@
         </mxCell>
         <mxCell id="hsKAHakp5D6jIXOr1AbQ-7" value=".99" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="280" y="120" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uyFyYMNDwir9Y-g0CoSN-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="hsKAHakp5D6jIXOr1AbQ-8" target="uyFyYMNDwir9Y-g0CoSN-15">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hsKAHakp5D6jIXOr1AbQ-8" value=".100" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="280" y="160" width="40" height="40" as="geometry" />
@@ -141,6 +144,21 @@
         </mxCell>
         <mxCell id="uyFyYMNDwir9Y-g0CoSN-12" value="Open Ports:135,139,445" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="680" y="285" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uyFyYMNDwir9Y-g0CoSN-13" value="Open Ports:2222" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="155" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uyFyYMNDwir9Y-g0CoSN-14" value="extranet" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="140" y="165" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uyFyYMNDwir9Y-g0CoSN-15" value=".9" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="590" y="160" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uyFyYMNDwir9Y-g0CoSN-17" value="Open Ports:135,139,445" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="630" y="150" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uyFyYMNDwir9Y-g0CoSN-18" value="Open Ports:3389.5040,5985,5986" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="630" y="185" width="200" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
