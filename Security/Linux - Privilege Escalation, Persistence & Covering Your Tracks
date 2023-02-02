@@ -151,3 +151,7 @@ Bit mehtod combined:
 	
 
 export $PATH = .:$PATH
+
+unset HISTFILE
+
+john --wordlist="myWordList.txt" shadowfilehere
