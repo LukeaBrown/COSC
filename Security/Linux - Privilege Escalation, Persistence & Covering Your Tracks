@@ -1,0 +1,131 @@
+============================================================
+Privilege Escalation
+============================================================
+------------------------------------------------------------
+Enumeration for Privilege Escalation
+------------------------------------------------------------
+    What are the techniques and processes?
+
+        Is there any particular order?
+
+        Is there anything else you should be doing while on the box?
+
+------------------------------------------------------------
+SUDO Gotchas
+------------------------------------------------------------
+Commands that can access the contants of other files
+Commands that download files
+Commands that execute other commands (i.e. editors)
+Dangerous Commands
+
+------------------------------------------------------------
+SUID/SGID
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+Insecure Permissions
+------------------------------------------------------------
+CRON
+	Scheduled tasks.
+	Crontab -e -u (Edits a specific users cronjobs)
+	
+World-Writable Files and Directories
+	Everone can read and write to them.
+	/tmp
+	/var/tmp
+Dot '.' in PATH
+	Means current working directory.
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+------------------------------------------------------------
+
+
+============================================================
+Persistance
+============================================================
+Adding or Hijacking a User Account
+	Making sure they 
+
+------------------------------------------------------------
+Boot Process Persistence
+------------------------------------------------------------
+
+
+============================================================
+Covering Your Tracks
+============================================================
+    Prior, after, before (Know the system!)
+
+        What will happen if I do X (What logging?)
+
+        Checks (Where are things?)
+
+        Hide (File locations, names, times)
+
+    When do you start covering your tracks?
+	
+Find out Init type
+	ls -latr /proc/1/exe
+stat /sbin/init
+man init
+	init
+	--version
+	ps 1
+
+------------------------------------------------------------
+Logs for Covering Tracks
+------------------------------------------------------------
+auth.log/secure: Logins/authentications
+
+lastlog: Each users' last successful login time
+
+btmp: Bad login attempts
+
+sulog: Usage of SU command
+
+utmp Currently logged in users (W command)
+
+wtmp: Permanent record on user on/off
+
+------------------------------------------------------------
+Cleaning the Logs (Basic)
+------------------------------------------------------------
+	Get rid of it
+		rm -rf /var/log/...
+		
+	Clear it
+		cat /dev/null > /var/log/...
+		echo > /var/log/...
+		
+------------------------------------------------------------
+Cleaning the Logs (Precise)
+------------------------------------------------------------
+	GREP (REMOVE)
+	egrep -v '10:49*| 15:15:15' auth.log > auth.log2; cat auth.log2 > auth.log; rm auth.log2
+	
+	SED (REPLACE)
+	cp auth.log > auth.log2; sed -i 's/10.16.10.93/136.132.1.1/g' auth.log2; cat auth.log2 > auth.log +
+	
+------------------------------------------------------------
+Remote Logging
+------------------------------------------------------------
+	Check the config!
+		Identify server being shipped to!
+		Identify which logs are being shipped
+	[EMPHASIS]#Rsyslog? Need to be thorough!
+	New version references multiple files for rules
+	
+	RSYSLOG
+	Newer Rsyslog references /etc/rsyslog.d/* for settings/rules
+	Older version only uses /etc/rsyslog.conf`
+	Find out grep "IncludeConfig" /etc/rsyslog.conf
+============================================================
+
+============================================================
+
