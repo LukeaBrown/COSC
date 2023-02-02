@@ -149,3 +149,5 @@ Bit mehtod combined:
 	
 	Current user crontab: crontab -l
 	
+
+export $PATH = .:$PATH
