@@ -125,7 +125,27 @@ Remote Logging
 	Newer Rsyslog references /etc/rsyslog.d/* for settings/rules
 	Older version only uses /etc/rsyslog.conf`
 	Find out grep "IncludeConfig" /etc/rsyslog.conf
+	
 ============================================================
-
+DEMO
 ============================================================
+sudo method
+	sudo -l
+		If there is a secure_path, you will not be able to use dot in the PATH method.
+	gtfo bins
+/bin/bash
 
+SUID Bit Method:
+	find / -type f -perm /4000 -ls 2>/dev/null
+	
+SGID Bit Method:
+	find / -type f -perm /2000 -ls 2>/dev/null
+	
+Bit mehtod combined:
+	find / -type f -perm /6000 -ls 2>/dev/null
+	
+	
+	cat /etc/crontab
+	
+	Current user crontab: crontab -l
+	
