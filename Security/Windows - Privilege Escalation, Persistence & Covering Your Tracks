@@ -1,0 +1,118 @@
+============================================================
+Windows Access Control Model
+============================================================
+Access Tokens
+	Security Identifier (SID) associations and Token associations
+security Descriptors
+	DACL - 
+	SACL - 
+	ACEs - Access Control 
+------------------------------------------------------------
+DLL Search Order(Executables check the following locations (in successive order)
+------------------------------------------------------------
+1st - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs
+2nd - The directory the the Application was run from
+3rd - The directory specified in in the C+ function GetSystemDirectory()
+4th - The directory specified in the C+ function GetWindowsDirectory()
+5th - The current directory
+
+------------------------------------------------------------
+AutoElevate Executables
+------------------------------------------------------------
+Requested Executions LEvels:
+	asInvoker - Whoever ran the program
+	highestAvailable - Highest possible level to run as
+
+============================================================
+Privilege Escalation
+============================================================
+------------------------------------------------------------
+Scheduled Tasks & Services
+------------------------------------------------------------
+Items to evaluate include
+	Write Permissions
+	Non-Standard Locations
+	Unquoted Executable paths
+	Vulnerabilities in Executables
+	Permissions to Run As SYSTEM
+	
+Finding vulnarable Scheduled Tasks
+	schtasks /query /fo LIST /v
+
+============================================================
+Persistance
+============================================================
+System changes or binary uploads that provide the adversary continued access to system
+
+Survives:
+	Reboots
+	Credential changes
+	DHCP IP reassignment
+	Etc.
+	
+Considerations include:
+	File naming
+	File location
+	Timestomping
+	Port selection
+	
+------------------------------------------------------------
+Registry
+------------------------------------------------------------
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\
+	Run
+	Run Once
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\
+	Run
+	Run Once
+
+------------------------------------------------------------
+Scheduled Tasks
+------------------------------------------------------------
+Permission Levels Considerations:
+    What is your objective?
+    Do you need to blend in?
+
+------------------------------------------------------------
+Services
+------------------------------------------------------------
+    At Startup
+    Perform Multiple Functions
+    Typically require Administrative Access
+
+============================================================
+Covering Tracks
+============================================================
+------------------------------------------------------------
+Considerations
+------------------------------------------------------------
+What will happen if I do X?
+	Logs
+Checks
+	Where are things?
+Hide
+	File locations, names, times
+	Know the system!
+
+Artifacts
+	Determine which events will create a log
+	Event logs
+		Applications, Security, Setup, System
+	Blending In
+	TimeStomping
+	
+------------------------------------------------------------
+System Usage
+------------------------------------------------------------
+Where should you run commands from?
+	Locally?
+	Remote?
+	
+------------------------------------------------------------
+Important Microsoft Event IDs
+------------------------------------------------------------
+4624/4625 - Successful/failed login
+4720 - account made
+4672 - Administrative user logged on
+7045 - Service made
