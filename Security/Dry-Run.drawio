@@ -1,1 +1,25 @@
-<mxfile host="app.diagrams.net" modified="2023-02-07T13:32:52.116Z" agent="5.0 (X11)" version="20.8.9" etag="EffLaK6wkTcJ7P93_1xG" type="github"><diagram name="Page-1" id="SrVoCgO38SM8U9qIwx5s">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2023-02-07T17:17:36.043Z" agent="5.0 (X11)" etag="lkkpGJtmCWG_uNGWPiDg" version="20.8.18" type="github">
+  <diagram name="Page-1" id="SrVoCgO38SM8U9qIwx5s">
+    <mxGraphModel dx="806" dy="1078" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nBm-BspD7YeZuf-pDqgp-1" value="10.50.26.172" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="120" y="480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nBm-BspD7YeZuf-pDqgp-2" value="Open Ports: 22,80" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="480" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="nBm-BspD7YeZuf-pDqgp-3" value="&lt;pre id=&quot;line1&quot;&gt;[name] =&amp;gt; user2&lt;br&gt;[pass] =&amp;gt; EaglesIsARE78&lt;br&gt;&lt;br&gt;    [name] =&amp;gt; user3&lt;br&gt;    [pass] =&amp;gt; Bob4THEEapples&lt;br&gt;&lt;br&gt;    [name] =&amp;gt; Lee_Roth&lt;br&gt;[pass] =&amp;gt; anotherpassword4THEages&lt;span id=&quot;line20&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line19&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line18&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line17&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line16&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line15&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line14&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line13&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line12&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line11&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line10&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line9&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line8&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line7&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line6&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line5&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line4&quot;&gt;&lt;/span&gt;&lt;span id=&quot;line3&quot;&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/pre&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="660" width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="nBm-BspD7YeZuf-pDqgp-4" value="&lt;div&gt;WebApp&lt;/div&gt;&lt;div&gt;192.168.28.181&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="440" y="480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nBm-BspD7YeZuf-pDqgp-5" value="Open Ports: 22,80" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="520" y="480" width="120" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
